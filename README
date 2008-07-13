@@ -4,6 +4,66 @@ TinyMCE
 This plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications. TinyMCE is a WYSIWYG HTML editing component 
 released under the GNU Public License (GPL) by Moxiecode Systems (http://tinymce.moxiecode.com/).
 
+
+INSTALL
+=======
+
+Install the plugin by running
+
+  script/plugin install git://github.com/kete/tiny_mce.git
+
+Then install the necessary files into your public directory by running
+
+  rake tiny_mce:scripts:install
+
+
+USAGE
+=====
+
+Add something like the following to the controller of the view you want to add TinyMCE to.
+
+  ### TinyMCE WYSIWYG editor stuff
+  uses_tiny_mce(:options => { :theme => 'advanced',
+                  :mode => "textareas",
+                  :convert_urls => false,
+                  :content_css => "/stylesheets/base.css",
+                  :remove_script_host => true,
+                  :theme_advanced_toolbar_location => "top",
+                  :theme_advanced_toolbar_align => "left",
+                  :theme_advanced_resizing => true,
+                  :theme_advanced_resize_horizontal => false,
+                  :theme_advanced_buttons1 => %w{ bold italic underline strikethrough separator justifyleft justifycenter justifyright indent outdent separator bullist numlist forecolor backcolor separator link unlink image undo redo code},
+                  :theme_advanced_buttons2 => %w{ formatselect fontselect fontsizeselect pastetext pasteword selectall },
+                  :theme_advanced_buttons3_add => %w{ tablecontrols fullscreen},
+                  :editor_selector => 'mceEditor',
+                  :paste_create_paragraphs => true,
+                  :paste_create_linebreaks => true,
+                  :paste_use_dialog => true,
+                  :paste_auto_cleanup_on_paste => true,
+                  :paste_convert_middot_lists => false,
+                  :paste_unindented_list_class => "unindentedList",
+                  :paste_convert_headers_to_strong => true,
+                  :paste_insert_word_content_callback => "convertWord",
+                  :plugins => %w{ contextmenu paste table fullscreen} },
+                :only => [:new, :pick, :create, :edit, :update, :homepage_options])
+  ### end TinyMCE WYSIWYG editor stuff
+
+Then append the following to the text area you want to transform into a TinyMCE editor. You can change the name by editing the 'editor_selector' param in the controller code.
+
+  :class => "mceEditor"
+
+And you're all set!
+
+
+OPTIONS
+=======
+
+You can change the options or add new ones based on what available in tiny_mce_options.yml
+
+
+CREDITS
+=======
+
 This plugin is maintained by Blake Watters <blake@near-time.com>
 Updated by Kieran Pilkington <kieran@katipo.co.nz>
 
