@@ -1,0 +1,12 @@
+TinyMCE
+=======
+
+This plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications. TinyMCE is a WYSIWYG HTML editing component 
+released under the GNU Public License (GPL) by Moxiecode Systems (http://tinymce.moxiecode.com/).
+
+This plugin is maintained by Blake Watters <blake@near-time.com>
+Updated by Kieran Pilkington <kieran@katipo.co.nz>
+
+Bundled TinyMCE version: 3.1.0.1
+Documentation from the TinyMCE distribution is available online at 
+http://tinymce.moxiecode.com/documentation.php
