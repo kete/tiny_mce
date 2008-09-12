@@ -52,7 +52,12 @@ Then append the following to the text area you want to transform into a TinyMCE 
 
   :class => "mceEditor"
 
-And you're all set!
+Lastly, add the following two lines to the <head> element of your view:
+
+	<%= javascript_include_tiny_mce %>
+	<%= tiny_mce_init %>
+
+Now you're all set!
 
 
 OPTIONS
