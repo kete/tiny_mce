@@ -86,6 +86,12 @@
 - add_form_submit_trigger
 - add_unload_trigger
 - submit_patch
+- compress
+- disk_cache
+- gecko_spellcheck
+- old_cache_max
+- skin
+- tab_focus
 - theme_advanced_layout_manager
 - theme_advanced_blockformats
 - theme_advanced_styles
