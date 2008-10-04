@@ -42,8 +42,8 @@ Lastly, add the following line(s) to the <head> element of your application view
 
 Or if you need to move things around because of javascript conflicts:
 
-  <%= include_tiny_mce_js if @uses_tiny_mce -%>
-  <%= tiny_mce_init if @uses_tiny_mce -%>
+  <%= include_tiny_mce_js_if_needed -%>
+  <%= tiny_mce_init_if_needed -%>
 
 Now you're all set!
 

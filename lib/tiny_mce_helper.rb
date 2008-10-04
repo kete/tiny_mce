@@ -39,6 +39,11 @@ module TinyMCEHelper
   end
   alias tiny_mce tiny_mce_init
 
+  def tiny_mce_init_if_needed
+    tiny_mce_init if @uses_tiny_mce
+  end
+  alias tiny_mce_if_needed tiny_mce_init_if_needed
+
   def include_tiny_mce_js
     javascript_include_tag ((RAILS_ENV == 'development') ? "tiny_mce/tiny_mce_src" : "tiny_mce/tiny_mce")
   end
