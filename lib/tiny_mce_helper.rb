@@ -44,11 +44,15 @@ module TinyMCEHelper
   end
   alias javascript_include_tiny_mce include_tiny_mce_js
 
+  def include_tiny_mce_js_if_needed
+    include_tiny_mce_js if @uses_tiny_mce
+  end
+  alias javascript_include_tiny_mce_if_used include_tiny_mce_js_if_needed
+
   def include_tiny_mce_if_needed
     if @uses_tiny_mce
       include_tiny_mce_js
       tiny_mce_init
     end
   end
-  alias javascript_include_tiny_mce_if_used include_tiny_mce_if_needed
 end
