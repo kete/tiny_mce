@@ -1,7 +1,8 @@
 = TinyMCE for Rails
 
-This plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications. TinyMCE is a WYSIWYG
-HTML editing component released under the GNU Public License 2.1 (GPL 2.1) by Moxiecode Systems (http://tinymce.moxiecode.com/).
+This plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications.
+
+TinyMCE is a WYSIWYG HTML editing component released under the GNU Public License 2.1 (GPL 2.1) by Moxiecode Systems (http://tinymce.moxiecode.com/).
 
 
 == Installation
@@ -31,8 +32,7 @@ Add the following to the controller of the page you want to add TinyMCE to.
   uses_tiny_mce(:options => {},
                 :only => [:new, :create, :edit, :update])
 
-Then append the following to the text area you want to transform into a TinyMCE editor.
-You can change the name by editing the 'editor_selector' param in the controller code options.
+Then append the following to the text area you want to transform into a TinyMCE editor. You can change the name by editing the 'editor_selector' param in the controller code options.
 
   :class => "mceEditor"
 
@@ -52,13 +52,13 @@ Now you're all set!
 
 You can change the options hash by adding new settings based on the available options in tiny_mce_options.yml
 
-If an option is misspelled, invalid, or deprecated (no longer in TinyMCE), when you go to a page
-containing your editor, you will receive an Exception, which must be dealt with before continuing.
+If an option is misspelled, invalid, or deprecated (no longer in TinyMCE), when you go to a page containing your editor, you will receive an Exception, which must be dealt with before continuing.
 
 
 = Credits
 
 This plugin was created by Blake Watters <blake@near-time.com>
+
 This plugin is currently maintained by Kieran Pilkington <kieran@katipo.co.nz>
 
 Bundled TinyMCE version: 3.2.0.2
