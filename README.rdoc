@@ -1,0 +1,66 @@
+= TinyMCE for Rails
+
+This plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications. TinyMCE is a WYSIWYG
+HTML editing component released under the GNU Public License 2.1 (GPL 2.1) by Moxiecode Systems (http://tinymce.moxiecode.com/).
+
+
+== Installation
+
+Installing TinyMCE for Rails takes no more than a few minutes to install.
+
+=== Step 1
+
+Open a console, and in the root of you Rails application, install the plugin by running
+
+  script/plugin install git://github.com/kete/tiny_mce.git
+
+=== Step 2
+
+Then install the necessary files into your public directory by running
+
+  rake tiny_mce:install
+
+or, if you are updating a previously installed version
+
+  rake tiny_mce:update
+
+=== Step 3
+
+Add the following to the controller of the page you want to add TinyMCE to.
+
+  uses_tiny_mce(:options => {},
+                :only => [:new, :create, :edit, :update])
+
+Then append the following to the text area you want to transform into a TinyMCE editor.
+You can change the name by editing the 'editor_selector' param in the controller code options.
+
+  :class => "mceEditor"
+
+Lastly, add the following line(s) to the <head> element of your application view:
+
+  <%= include_tiny_mce_if_needed %>
+
+Or if you need to move things around because of javascript conflicts:
+
+  <%= include_tiny_mce_js if @uses_tiny_mce -%>
+  <%= tiny_mce_init if @uses_tiny_mce -%>
+
+Now you're all set!
+
+
+== Configuration
+
+You can change the options hash by adding new settings based on the available options in tiny_mce_options.yml
+
+If an option is misspelled, invalid, or deprecated (no longer in TinyMCE), when you go to a page
+containing your editor, you will receive an Exception, which must be dealt with before continuing.
+
+
+= Credits
+
+This plugin was created by Blake Watters <blake@near-time.com>
+This plugin is currently maintained by Kieran Pilkington <kieran@katipo.co.nz>
+
+Bundled TinyMCE version: 3.2.0.2
+Documentation from the TinyMCE distribution is available online at 
+http://tinymce.moxiecode.com/documentation.php

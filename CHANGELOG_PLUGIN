@@ -1,0 +1,13 @@
+= Plugin Changelog
+
+== Version 3.2.0.2 (2008-10-04)
+* Updated TinyMCE to 3.2.0.2
+* Formated README file with RDoc syntax for easier reading on Github
+* Added separate TinyMCE changelog (starting from 3.0 alphas through to now)
+* Rake task refactored (now uses cp_r instead of custom method), and new update task
+* Edited TinyMCE helper methods (single "include_tiny_mce_if_needed" method includes Javascript and initializes TinyMCE)
+* Updated TinyMCE configuration options file (tiny_mce_options.yml)
+
+== Version 3.1.0.1 (2008-07-02)
+* Updated TinyMCE
+* Replaced old documentation with readme file containing link to online documentation
