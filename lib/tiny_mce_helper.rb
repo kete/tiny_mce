@@ -56,8 +56,7 @@ module TinyMCEHelper
 
   def include_tiny_mce_if_needed
     if @uses_tiny_mce
-      include_tiny_mce_js
-      tiny_mce_init
+      include_tiny_mce_js + tiny_mce_init
     end
   end
 end
