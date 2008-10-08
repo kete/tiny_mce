@@ -11,9 +11,12 @@ Installing TinyMCE for Rails takes no more than a few minutes to install.
 
 === Step 1
 
-Open a console, and in the root of you Rails application, install the plugin by running
+Open a console, and in the root of you Rails application, install the plugin by running one of the following (depending on the method you use to import plugins):
 
-  script/plugin install git://github.com/kete/tiny_mce.git
+* script/plugin install git://github.com/kete/tiny_mce.git
+* piston import git://github.com/kete/tiny_mce.git vendor/plugins/tiny_mce
+* git submodule add git://github.com/kete/tiny_mce.git vendor/plugins/tiny_mce
+* Download[http://github.com/kete/tiny_mce/tarball/master] the latest files and extract to vendor/plugins/tiny_mce
 
 === Step 2
 
