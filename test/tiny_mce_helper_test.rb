@@ -64,4 +64,9 @@ class TinyMceHelperTest < HelperTestCase
     @uses_tiny_mce = true
     assert using_tiny_mce?
   end
+
+  def test_include_tiny_mce_if_needed_includes_and_inits
+    @uses_tiny_mce = true
+    assert_match /<script src=.*tiny_mce.js.*<script.*tinyMCE.init/m, include_tiny_mce_if_needed
+  end
 end
