@@ -6,7 +6,7 @@ module TinyMCEHelper
     !@uses_tiny_mce.nil?
   end
 
-  def tiny_mce_init(options = @tiny_mce_options)
+	def raw_tiny_mce_init(options = @tiny_mce_options)
     options ||= {}
     default_options = { :mode => 'textareas',
                         :editor_selector => 'mceEditor',
@@ -35,7 +35,10 @@ module TinyMCEHelper
       i += 1
     end
     tinymce_js += "\n});"
-    javascript_tag tinymce_js
+	end
+
+  def tiny_mce_init(options = @tiny_mce_options)
+    javascript_tag raw_tiny_mce_init(options)
   end
   alias tiny_mce tiny_mce_init
 
