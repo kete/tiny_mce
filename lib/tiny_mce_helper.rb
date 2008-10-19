@@ -36,6 +36,7 @@ module TinyMCEHelper
     end
     tinymce_js += "\n});"
 	end
+  alias raw_tiny_mce raw_tiny_mce_init
 
   def tiny_mce_init(options = @tiny_mce_options)
     javascript_tag raw_tiny_mce_init(options)
