@@ -87,9 +87,9 @@ TinyMCE has a range of convenience methods for loading TinyMCE. Besides the uses
       Check whether the uses_tiny_mce declaration has been made in the current controller
 
   tiny_mce_init / tiny_mce
-      Creates a string of javascript formed from the options declared to uses_tiny_mce (executes whether uses_tiny_mce was declared or not)
+      Creates a javascript tag formed from the options declared to uses_tiny_mce (executes whether uses_tiny_mce was declared or not)
   tiny_mce_init_if_needed / tiny_mce_if_needed
-      Creates a string of javascript formed from the options declared to uses_tiny_mce (executes only when uses_tiny_mce has been declared)
+      Creates a javascript tag formed from the options declared to uses_tiny_mce (executes only when uses_tiny_mce has been declared)
 
   include_tiny_mce_js / javascript_include_tiny_mce
       Includes the TinyMCE core javascript file, must be declared before tiny_mce_init (executes whether uses_tiny_mce was declared or not)
@@ -98,7 +98,10 @@ TinyMCE has a range of convenience methods for loading TinyMCE. Besides the uses
 
   include_tiny_mce_if_needed
       Includes the TinyMCE core javascript file, and creates a string of javascript formed from the options declared to uses_tiny_mce (executes only when uses_tiny_mce has been declared)
-  
+
+  raw_tiny_mce_init / raw_tiny_mce
+      Creates a string of javascript formed from the options declared to uses_tiny_mce (is not wrapped in a JS tag though, use tiny_mce_init for that)
+
 (note: When you see "example1 / example2", the last is an alias of the first (for backward compatibility) )
 
 
