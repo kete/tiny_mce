@@ -25,6 +25,7 @@
 - event_elements
 - focus_alert
 - gecko_spellcheck
+- spellchecker_rpc_url
 - hide_selects_on_submit
 - keep_styles
 - language

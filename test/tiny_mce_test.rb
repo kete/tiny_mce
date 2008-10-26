@@ -29,6 +29,21 @@ class TinyMceTest < Test::Unit::TestCase
     @response   = ActionController::TestResponse.new
   end
 
+  def test_spellcheck_methods_is_added
+    assert @controller.methods.include?("spellchecker")
+    assert @controller.methods.include?("check_spelling")
+  end
+
+  def test_spellcheck_method_is_reachable
+    get :spellchecker
+    assert_response(:success)
+  end
+
+  def test_spellchecker_rpc_url_is_set
+    get :new
+    assert_equal @controller.instance_variable_get(:@tiny_mce_options)[:spellchecker_rpc_url], "/tiny_mce/spellchecker"
+  end
+
   def test_include_exposes_tinymce_methods
     @controller = TestController.new
     assert !@controller.class.respond_to?(:uses_tiny_mce)
@@ -67,7 +82,7 @@ class TinyMceTest < Test::Unit::TestCase
   end
 
   def test_tiny_mce_option_validator
-    assert_equal 151, TinyMCE::OptionValidator.options.size
+    assert_equal 152, TinyMCE::OptionValidator.options.size
     assert TinyMCE::OptionValidator.options.include?('mode')
     assert TinyMCE::OptionValidator.options.include?('theme')
     assert TinyMCE::OptionValidator.valid?(:submit_patch)

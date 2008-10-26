@@ -104,6 +104,11 @@ TinyMCE has a range of convenience methods for loading TinyMCE. Besides the uses
 
 (note: When you see "example1 / example2", the last is an alias of the first (for backward compatibility) )
 
+== Spell Check
+
+TinyMCE comes packed with a spellcheck plugin that relies on a server-side call to function.
+
+If uses_tiny_mce is called in a controller, the controller will get a "spellchecker" action added to it that validates text given to it with aspell. Right now, only aspell is supported.
 
 = Credits
 
