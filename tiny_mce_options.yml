@@ -25,7 +25,6 @@
 - event_elements
 - focus_alert
 - gecko_spellcheck
-- spellchecker_rpc_url
 - hide_selects_on_submit
 - keep_styles
 - language
@@ -36,6 +35,7 @@
 - readonly
 - skin
 - skin_variant
+- spellchecker_rpc_url
 - strict_loading_mode
 - table_inline_editing
 - tab_focus
