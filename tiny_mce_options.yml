@@ -35,7 +35,6 @@
 - readonly
 - skin
 - skin_variant
-- spellchecker_rpc_url
 - strict_loading_mode
 - table_inline_editing
 - tab_focus

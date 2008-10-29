@@ -86,52 +86,29 @@ TinyMCE has a range of convenience methods for loading TinyMCE. Besides the uses
   using_tiny_mce?
       Check whether the uses_tiny_mce declaration has been made in the current controller
 
-  tiny_mce_init / tiny_mce
+  raw_tiny_mce_init
+      Creates a string of javascript formed from the options declared to uses_tiny_mce (is not wrapped in a JS tag though, use tiny_mce_init for that)
+
+  tiny_mce_init
       Creates a javascript tag formed from the options declared to uses_tiny_mce (executes whether uses_tiny_mce was declared or not)
-  tiny_mce_init_if_needed / tiny_mce_if_needed
+  tiny_mce_init_if_needed
       Creates a javascript tag formed from the options declared to uses_tiny_mce (executes only when uses_tiny_mce has been declared)
 
-  include_tiny_mce_js / javascript_include_tiny_mce
+  include_tiny_mce_js
       Includes the TinyMCE core javascript file, must be declared before tiny_mce_init (executes whether uses_tiny_mce was declared or not)
-  include_tiny_mce_js_if_needed / javascript_include_tiny_mce_if_used
+  include_tiny_mce_js_if_needed
       Includes the TinyMCE core javascript file, must be declared before tiny_mce_init (executes only when uses_tiny_mce has been declared)
 
   include_tiny_mce_if_needed
       Includes the TinyMCE core javascript file, and creates a string of javascript formed from the options declared to uses_tiny_mce (executes only when uses_tiny_mce has been declared)
 
-  raw_tiny_mce_init / raw_tiny_mce
-      Creates a string of javascript formed from the options declared to uses_tiny_mce (is not wrapped in a JS tag though, use tiny_mce_init for that)
 
-(note: When you see "example1 / example2", the last is an alias of the first (for backward compatibility) )
+== Spellchecking
 
-== Spell Check
+See SPELLCHECKING_README.rdoc
 
-TinyMCE comes packed with a spellcheck plugin that relies on a server-side call to function.
+http://github.com/kete/tiny_mce/tree/master/SPELLCHECKING_README.rdoc
 
-If uses_tiny_mce is called in a controller, the controller will get a "spellchecker" action added to it that validates text given to it with aspell. Right now, only aspell is supported.
-
-== Installing Aspell
-
-If your distribution has Aspell in its package repositories, then use it. Some commands include (as root):
-
-  Debian/Ubuntu:  apt-get install aspell aspell-en
-  openSUSE:       yast2 -i aspell aspell-en
-  Mac OS X:       port install aspell aspell-dict-en
-
-If you're package repositories don't have Aspell, you'll need to compile from source. Whatever way you install it, make sure that you see the language dictionaries you plan to use when you run
-
-  aspell dicts
-
-== Installing Spellchecker on TinyMCE
-
-The SpellCheck plugin is not enabled by default in TinyMCE. To enable it, do the following.
-
-Add the following to your uses_tiny_mce controller options declaration (edit toolbar location to suit and merge with existing settings):
-
-  :theme => 'advanced',
-  :theme_advanced_buttons3_add => %w{ spellchecker },
-  :spellchecker_languages => "+English=en",
-  :plugins => %w{ spellchecker },
 
 = Credits
 
