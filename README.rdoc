@@ -5,6 +5,17 @@ This plugin provides for the installation and utilization of TinyMCE 3.2.0.2 in 
 TinyMCE is a WYSIWYG HTML editing component released under the GNU Public License 2.1 (GPL 2.1) by Moxiecode Systems (http://tinymce.moxiecode.com/).
 
 
+== Help Support tiny_mce
+
+An issue in Rails was found that prevents entering URL's into TinyMCE that contain ampersands. Every save escapes the ampersands and quickly destroys the link.
+
+But you can help. A patch was formed that fixes this issue, and needs your support before it is included into Rails core.
+
+http://rails.lighthouseapp.com/projects/8994/tickets/714-problem-with-attribute-escaping-sanitized-rb-patch
+
+You can vote on the issue there. If you support the patch, add a '+1' into the comments section of the ticket. Until it's included, if you plan to have ampersands in URL's, you can apply the patch manually. Its valid for 2.0, 2.1, and the new 2.2.
+
+
 == Installation
 
 Installing TinyMCE for Rails takes no more than a few minutes to install.
