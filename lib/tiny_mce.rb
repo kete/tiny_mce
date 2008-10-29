@@ -7,16 +7,17 @@ module TinyMCE
   module ClassMethods
     def uses_tiny_mce(options = {})
       tiny_mce_options = options.delete(:options) || {}
-      tiny_mce_options.reverse_merge!(:spellchecker_rpc_url => "/" + self.controller_name + "/spellchecker")
+      if !tiny_mce_options[:plugins].blank? && tiny_mce_options[:plugins].include?('spellchecker')
+        tiny_mce_options.reverse_merge!(:spellchecker_rpc_url => "/" + self.controller_name + "/spellchecker")
+        self.class_eval do
+          include TinyMCE::SpellChecker
+        end
+      end
       proc = Proc.new do |c|
         c.instance_variable_set(:@tiny_mce_options, tiny_mce_options)
         c.instance_variable_set(:@uses_tiny_mce, true)
       end
       before_filter(proc, options)
-
-      self.class_eval do
-        include TinyMCE::SpellChecker
-      end
     end
   end
 
