@@ -47,15 +47,16 @@ module TinyMCE
 
     ASPELL_WORD_DATA_REGEX = Regexp.new(/\&\s\w+\s\d+\s\d+(.*)$/)
 
-    # Attempt to dertermine where Aspell is
+    # Attempt to determine where Aspell is
     # Might be slow and a horrible way to do it, but it works!
-    ASPELL_PATH = if (`/usr/bin/aspell`) =~ /Usage/ # usually linux operating systems
-      "/usr/bin/aspell"
-    elsif (`/usr/local/bin/aspell`) =~ /Usage/ # usually mac operating systems
-      "/usr/local/bin/aspell"
-    else
-      "aspell" # this usally doesn't work depending on permissions but we'll fall back to it
+    aspell_path = nil
+    ['/usr/bin/aspell', '/usr/local/bin/aspell'].each do |path|
+      if File.exists?(path)
+        aspell_path = path
+        break
+      end
     end
+    ASPELL_PATH = aspell_path || "aspell" # fall back to a pathless call
 
     def spellchecker
       language, words, method = params[:params][0], params[:params][1], params[:method] unless params[:params].blank?
