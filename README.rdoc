@@ -116,9 +116,9 @@ TinyMCE has a range of convenience methods for loading TinyMCE. Besides the uses
 
 == Spellchecking
 
-See SPELLCHECKING_README.rdoc
+See SPELLCHECKING_PLUGIN.rdoc
 
-http://github.com/kete/tiny_mce/tree/master/SPELLCHECKING_README.rdoc
+http://github.com/kete/tiny_mce/tree/master/SPELLCHECKING_PLUGIN.rdoc
 
 
 = Credits
