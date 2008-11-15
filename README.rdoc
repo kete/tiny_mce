@@ -1,19 +1,8 @@
 = TinyMCE for Rails
 
-This plugin provides for the installation and utilization of TinyMCE 3.2.0.2 in Ruby on Rails applications.
+This plugin provides for the installation and utilization of TinyMCE 3.2.1 in Ruby on Rails applications.
 
 TinyMCE is a WYSIWYG HTML editing component released under the GNU Public License 2.1 (GPL 2.1) by Moxiecode Systems (http://tinymce.moxiecode.com/).
-
-
-== Help Support tiny_mce
-
-An issue in Rails was found that prevents entering URL's into TinyMCE that contain ampersands. Every save escapes the ampersands and quickly destroys the link.
-
-But you can help. A patch was formed that fixes this issue, and needs your support before it is included into Rails core.
-
-http://rails.lighthouseapp.com/projects/8994/tickets/714-problem-with-attribute-escaping-sanitized-rb-patch
-
-You can vote on the issue there. If you support the patch, add a '+1' into the comments section of the ticket. Until it's included, if you plan to have ampersands in URL's, you can apply the patch manually. Its valid for 2.0, 2.1, and the new 2.2.
 
 
 == Installation
@@ -90,6 +79,19 @@ The declaration accepts any number of default parameters a normal controller fil
   uses_tiny_mce :only => [:new, :create, :edit, :update]
 
 
+=== Additional Javascript options
+
+Sometimes, when you need complex arrays of data for plugins or such, the plugin helpers aren't complex enough to do what you need. But you can always fall back to supplying your own options. You can this by passing a raw javascript (no <script> tags) to the second parameter of the methods that initialize the TinyMCE plugin. Consider the following example for the template plugin.
+
+  tiny_mce_init_if_needed(@tiny_mce_options, "template_templates : [
+    {
+      title : "Editor Details",
+      src : "editor_details.htm",
+      description : "Adds Editors Name and Staff ID"
+    }
+  ]")
+
+
 == Methods
 
 TinyMCE has a range of convenience methods for loading TinyMCE. Besides the uses_tiny_mce shown above, they include:
@@ -127,4 +129,4 @@ This plugin was created by Blake Watters <blake@near-time.com>
 
 This plugin is currently maintained by Kieran Pilkington <kieran@katipo.co.nz>
 
-Bundled TinyMCE version: 3.2.0.2
+Bundled TinyMCE version: 3.2.1

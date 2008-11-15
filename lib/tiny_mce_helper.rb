@@ -6,7 +6,7 @@ module TinyMCEHelper
     !@uses_tiny_mce.nil?
   end
 
-	def raw_tiny_mce_init(options = @tiny_mce_options)
+	def raw_tiny_mce_init(options = @tiny_mce_options, additional_js = "")
     options ||= {}
     default_options = { :mode => 'textareas',
                         :editor_selector => 'mceEditor',
@@ -31,16 +31,23 @@ module TinyMCEHelper
       else
         raise InvalidOption.new("Invalid value of type #{value.class} passed for TinyMCE option #{key}")
       end
-      (index < options.size - 1) ? tinymce_js += ",\n" : "\n"
+      if (index < options.size - 1)
+        # there are more options in this array
+        tinymce_js += ",\n"
+      else
+        # no more options in this array. Finish it by adding the addition JS
+        tinymce_js += ",\n#{additional_js}" unless additional_js.blank?
+        tinymce_js += "\n"
+      end
     end
     tinymce_js += "\n});"
 	end
 
-  def tiny_mce_init
-    javascript_tag raw_tiny_mce_init
+  def tiny_mce_init(options = @tiny_mce_options, additional_js = "")
+    javascript_tag raw_tiny_mce_init(options, additional_js)
   end
-  def tiny_mce_init_if_needed
-    tiny_mce_init if using_tiny_mce?
+  def tiny_mce_init_if_needed(options = @tiny_mce_options, additional_js = "")
+    tiny_mce_init(options, additional_js) if using_tiny_mce?
   end
 
   def include_tiny_mce_js
@@ -50,9 +57,9 @@ module TinyMCEHelper
     include_tiny_mce_js if using_tiny_mce?
   end
 
-  def include_tiny_mce_if_needed
+  def include_tiny_mce_if_needed(options = @tiny_mce_options, additional_js = "")
     if using_tiny_mce?
-      include_tiny_mce_js + tiny_mce_init
+      include_tiny_mce_js + tiny_mce_init(options, additional_js)
     end
   end
 end
