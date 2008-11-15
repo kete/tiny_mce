@@ -81,15 +81,13 @@ The declaration accepts any number of default parameters a normal controller fil
 
 === Additional Javascript options
 
-Sometimes, when you need complex arrays of data for plugins or such, the plugin helpers aren't complex enough to do what you need. But you can always fall back to supplying your own options. You can this by passing a raw javascript (no <script> tags) to the second parameter of the methods that initialize the TinyMCE plugin. Consider the following example for the template plugin.
+Sometimes, when you need complex arrays of data for plugins or such, the plugin helpers aren't complex enough to do what you need. But you can always fall back to supplying your own options. You can this by passing a raw javascript (no <script> tags) to the uses_tiny_mce declaration. Consider the following example for the template plugin.
 
-  tiny_mce_init_if_needed(@tiny_mce_options, "template_templates : [
-    {
-      title : "Editor Details",
-      src : "editor_details.htm",
-      description : "Adds Editors Name and Staff ID"
-    }
-  ]")
+  uses_tiny_mce :raw_options => "template_templates : [ {
+                                                          title : 'Editor Details',
+                                                          src : 'editor_details.htm',
+                                                          description : 'Adds Editors Name and Staff ID'
+                                                      } ]"
 
 
 == Methods
