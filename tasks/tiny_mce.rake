@@ -1,4 +1,4 @@
-VERSION = '3.2.0.2'
+VERSION = '3.2.1'
 
 namespace :tiny_mce do
   desc 'Install the TinyMCE scripts into the public/javascripts directory of this application'
