@@ -3,8 +3,8 @@
 
 var tinymce = {
 	majorVersion : '3',
-	minorVersion : '2.1',
-	releaseDate : '2008-11-04',
+	minorVersion : '2.1.1',
+	releaseDate : '2008-11-27',
 
 	_init : function() {
 		var t = this, d = document, w = window, na = navigator, ua = na.userAgent, i, nl, n, base, p, v;
@@ -2001,7 +2001,7 @@ tinymce.create('static tinymce.util.XHR', {
 					if (x) {
 						// So if we replace the p elements with divs and mark them and then replace them back to paragraphs
 						// after we use innerHTML we can fix the DOM tree
-						h = h.replace(/<p([^>]+)>|<p>/g, '<div$1 mce_tmp="1">');
+						h = h.replace(/<p ([^>]+)>|<p>/g, '<div $1 mce_tmp="1">');
 						h = h.replace(/<\/p>/g, '</div>');
 
 						// Set the new HTML with DIVs
@@ -2200,15 +2200,23 @@ tinymce.create('static tinymce.util.XHR', {
 		},
 
 		decode : function(s) {
-			var e;
+			var e, n, v;
 
 			// Look for entities to decode
 			if (/&[^;]+;/.test(s)) {
 				// Decode the entities using a div element not super efficient but less code
 				e = this.doc.createElement("div");
 				e.innerHTML = s;
+				n = e.firstChild;
+				v = '';
 
-				return !e.firstChild ? s : e.firstChild.nodeValue;
+				if (n) {
+					do {
+						v += n.nodeValue;
+					} while (n.nextSibling);
+				}
+
+				return v || s;
 			}
 
 			return s;
@@ -2665,6 +2673,10 @@ tinymce.create('static tinymce.util.XHR', {
 
 		_pageInit : function() {
 			var e = Event;
+
+			// Safari on Mac fires this twice
+			if (e.domLoaded)
+				return;
 
 			e._remove(window, 'DOMContentLoaded', e._pageInit);
 			e.domLoaded = true;
@@ -6213,6 +6225,7 @@ tinymce.create('tinymce.ui.Separator:tinymce.ui.Control', {
 
 			t.parent();
 			DOM.add(id + '_action', 'div', {id : id + '_preview', 'class' : 'mceColorPreview'});
+			DOM.setStyle(t.id + '_preview', 'backgroundColor', t.value);
 		},
 
 		destroy : function() {
@@ -8345,7 +8358,9 @@ var tinyMCE = window.tinyMCE = tinymce.EditorManager;
 						return v;
 
 					each(t.shortcuts, function(o) {
-						if (o.ctrl != e.ctrlKey && (!tinymce.isMac || o.ctrl == e.metaKey))
+						if (tinymce.isMac && o.ctrl != e.metaKey)
+							return;
+						else if (!tinymce.isMac && o.ctrl != e.ctrlKey)
 							return;
 
 						if (o.alt != e.altKey)
@@ -8586,105 +8601,50 @@ var tinyMCE = window.tinyMCE = tinymce.EditorManager;
 
 			if (cl = s.font_size_classes)
 				cl = explode(cl);
-/*
-			function convertToFonts(no) {
-				var n, f, nl, x, i, v, st;
 
-				// Convert spans to fonts on non WebKit browsers
-				if (tinymce.isWebKit || !s.inline_styles)
-					return;
-
-				nl = t.dom.select('span', no);
-				for (x = nl.length - 1; x >= 0; x--) {
-					n = nl[x];
-
-					f = dom.create('font', {
-						color : dom.toHex(dom.getStyle(n, 'color')),
-						face : dom.getStyle(n, 'fontFamily'),
-						style : dom.getAttrib(n, 'style'),
-						'class' : dom.getAttrib(n, 'class')
-					});
-
-					// Clear color and font family
-					st = f.style;
-					if (st.color || st.fontFamily) {
-						st.color = st.fontFamily = '';
-						dom.setAttrib(f, 'mce_style', ''); // Remove cached style data
-					}
-
-					if (sl) {
-						i = inArray(sl, dom.getStyle(n, 'fontSize'));
-
-						if (i != -1) {
-							dom.setAttrib(f, 'size', '' + (i + 1 || 1));
-							//f.style.fontSize = '';
-						}
-					} else if (cl) {
-						i = inArray(cl, dom.getAttrib(n, 'class'));
-						v = dom.getStyle(n, 'fontSize');
-
-						if (i == -1 && v.indexOf('pt') > 0)
-							i = inArray(fz, parseInt(v));
-
-						if (i == -1)
-							i = inArray(fzn, v);
-
-						if (i != -1) {
-							dom.setAttrib(f, 'size', '' + (i + 1 || 1));
-							f.style.fontSize = '';
-						}
-					}
-
-					if (f.color || f.face || f.size) {
-						f.style.fontFamily = '';
-						dom.setAttrib(f, 'mce_style', '');
-						dom.replace(f, n, 1);
-					}
-
-					f = n = null;
-				}
-			};
-
-			// Run on setup
-			t.onSetContent.add(function(ed, o) {
-				convertToFonts(ed.getBody());
-			});
-*/
-			// Run on cleanup
-			t.onPreProcess.add(function(ed, o) {
+			function process(no) {
 				var n, sp, nl, x;
 
 				// Keep unit tests happy
 				if (!s.inline_styles)
 					return;
 
-				if (o.get) {
-					nl = t.dom.select('font', o.node);
-					for (x = nl.length - 1; x >= 0; x--) {
-						n = nl[x];
+				nl = t.dom.select('font', no);
+				for (x = nl.length - 1; x >= 0; x--) {
+					n = nl[x];
 
-						sp = dom.create('span', {
-							style : dom.getAttrib(n, 'style'),
-							'class' : dom.getAttrib(n, 'class')
-						});
+					sp = dom.create('span', {
+						style : dom.getAttrib(n, 'style'),
+						'class' : dom.getAttrib(n, 'class')
+					});
 
-						dom.setStyles(sp, {
-							fontFamily : dom.getAttrib(n, 'face'),
-							color : dom.getAttrib(n, 'color'),
-							backgroundColor : n.style.backgroundColor
-						});
+					dom.setStyles(sp, {
+						fontFamily : dom.getAttrib(n, 'face'),
+						color : dom.getAttrib(n, 'color'),
+						backgroundColor : n.style.backgroundColor
+					});
 
-						if (n.size) {
-							if (sl)
-								dom.setStyle(sp, 'fontSize', sl[parseInt(n.size) - 1]);
-							else
-								dom.setAttrib(sp, 'class', cl[parseInt(n.size) - 1]);
-						}
-
-						dom.setAttrib(sp, 'mce_style', '');
-						dom.replace(sp, n, 1);
+					if (n.size) {
+						if (sl)
+							dom.setStyle(sp, 'fontSize', sl[parseInt(n.size) - 1]);
+						else
+							dom.setAttrib(sp, 'class', cl[parseInt(n.size) - 1]);
 					}
+
+					dom.setAttrib(sp, 'mce_style', '');
+					dom.replace(sp, n, 1);
 				}
+			};
+
+			// Run on cleanup
+			t.onPreProcess.add(function(ed, o) {
+				if (o.get)
+					process(o.node);
+			});
+
+			t.onSetContent.add(function(ed, o) {
+				if (o.initial)
+					process(o.node);
 			});
 		},
 
@@ -9704,7 +9664,7 @@ var tinyMCE = window.tinyMCE = tinymce.EditorManager;
 			function replaceFonts() {
 				var bm;
 
-				each(dom.select(tinymce.isWebKit ? 'span' : 'font'), function(n) {
+				each(dom.select(tinymce.isWebKit && !tinymce.isAir ? 'span' : 'font'), function(n) {
 					if (n.style.fontFamily == 'mceinline' || n.face == 'mceinline') {
 						if (!bm)
 							bm = ed.selection.getBookmark();

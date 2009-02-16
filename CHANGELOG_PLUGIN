@@ -1,5 +1,8 @@
 = Plugin Changelog
 
+== Version 3.2.1.1 (2009-02-17)
+* Updated TinyMCE to 3.2.1.1
+
 == Version 3.2.1 (2008-11-16)
 * Updated TinyMCE to 3.2.1
 * New raw_tiny_mce_init, which produces raw javascript (without the <script> tags)
