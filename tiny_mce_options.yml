@@ -174,4 +174,6 @@
 - theme_advanced_font_sizes
 - theme_advanced_text_colors
 - theme_advanced_background_colors
+- theme_advanced_default_foreground_color
+- theme_advanced_default_background_color
 - theme_advanced_more_colors

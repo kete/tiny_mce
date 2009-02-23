@@ -1,5 +1,14 @@
 = Plugin Changelog
 
+== Version 3.2.1.1-1 (2009-02-23)
+* Rewrote test suite
+* Added comments throughout the plugin for future developer
+  - to all users: feel free to fork this repo, make changes, and send a pull request
+* Split the plugin into 4 files to make it easier to maintain
+* Added two missing TinyMCE configuration options
+* Better Regex check for the theme_advanced_container configuration option
+* Console notification on next installation steps when installing plugin via script/plugin
+
 == Version 3.2.1.1 (2009-02-17)
 * Updated TinyMCE to 3.2.1.1
 

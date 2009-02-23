@@ -121,6 +121,31 @@ See SPELLCHECKING_PLUGIN.rdoc
 http://github.com/kete/tiny_mce/tree/master/SPELLCHECKING_PLUGIN.rdoc
 
 
+== Testing
+
+The plugin comes with a test suite that can be run once the plugin is installed in an application.
+
+Change into the plugins directory and run 'rake' to start them.
+
+Note: The tests require Rails 2.2 or higher, and are currently tested on Rails 2.3 RC1 (so problems in older versions may arise - please see "Reporting an Issue" if they do)
+
+
+== Reporting an Issue
+
+If you have a problem, please report it on the tiny_mce plugin ticket tracker (on Ligthouseapp)
+
+http://kete.lighthouseapp.com/projects/14744-tiny_mce/tickets
+
+Be sure to include Rails version, plugin version, and when possible, a sample application that can reproduce the problem. Upload it to one of the various file hosting sites and link to it in the ticket. Don't include vendored rails or the tiny_mce plugin in the archive (if I know the versions, I'll add these myself).
+
+
+== Contributing
+
+If you've added something, why not share it. Fork the repository (http://github.com/kete/tiny_mce), make the changes and send a pull request to the maintainers.
+
+Changes with tests, and full documentation are preferred.
+ 
+
 = Credits
 
 This plugin was created by Blake Watters <blake@near-time.com>
