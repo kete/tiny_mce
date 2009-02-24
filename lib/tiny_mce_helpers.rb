@@ -22,7 +22,7 @@ module TinyMCEHelpers
     raw_options = @raw_tiny_mce_options + raw_options unless @raw_tiny_mce_options.nil?
 
     # Append the plugins we have enabled for this field to the OptionsValidator
-    TinyMCE::OptionValidator.plugins += options['plugins']
+    TinyMCE::OptionValidator.plugins += options['plugins'] || []
 
     tinymce_js = "tinyMCE.init({\n"
     options.sort.each_with_index do |values, index|
