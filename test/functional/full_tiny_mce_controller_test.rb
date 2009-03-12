@@ -1,19 +1,27 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
+# Make a test class with full options
+class FullTinyMCEController < ApplicationController
+  uses_tiny_mce :options => { :plugins => ['spellchecker'] },
+                :raw_options => '',
+                :only => ['new_page', 'edit_page']
+  include TinyMCEActions
+end
+
 # Lets make sure that if routes arn't the
 # defaults, these tests will still work
 ActionController::Routing::Routes.draw do |map|
-  map.with_options :controller => 'tiny_mce' do |tiny_mce|
-    tiny_mce.connect '/tiny_mce/new_page', :action => 'new_page'
-    tiny_mce.connect '/tiny_mce/edit_page', :action => 'edit_page'
-    tiny_mce.connect '/tiny_mce/show_page', :action => 'show_page'
-    tiny_mce.connect '/tiny_mce/spellchecker', :action => 'spellchecker'
+  map.with_options :controller => 'full_tiny_mce' do |tiny_mce|
+    tiny_mce.connect '/full_tiny_mce/new_page', :action => 'new_page'
+    tiny_mce.connect '/full_tiny_mce/edit_page', :action => 'edit_page'
+    tiny_mce.connect '/full_tiny_mce/show_page', :action => 'show_page'
+    tiny_mce.connect '/full_tiny_mce/spellchecker', :action => 'spellchecker'
   end
 end
 
 # Use non-default action names to get around possible authentication
 # filters to ensure the tests work in most cases
-class TinyMCEControllerTest <  ActionController::TestCase
+class FullTinyMCEControllerTest <  ActionController::TestCase
 
   test "all instance variables are properly set on new and edit" do
     get :new_page
@@ -46,7 +54,7 @@ class TinyMCEControllerTest <  ActionController::TestCase
   test "the spellchecker has a default path to use" do
     get :new_page
     assert_not_nil assigns(:tiny_mce_options)
-    assert_equal assigns(:tiny_mce_options)[:spellchecker_rpc_url], "/tiny_mce/spellchecker"
+    assert_equal assigns(:tiny_mce_options)[:spellchecker_rpc_url], "/full_tiny_mce/spellchecker"
   end
 
   private
@@ -57,7 +65,7 @@ class TinyMCEControllerTest <  ActionController::TestCase
             assigns(:uses_tiny_mce) == true)
     assert (assigns(:tiny_mce_options) &&
             assigns(:tiny_mce_options).is_a?(Hash) &&
-            assigns(:tiny_mce_options) == { :spellchecker_rpc_url=> "/tiny_mce/spellchecker",
+            assigns(:tiny_mce_options) == { :spellchecker_rpc_url=> "/full_tiny_mce/spellchecker",
                                             :plugins => ['spellchecker'] })
     assert (assigns(:raw_tiny_mce_options) &&
             assigns(:raw_tiny_mce_options) == '')

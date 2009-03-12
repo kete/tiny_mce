@@ -1,5 +1,10 @@
 = Plugin Changelog
 
+== Version 3.2.2 (2009-03-12)
+* Upgraded TinyMCE to 3.2.2 (see CHANGELOG_TINYMCE)
+* Fixed errors when uses_tiny_mce was used with no options (Joseph Wilk)
+* Further testing for uses_tiny_mce method without any options
+
 == Version 3.2.1.1-1 (2009-02-23)
 * Rewrote test suite
 * Added comments throughout the plugin for future developer

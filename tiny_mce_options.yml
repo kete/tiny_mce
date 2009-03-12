@@ -93,6 +93,7 @@
 - valid_elements
 - verify_css_classes
 - verify_html
+- removeformat_selector
 
 # URL
 - convert_urls

@@ -7,7 +7,7 @@ class OptionsValidatorTest < ActiveSupport::TestCase
   end
 
   test "tiny mce should allow a certain number of options" do
-    assert_equal 153, TinyMCE::OptionValidator.options.size
+    assert_equal 154, TinyMCE::OptionValidator.options.size
   end
 
   test "the valid method accepts valid options as strings or symbols" do
