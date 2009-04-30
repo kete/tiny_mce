@@ -18,7 +18,8 @@ module TinyMCEHelpers
 	  @tiny_mce_options ||= {}
     options = { 'mode' => 'textareas',
                 'editor_selector' => 'mceEditor',
-                'theme' => 'simple' }.merge(@tiny_mce_options.stringify_keys).merge(options.stringify_keys)
+                'theme' => 'simple',
+                'language' => I18n.locale }.merge(@tiny_mce_options.stringify_keys).merge(options.stringify_keys)
     raw_options = @raw_tiny_mce_options + raw_options unless @raw_tiny_mce_options.nil?
 
     unless options['plugins'].nil?
