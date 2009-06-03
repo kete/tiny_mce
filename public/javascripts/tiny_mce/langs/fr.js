@@ -89,8 +89,8 @@ desc:"\u00C9diter la feuille de style CSS"
 },
 paste:{
 paste_text_desc:"Coller en tant que texte brut",
-paste_word_desc:"Coller au d\u00E9part d'un texte cr\u00E9\u00E9 sous Word",
-selectall_desc:"Selectioner tout"
+paste_word_desc:"Coller \u00E0 partir d'un texte cr\u00E9\u00E9 sous Word",
+selectall_desc:"S\u00E9lectioner tout"
 },
 paste_dlg:{
 text_title:"Utilisez CTRL+V sur votre clavier pour coller le texte dans la fen\u00EAtre.",

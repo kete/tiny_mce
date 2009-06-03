@@ -1,3 +1,64 @@
+Version 3.2.4.1 (2009-05-25)
+	Fixed bug where Gecko browsers would produce an extra space after for example strong when loaded from sub domains.
+	Fixed bug where script elements would be removed if they where placed inside a paragraph element.
+	Fixed bug where IE 8 would produce 1 item remaining when loading CSS files dynamically with an empty cache.
+	Fixed bug where bound events would be removed from other editor instances if a specific one was removed.
+	Fixed various bugs and issues with script and style elements inside the editor.
+	Fixed so all script contents gets wrapped in CDATA sections so that they can be parsed using a XML parser.
+	Fixed so it's impossible for elements marked as closed to have child nodes rendered in output.
+Version 3.2.4 (2009-05-21)
+	Added new paste_remove_styles/paste_remove_styles_if_webkit option to paste plugin concept contributed by Hadrien Gardeur.
+	Added new functionality to paste plugin contributed by Scott Eade aka monkeybrain.
+	Added new paste_block_drop option to the paste plugin this is disabled by default and will block any drag/drop event.
+	Added new bind/unbind methods to DOMUtils these works like Event.add/Event.remove but is easier to access.
+	Added new paste_dialog_width/paste_dialog_height options to paste pluign. Enables you to change the dialog sizes.
+	Fixed bug on IE 8 where it would sometimes produce a "1 item remaining" status message that would never finish.
+	Fixed bug on Safari 4 beta that would produce DOM Range exceptions on the DOMUtils split method since the browser has a bug.
+	Fixed bug where the paste plugin could accidentally think that some word sentences was supposed to be list elements.
+	Fixed bug where paste plugin would produce one extra empty undo level on some browsers.
+	Fixed bug where spans wasn't produced correctly on new line when the keep_styles option was enabled.
+	Fixed bug where the caret would be placed at the beginning of contents in IE 8 if you selected colors from the color pickers.
+	Fixed so the Event class is a normal class instead of a static one. The tinymce.dom.Event is now a global instance of that class.
+	Fixed so internal events for instances gets removed when the DOMUtils instance is removed.
+	Fixed so preventDefault and stopPropagation methods can be used on the event object in all browsers.
+Version 3.2.3.1 (2009-05-05)
+	Fixed bug where paragraphs containing form elements such as input or textarea would be removed.
+	Fixed bug where some IE versions would produce a wrapper function for events attributes.
+	Fixed bug where table cell contents could be removed if you pressed return/enter at the end of the cell contents.
+	Fixed bug where the paste plugin would remove a extra character if the selection range was collapsed.
+	Fixed bug where creating tables with % width wouldn't be handled correctly on WebKit browsers.
+Version 3.2.3 (2009-04-23)
+	Added new paste plugin logic. This new version will autodetect Word contents and clean it up.
+	Added a optional root element argument to getPos so you can tell it where to stop the calculation.
+	Added new DOM ready logic to remove the usage of document.write. We now use basically the same method as jQuery.
+	Fixed bug where WebKit browsers would fail when selecting all contents in the area using Ctrl+A.
+	Fixed bug where IE would produce paragraphs with empty inline style elements.
+	Fixed bug where WebKit browsers would fail when inserting tables with a non pixel width.
+	Fixed bug where block elements could get a redundant br element at the end of the element.
+	Fixed bug where the tabfocus plugin only worked with a single editor instance on page.
+	Fixed bug where IE 8 was loosing caret position if the selection was collapsed and a menu was clicked.
+	Fixed bug with application/xhtml+xml mode where menus wasn't working properly.
+	Fixed bug where the onstop workaround fix for IE would produce errors in an ASP update panel.
+	Fixed bug where the submit function override could produce errors if executed in the wrong scope.
+	Fixed bug where the area element wasn't closed by a short ending.
+	Fixed various number issues in the style plugins properties dialog. Contributed by datpaulchen.
+	Fixed issues with size suffix values in the style plugin dialog.
+	Fixed issue where hasDuplicate variable would leak out to the global space due to a bug in the Sizzle engine.
+	Fixed issue where the paste event would fire a dialog warning on IE since we extracted the text contents.
+	Updated Sizzle engine to the latest version, this version fixes a few bugs that was reported.
+Version 3.2.2.3 (2009-03-26)
+	Fixed regression bug with the getPos method, it would return invalid if the view port was to small.
+Version 3.2.2.2 (2009-03-25)
+	Fixed so the DOMUtils getPos method can be used cross documents if needed.
+	Fixed bug where undo/redo wasn't working correctly in Gecko browsers.
+Version 3.2.2.1 (2009-03-19)
+	Added support for tel: URL prefixes. Even though this doesn't match any official RFC.
+	Fixed so the select method of the Selection class selects the first best suitable contents.
+	Fixed bug where the regexps for www. prefixes for link and advlink dialogs would match wwwX.
+	Fixed bug where the preview dialog would fail to open if the content_css wasn't defined. Patch contributed by David Bildström (ChronoZ).
+	Fixed bug where editors wasn't converted in application/xhtml+xml mode due to an issue with Sizzle.
+	Fixed bug where alignment would fail if multiple lines where selected.
+	Updated Sizzle engine to the latest version, this version fixes a few bugs that was reported.
 Version 3.2.2 (2009-03-05)
 	Added new CSS selector engine. Sizzle the same one that jQuery and other libraries are using.
 	Added new is and getParents methods to the DOMUtils class. These use the new Sizzle engine to select elements.
@@ -254,7 +315,7 @@ Version 3.0.7 (2008-04-14)
 	Fixed bug where it was possible to add style information to the body element using the style plugin.
 	Fixed bug where Gecko would add an extra undo level some times due to the blur event.
 	Fixed bug where the underline icon would get active if the caret was inside a link element.
-	Fixed bug where merging th cells not working correctly. Patch contributed by AndrŽ R.
+	Fixed bug where merging th cells not working correctly. Patch contributed by André R.
 	Fixed bug where forecolorpicker and backcolorpicker buttons where rendered incorrectly when the o2k7 skin was used.
 	Fixed bug where comment couldn't contain -- since it's invalid markup. It will now at least not break on those invalid comments.
 	Fixed bug where apos wasn't handled correctly in IE. It will now convert apos to &#39; on IE since that browser doesn't support that entity.
@@ -405,8 +466,8 @@ Version 3.0.3 (2008-03-03)
 Version 3.0.2.1 (2008-02-26)
 	Fixed alert/confirm dialogs so they display correctly.
 Version 3.0.2 (2008-02-26)
-	Added new body_id option that enables you to specify the id of the body inside the editor iframe based on ideas by David Bildstršm (ChronoZ).
-	Added new body_class option that enables you to set the class for the body of the editor iframe based on ideas by David Bildstršm (ChronoZ).
+	Added new body_id option that enables you to specify the id of the body inside the editor iframe based on ideas by David Bildström (ChronoZ).
+	Added new body_class option that enables you to set the class for the body of the editor iframe based on ideas by David Bildström (ChronoZ).
 	Added new CSS class to the default content.css files mceForceColors that forces white background and black text can be used with the body_class option.
 	Added new type parameter to the Editor.getParam function to reduce redundant logic for parsing hash tables.
 	Added new isDone method to the ScriptLoaded class, this enables you to check if a script has been loaded or not.

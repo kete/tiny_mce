@@ -6,26 +6,17 @@
 # General
 - accessibility_focus
 - accessibility_warnings
-- ask
 - auto_focus
-- auto_reset_designmode
 - auto_resize
 - browsers
-- button_tile_map
 - class_filter
 - custom_shortcuts
-- debug
-- default_document
 - dialog_type
 - directionality
-- docs_language
 - editor_deselector
 - editor_selector
 - elements
-- event_elements
-- focus_alert
 - gecko_spellcheck
-- hide_selects_on_submit
 - keep_styles
 - language
 - mode
@@ -36,9 +27,8 @@
 - skin
 - skin_variant
 - strict_loading_mode
-- table_inline_editing
 - tab_focus
-- textarea_trigger
+- table_inline_editing
 - theme
 
 # Callbacks
@@ -61,7 +51,6 @@
 - apply_source_formatting
 - cleanup
 - cleanup_on_startup
-- cleanup_serializer
 - convert_fonts_to_spans
 - convert_newlines_to_brs
 - custom_elements
@@ -86,9 +75,8 @@
 - invalid_elements
 - merge_styles_invalid_parents
 - remove_linebreaks
-- remove_trailing_nbsp
+- remove_redundant_brs
 - preformatted
-- trim_span_elements
 - valid_child_elements
 - valid_elements
 - verify_css_classes
@@ -161,9 +149,6 @@
 - theme_advanced_containers
 - theme_advanced_containers_default_class
 - theme_advanced_containers_default_align
-- theme_advanced_container_<container>
-- theme_advanced_container_<container>_class
-- theme_advanced_container_<container>_align
 - theme_advanced_custom_layout
 - theme_advanced_link_targets
 - theme_advanced_resizing

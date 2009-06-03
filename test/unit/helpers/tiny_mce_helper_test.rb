@@ -17,10 +17,13 @@ class TinyMCEHelpersTest < ActionView::TestCase
   end
 
   test "correct tiny mce is loaded depending on environment" do
+    Rails.instance_variable_set('@_env', nil)
     Object.const_set('RAILS_ENV', 'development')
     assert_match /\/javascripts\/tiny_mce\/tiny_mce_src\.js/, include_tiny_mce_js
+    Rails.instance_variable_set('@_env', nil)
     Object.const_set('RAILS_ENV', 'production')
     assert_match /\/javascripts\/tiny_mce\/tiny_mce\.js/, include_tiny_mce_js
+    Rails.instance_variable_set('@_env', nil)
     Object.const_set('RAILS_ENV', 'test') # set it back to test
   end
 
@@ -54,35 +57,35 @@ class TinyMCEHelpersTest < ActionView::TestCase
   #
 
   test "string, symbol, or fixnum is formed as expected" do
-    assert_equal "tinyMCE.init({\ndebug : 'true',\neditor_selector : 'mceEditor',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
-                 raw_tiny_mce_init({ 'debug' => 'true' })
-    assert_equal "tinyMCE.init({\ndebug : 'true',\neditor_selector : 'mceEditor',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
-                 raw_tiny_mce_init({ 'debug' => :true })
-    assert_equal "tinyMCE.init({\ndebug : '1',\neditor_selector : 'mceEditor',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
-                 raw_tiny_mce_init({ 'debug' => 1 })
+    assert_equal "tinyMCE.init({\nauto_resize : 'true',\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
+                 raw_tiny_mce_init({ 'auto_resize' => 'true' })
+    assert_equal "tinyMCE.init({\nauto_resize : 'true',\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
+                 raw_tiny_mce_init({ 'auto_resize' => :true })
+    assert_equal "tinyMCE.init({\nauto_resize : '1',\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
+                 raw_tiny_mce_init({ 'auto_resize' => 1 })
   end
 
   test "array is formed as expected" do
-    assert_equal "tinyMCE.init({\neditor_selector : 'mceEditor',\nmode : 'textareas',\nplugins : \"table\",\ntheme : 'simple'\n\n});",
+    assert_equal "tinyMCE.init({\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\nplugins : \"table\",\ntheme : 'simple'\n\n});",
                  raw_tiny_mce_init({ :plugins => %w{table} })
-    assert_equal "tinyMCE.init({\neditor_selector : 'mceEditor',\nmode : 'textareas',\nplugins : \"table,contextmenu,paste\",\ntheme : 'simple'\n\n});",
+    assert_equal "tinyMCE.init({\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\nplugins : \"table,contextmenu,paste\",\ntheme : 'simple'\n\n});",
                  raw_tiny_mce_init({ :plugins => %w{table contextmenu paste} })
   end
 
   test "booleans are formed as expected" do
-    assert_equal "tinyMCE.init({\ndebug : true,\neditor_selector : 'mceEditor',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
-                 raw_tiny_mce_init({ 'debug' => true })
-    assert_equal "tinyMCE.init({\ndebug : false,\neditor_selector : 'mceEditor',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
-                 raw_tiny_mce_init({ 'debug' => false })
+    assert_equal "tinyMCE.init({\nauto_resize : true,\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
+                 raw_tiny_mce_init({ 'auto_resize' => true })
+    assert_equal "tinyMCE.init({\nauto_resize : false,\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
+                 raw_tiny_mce_init({ 'auto_resize' => false })
   end
 
   test "defaults are overridable" do
-    assert_equal "tinyMCE.init({\neditor_selector : 'test-selector',\nmode : 'specific_textareas',\ntheme : 'advanced'\n\n});",
+    assert_equal "tinyMCE.init({\neditor_selector : 'test-selector',\nlanguage : 'en',\nmode : 'specific_textareas',\ntheme : 'advanced'\n\n});",
                  raw_tiny_mce_init({ :theme => 'advanced', :mode => 'specific_textareas', :editor_selector => 'test-selector' })
   end
 
   test "additional tiny mce options can be set in the form of raw js" do
-    assert_equal "tinyMCE.init({\neditor_selector : 'mceEditor',\nmode : 'textareas',\ntheme : 'simple',\ntemplate_templates : [ { title : 'Editor Details' }]\n\n});",
+    assert_equal "tinyMCE.init({\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple',\ntemplate_templates : [ { title : 'Editor Details' }]\n\n});",
                  raw_tiny_mce_init(Hash.new, "template_templates : [ { title : 'Editor Details' }]")
   end
 
@@ -107,7 +110,7 @@ class TinyMCEHelpersTest < ActionView::TestCase
   private
 
   def default_tiny_mce_javascript
-    "<script type=\"text/javascript\">\n//<![CDATA[\ntinyMCE.init({\neditor_selector : 'mceEditor',\nmode : 'textareas',\ntheme : 'simple'\n\n});\n//]]>\n</script>"
+    "<script type=\"text/javascript\">\n//<![CDATA[\ntinyMCE.init({\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});\n//]]>\n</script>"
   end
 
 end

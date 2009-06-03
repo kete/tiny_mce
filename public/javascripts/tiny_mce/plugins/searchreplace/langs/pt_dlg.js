@@ -9,7 +9,7 @@ replacewith:"Substituir com",
 direction:"Dire\u00E7\u00E3o",
 up:"Acima",
 down:"Abaixo",
-mcase:"Diferenciar mai\u00FAsculas/min\u00FAsculas",
+mcase:"Diferenciar mai\u00FAsculas",
 findnext:"Localizar pr\u00F3ximo",
 replace:"Substituir",
 replaceall:"Substituir todos"

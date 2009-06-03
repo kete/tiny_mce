@@ -1,7 +1,7 @@
 tinyMCE.addI18n('pt.advanced',{
 style_select:"Estilos",
 font_size:"Tamanho",
-fontdefault:"Fam\u00EDlia da Fonte",
+fontdefault:"Tipo de fonte",
 block:"Formata\u00E7\u00E3o",
 paragraph:"Par\u00E1grafo",
 div:"Div",

@@ -7,5 +7,5 @@ bullist_desc:"\u9879\u76EE\u7B26\u53F7",
 numlist_desc:"\u7F16\u53F7",
 undo_desc:"\u64A4\u6D88(Ctrl+Z)",
 redo_desc:"\u91CD\u505A(Ctrl+Y)",
-cleanup_desc:"\u6E05\u9664\u591A\u4F59\u4EE3\u7801"
+cleanup_desc:"\u6E05\u7406\u4EE3\u7801"
 });

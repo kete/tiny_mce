@@ -1,5 +1,9 @@
 = Plugin Changelog
 
+== Version 3.2.4.1 (2009-06-03)
+* Upgraded TinyMCE to 3.2.4.1 (see CHANGELOG_TINYMCE)
+* Cleanup tiny_mce_options.yml
+
 == Version 3.2.2 (2009-03-12)
 * Upgraded TinyMCE to 3.2.2 (see CHANGELOG_TINYMCE)
 * Fixed errors when uses_tiny_mce was used with no options (Joseph Wilk)
