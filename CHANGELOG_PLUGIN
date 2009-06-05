@@ -1,8 +1,10 @@
 = Plugin Changelog
 
 == Version 3.2.4.1 (2009-06-03)
-* Upgraded TinyMCE to 3.2.4.1 (see CHANGELOG_TINYMCE)
-* Cleanup tiny_mce_options.yml
+* Upgraded TinyMCE to 3.2.3 (see CHANGELOG_TINYMCE) (Maciej Litwiniuk)
+* Upgraded TinyMCE to 3.2.4.1 (see CHANGELOG_TINYMCE) (Sergio Cambra)
+* Cleanup tiny_mce_options.yml (Sergio Cambra)
+* Maintaining backwards compatibility with Rails 2.1 or earlier (which do not have I18n)
 
 == Version 3.2.2 (2009-03-12)
 * Upgraded TinyMCE to 3.2.2 (see CHANGELOG_TINYMCE)
