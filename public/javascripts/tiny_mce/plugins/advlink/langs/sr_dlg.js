@@ -1,11 +1,11 @@
 tinyMCE.addI18n('sr.advlink_dlg',{
-title:"Umetni/uredi poveznicu",
-url:"URL poveznice",
+title:"Ubaci/promijeni link",
+url:"URL link",
 target:"Meta",
 titlefield:"Naslov",
 is_email:"URL koji ste uneli izgleda kao e-mail adresa, \u017Eelite li dodati potrebni mailto: prefiks?",
-is_external:"URL koji ste uneli izgleda kao vanjska poveznica, \u017Eelite li dodati potrebni http:// prefiks?",
-list:"Lista poveznica",
+is_external:"URL koji ste uneli izgleda kao vanjski link, \u017Eelite li dodati potrebni http:// prefiks?",
+list:"Lista linkova",
 general_tab:"Osnovno",
 popup_tab:"Popup",
 events_tab:"Doga\u0111aj",
@@ -48,5 +48,5 @@ tabindex:"Tabindex",
 accesskey:"Accesskey",
 ltr:"S leva na desno",
 rtl:"S desna na levo",
-link_list:"Lista poveznica"
+link_list:"Lista linkova"
 });

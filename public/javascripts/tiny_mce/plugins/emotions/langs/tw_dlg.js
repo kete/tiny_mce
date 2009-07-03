@@ -1,6 +1,6 @@
 tinyMCE.addI18n('tw.emotions_dlg',{
-title:"\u63D2\u5165\u8868\u60C5\u7B26\u865F",
-desc:"\u8868\u60C5\u7B26\u865F",
+title:"\u63D2\u5165\u5716\u793A",
+desc:"\u5716\u793A",
 cool:"\u51B7\u9177",
 cry:"\u54ED\u6CE3",
 embarassed:"\u5C37\u5C2C",
@@ -16,5 +16,5 @@ surprised:"\u9A5A\u5687",
 tongue_out:"\u5410\u820C\u982D",
 undecided:"\u8003\u616E",
 wink:"\u7728\u773C",
-yell:"\u53EB\u56B7"
+yell:"\u53EB\u558A"
 });
