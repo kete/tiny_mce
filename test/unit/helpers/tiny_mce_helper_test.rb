@@ -57,12 +57,12 @@ class TinyMCEHelpersTest < ActionView::TestCase
   #
 
   test "string, symbol, or fixnum is formed as expected" do
-    assert_equal "tinyMCE.init({\nauto_resize : 'true',\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
-                 raw_tiny_mce_init({ 'auto_resize' => 'true' })
-    assert_equal "tinyMCE.init({\nauto_resize : 'true',\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
-                 raw_tiny_mce_init({ 'auto_resize' => :true })
-    assert_equal "tinyMCE.init({\nauto_resize : '1',\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
-                 raw_tiny_mce_init({ 'auto_resize' => 1 })
+    assert_equal "tinyMCE.init({\nauto_focus : 'true',\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
+                 raw_tiny_mce_init({ 'auto_focus' => 'true' })
+    assert_equal "tinyMCE.init({\nauto_focus : 'true',\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
+                 raw_tiny_mce_init({ 'auto_focus' => :true })
+    assert_equal "tinyMCE.init({\nauto_focus : '1',\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
+                 raw_tiny_mce_init({ 'auto_focus' => 1 })
   end
 
   test "array is formed as expected" do
@@ -73,10 +73,10 @@ class TinyMCEHelpersTest < ActionView::TestCase
   end
 
   test "booleans are formed as expected" do
-    assert_equal "tinyMCE.init({\nauto_resize : true,\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
-                 raw_tiny_mce_init({ 'auto_resize' => true })
-    assert_equal "tinyMCE.init({\nauto_resize : false,\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
-                 raw_tiny_mce_init({ 'auto_resize' => false })
+    assert_equal "tinyMCE.init({\nauto_focus : true,\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
+                 raw_tiny_mce_init({ 'auto_focus' => true })
+    assert_equal "tinyMCE.init({\nauto_focus : false,\neditor_selector : 'mceEditor',\nlanguage : 'en',\nmode : 'textareas',\ntheme : 'simple'\n\n});",
+                 raw_tiny_mce_init({ 'auto_focus' => false })
   end
 
   test "defaults are overridable" do
