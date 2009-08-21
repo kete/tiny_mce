@@ -1,5 +1,5 @@
 /**
- * $Id: editor_plugin_src.js 1143 2009-05-27 10:05:31Z spocke $
+ * $Id: editor_plugin_src.js 1199 2009-08-18 11:55:59Z spocke $
  *
  * @author Moxiecode
  * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.
@@ -98,9 +98,15 @@
 					// Remove container
 					dom.remove(n);
 
+					// Check if the contents was changed, if it wasn't then clipboard extraction failed probably due
+					// to IE security settings so we pass the junk though better than nothing right
+					if (n.innerHTML === '&nbsp;')
+						return;
+
 					// Process contents
 					process({content : n.innerHTML});
 
+					// Block the real paste event
 					return tinymce.dom.Event.cancel(e);
 				} else {
 					or = ed.selection.getRng();
@@ -114,20 +120,13 @@
 
 					// Wait a while and grab the pasted contents
 					window.setTimeout(function() {
-						var n = dom.get('_mcePaste'), h;
+						var h = '';
 
-						// Webkit clones the _mcePaste div for some odd reason so this will ensure that we get the real new div not the old empty one
-						n.id = '_mceRemoved';
-						dom.remove(n);
-						n = dom.get('_mcePaste') || n;
-
-						// Grab the HTML contents
-						// We need to look for a apple style wrapper on webkit it also adds a div wrapper if you copy/paste the body of the editor
-						// It's amazing how strange the contentEditable mode works in WebKit
-						h = (dom.select('> span.Apple-style-span div', n)[0] || dom.select('> span.Apple-style-span', n)[0] || n).innerHTML;
-
-						// Remove hidden div and restore selection
-						dom.remove(n);
+						// WebKit will split the div into multiple ones so this will loop through then all and join them to get the whole HTML string
+						each(dom.select('div[id=_mcePaste]').reverse(), function(n) {
+							h += (dom.select('> span.Apple-style-span div', n)[0] || dom.select('> span.Apple-style-span', n)[0] || n).innerHTML;
+							dom.remove(n);
+						});
 
 						// Restore the old selection
 						if (or)
@@ -195,16 +194,16 @@
 				});
 			};
 
-			// Process away some basic content
-			process([
-				/^\s*(&nbsp;)+/g,											// nbsp entities at the start of contents
-				/(&nbsp;|<br[^>]*>)+\s*$/g									// nbsp entities at the end of contents
-			]);
-
 			// Detect Word content and process it more aggressive
 			if (/(class=\"?Mso|style=\"[^\"]*\bmso\-|w:WordDocument)/.test(h) || o.wordContent) {
 				o.wordContent = true; // Mark the pasted contents as word specific content
 				//console.log('Word contents detected.');
+
+				// Process away some basic content
+				process([
+					/^\s*(&nbsp;)+/g,											// nbsp entities at the start of contents
+					/(&nbsp;|<br[^>]*>)+\s*$/g									// nbsp entities at the end of contents
+				]);
 
 				if (ed.getParam('paste_convert_middot_lists', true)) {
 					process([
@@ -436,9 +435,10 @@
 			// Insert a marker for the caret position
 			this._insert('<span id="_marker">&nbsp;</span>', 1);
 			marker = dom.get('_marker');
-			parentBlock = dom.getParent(marker, 'p,h1,h2,h3,h4,h5,h6,ul,ol');
+			parentBlock = dom.getParent(marker, 'p,h1,h2,h3,h4,h5,h6,ul,ol,th,td');
 
-			if (parentBlock) {
+			// If it's a parent block but not a table cell
+			if (parentBlock && !/TD|TH/.test(parentBlock.nodeName)) {
 				// Split parent block
 				marker = dom.split(parentBlock, marker);
 

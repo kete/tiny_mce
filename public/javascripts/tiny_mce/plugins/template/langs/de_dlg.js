@@ -2,7 +2,7 @@ tinyMCE.addI18n('de.template_dlg',{
 title:"Vorlagen",
 label:"Vorlage",
 desc_label:"Beschreibung",
-desc:"Vorgefertigten Vorlageninhalt einf\u00FCgen",
+desc:"Vorgefertigter Vorlageninhalt einf\u00FCgen",
 select:"Vorlage ausw\u00E4hlen",
 preview:"Vorschau",
 warning:"Warnung: Eine Vorlage mit einer anderen zu aktualisieren kann einen Datenverlust herbeif\u00FChren!",
