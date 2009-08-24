@@ -1,0 +1,11 @@
+---------------------------------
+How to update the bundled TinyMCE
+---------------------------------
+
+1) Download TinyMCE, and extract it, then copy the source files (not documentation) to public/javascripts/tiny_mce
+2) Update the CHANGELOG_PLUGIN to say what you upgraded from, what you upgraded to, and your name
+3) Update CHANGELOG_TINYMCE (download and overwrite the file with http://tinymce.moxiecode.com/js/tinymce/changelog.txt)
+4) Update the 'Bundled TinyMCE version' value at the bottom of README.rdoc
+5) Update the version value in tasks/tiny_mce.rake
+6) Update tiny_mce_options.yml with any new options, or remove old ones, as described in the tinymce changelog
+7) Commit, push, and send pull request to http://github.com/kete/tiny_mce
