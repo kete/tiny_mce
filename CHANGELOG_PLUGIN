@@ -1,7 +1,7 @@
 = Plugin Changelog
 
 == Unreleased
-* Upgraded TinyMCE to 3.2.5
+* Upgraded TinyMCE frin 3.2.4 to 3.2.6 (Sergio Cambra)
 
 == Version 3.2.4.1 (2009-06-03)
 * Upgraded TinyMCE to 3.2.3 (see CHANGELOG_TINYMCE) (Maciej Litwiniuk)
