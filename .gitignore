@@ -1,1 +1,5 @@
 *~
+*.gem
+rdoc
+doc
+pkg
