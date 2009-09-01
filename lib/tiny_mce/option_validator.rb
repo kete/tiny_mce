@@ -12,7 +12,7 @@ module TinyMCE
       # Parse the options file and load it into an array
       # (this method is called when tiny_mce is initialized - see init.rb)
       def load
-        @@valid_options = File.open(File.dirname(__FILE__) + "/../tiny_mce_options.yml") { |f| YAML.load(f.read) }
+        @@valid_options = File.open(File.dirname(__FILE__) + '/../../tiny_mce_options.yml') { |f| YAML.load(f.read) }
         self.plugins = Array.new
       end
 

@@ -1,6 +1,6 @@
 module TinyMCE
   # The base module we include into ActionController::Base
-  module Controller
+  module Base
     # When this module is included, extend it with the available class methods
     def self.included(base)
       base.extend(ClassMethods)
