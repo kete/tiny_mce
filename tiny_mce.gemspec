@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{tiny_mce}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Blake Watters", "Kieran Pilkington", "Alexander Semyonov"]
@@ -1303,6 +1303,7 @@ Gem::Specification.new do |s|
      "test/unit/helpers/tiny_mce_helper_test.rb",
      "test/unit/options_validator_test.rb",
      "test/unit/tiny_mce_test.rb",
+     "tiny_mce.gemspec",
      "tiny_mce_options.yml"
   ]
   s.homepage = %q{http://github.com/krasivotokak/tiny_mce}
