@@ -29,7 +29,7 @@ module TinyMCE
     # Return a JSON object required by the Spellchecking plugin
     def spellchecker
       language, words, method = params[:params][0], params[:params][1], params[:method] unless params[:params].blank?
-      return render :nothing => true if language.blank? || words.blank? || method.blank?
+      return render(:nothing => true) if language.blank? || words.blank? || method.blank?
       headers["Content-Type"] = "text/plain"
       headers["charset"] = "utf-8"
       suggestions = check_spelling(words, method, language)
