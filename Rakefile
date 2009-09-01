@@ -38,3 +38,6 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('README')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+desc "Bump patch version and release to github and gemcutter"
+task :bump => %w(version:bump:patch release gemcutter:release install)
