@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{tiny_mce}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Blake Watters", "Kieran Pilkington", "Alexander Semyonov"]
@@ -26,10 +26,11 @@ Gem::Specification.new do |s|
      "VERSION",
      "init.rb",
      "install.rb",
-     "lib/options_validator.rb",
-     "lib/spellchecker.rb",
      "lib/tiny_mce.rb",
-     "lib/tiny_mce_helpers.rb",
+     "lib/tiny_mce/controller.rb",
+     "lib/tiny_mce/helpers.rb",
+     "lib/tiny_mce/options_validator.rb",
+     "lib/tiny_mce/spellchecker.rb",
      "public/javascripts/tiny_mce/langs/ar.js",
      "public/javascripts/tiny_mce/langs/az.js",
      "public/javascripts/tiny_mce/langs/be.js",
