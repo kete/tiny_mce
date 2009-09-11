@@ -165,3 +165,4 @@
 - theme_advanced_default_foreground_color
 - theme_advanced_default_background_color
 - theme_advanced_more_colors
+- theme_advanced_image_image_browser_callback

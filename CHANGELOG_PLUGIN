@@ -2,6 +2,7 @@
 
 == Unreleased
 * Upgraded TinyMCE frin 3.2.4 to 3.2.6 (Sergio Cambra)
+* Add missing option used in advimage plugin (Sergio Cambra)
 
 == Version 3.2.4.1 (2009-06-03)
 * Upgraded TinyMCE to 3.2.3 (see CHANGELOG_TINYMCE) (Maciej Litwiniuk)
