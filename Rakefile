@@ -10,7 +10,8 @@ begin
     gem.description = %Q{gem that allows easy implementation of the TinyMCE editor into your applications.}
     gem.email = 'kieran@katipo.co.nz'
     gem.homepage = 'http://github.com/kete/tiny_mce'
-    gem.authors = ['Blake Watters', 'Kieran Pilkington', "Alexander Semyonov"]
+    gem.authors = ['Blake Watters', 'Kieran Pilkington', 'Alexander Semyonov']
+    gem.extra_rdoc_files = ['README.rdoc', 'SPELLCHECKING_PLUGIN.rdoc']
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

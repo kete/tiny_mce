@@ -9,11 +9,11 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Blake Watters", "Kieran Pilkington", "Alexander Semyonov"]
-  s.date = %q{2009-09-01}
+  s.date = %q{2009-09-14}
   s.description = %q{gem that allows easy implementation of the TinyMCE editor into your applications.}
-  s.email = %q{rotuka@rotuka.com}
+  s.email = %q{kieran@katipo.co.nz}
   s.extra_rdoc_files = [
-    "README.rdoc"
+    "SPELLCHECKING_PLUGIN.rdoc"
   ]
   s.files = [
     ".gitignore",
@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
      "lib/tiny_mce/helpers.rb",
      "lib/tiny_mce/option_validator.rb",
      "lib/tiny_mce/spell_checker.rb",
+     "lib/tiny_mce/valid_tinymce_options.yml",
      "public/javascripts/tiny_mce/langs/ar.js",
      "public/javascripts/tiny_mce/langs/az.js",
      "public/javascripts/tiny_mce/langs/be.js",
@@ -1297,17 +1298,15 @@ Gem::Specification.new do |s|
      "public/javascripts/tiny_mce/utils/form_utils.js",
      "public/javascripts/tiny_mce/utils/mctabs.js",
      "public/javascripts/tiny_mce/utils/validate.js",
-     "tasks/tiny_mce.rake",
      "test/functional/full_tiny_mce_controller_test.rb",
      "test/functional/slim_tiny_mce_controller_test.rb",
      "test/test_helper.rb",
      "test/unit/helpers/tiny_mce_helper_test.rb",
      "test/unit/options_validator_test.rb",
      "test/unit/tiny_mce_test.rb",
-     "tiny_mce.gemspec",
-     "tiny_mce_options.yml"
+     "tiny_mce.gemspec"
   ]
-  s.homepage = %q{http://github.com/krasivotokak/tiny_mce}
+  s.homepage = %q{http://github.com/kete/tiny_mce}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}

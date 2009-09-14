@@ -5,6 +5,45 @@ require 'tiny_mce/spell_checker'
 require 'tiny_mce/helpers'
 
 module TinyMCE
+  def self.install_or_update_tinymce
+    require 'fileutils'
+    orig = File.join(File.dirname(__FILE__), '..', 'public', 'javascripts', 'tiny_mce')
+    dest = File.join(Rails.public_path, 'javascripts', 'tiny_mce')
+    tiny_mce_js = File.join(dest, 'tiny_mce.js')
+    unless File.exists?(tiny_mce_js) && FileUtils.identical?(File.join(orig, 'tiny_mce.js'), tiny_mce_js)
+      if File.exists?(dest) &&      # upgrade
+        begin
+          puts "Removing directory #{dest}..."
+          FileUtils.rm_rf dest
+          puts "Recreating directory #{dest}..."
+          FileUtils.mkdir_p dest
+          puts "Installing TinyMCE version #{VERSION} to #{dest}..."
+          FileUtils.cp_r "#{orig}/.", dest
+          puts "Successfully updated TinyMCE to version #{VERSION}."
+        rescue
+          puts 'ERROR: Problem updating TinyMCE. Please manually copy '
+          puts orig
+          puts 'to'
+          puts dest
+        end
+      else
+        # install
+        begin
+          puts "Creating directory #{dest}..."
+          FileUtils.mkdir_p dest
+          puts "Installing TinyMCE version #{VERSION} to #{dest}..."
+          FileUtils.cp_r "#{orig}/.", dest
+          puts "Successfully installed TinyMCE version #{VERSION}."
+        rescue
+          puts "ERROR: Problem installing TinyMCE. Please manually copy "
+          puts orig
+          puts "to"
+          puts dest
+        end
+      end
+    end
+  end
+
   module Base
     include TinyMCE::OptionValidator
     include TinyMCE::SpellChecker
@@ -20,4 +59,5 @@ TinyMCE::OptionValidator.load
 if defined?(Rails) && defined?(ActionController)
   ActionController::Base.send(:include, TinyMCE::Base)
   ActionController::Base.send(:helper, TinyMCE::Helpers)
+  TinyMCE.install_or_update_tinymce
 end
