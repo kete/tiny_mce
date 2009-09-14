@@ -10,16 +10,18 @@ module TinyMCE
     orig = File.join(File.dirname(__FILE__), 'tiny_mce', 'assets', 'tiny_mce')
     dest = File.join(Rails.public_path, 'javascripts', 'tiny_mce')
     tiny_mce_js = File.join(dest, 'tiny_mce.js')
+
     unless File.exists?(tiny_mce_js) && FileUtils.identical?(File.join(orig, 'tiny_mce.js'), tiny_mce_js)
-      if File.exists?(dest) &&      # upgrade
+      if File.exists?(tiny_mce_js)
+        # upgrade
         begin
           puts "Removing directory #{dest}..."
           FileUtils.rm_rf dest
-          puts "Recreating directory #{dest}..."
+          puts "Creating directory #{dest}..."
           FileUtils.mkdir_p dest
-          puts "Installing TinyMCE version #{VERSION} to #{dest}..."
+          puts "Copying TinyMCE to #{dest}..."
           FileUtils.cp_r "#{orig}/.", dest
-          puts "Successfully updated TinyMCE to version #{VERSION}."
+          puts "Successfully updated TinyMCE."
         rescue
           puts 'ERROR: Problem updating TinyMCE. Please manually copy '
           puts orig
@@ -31,9 +33,9 @@ module TinyMCE
         begin
           puts "Creating directory #{dest}..."
           FileUtils.mkdir_p dest
-          puts "Installing TinyMCE version #{VERSION} to #{dest}..."
+          puts "Copying TinyMCE to #{dest}..."
           FileUtils.cp_r "#{orig}/.", dest
-          puts "Successfully installed TinyMCE version #{VERSION}."
+          puts "Successfully installed TinyMCE."
         rescue
           puts "ERROR: Problem installing TinyMCE. Please manually copy "
           puts orig

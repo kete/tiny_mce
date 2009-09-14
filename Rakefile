@@ -7,7 +7,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = 'tiny_mce'
     gem.summary = %Q{TinyMCE editor for your rails applications}
-    gem.description = %Q{gem that allows easy implementation of the TinyMCE editor into your applications.}
+    gem.description = %Q{Gem that allows easy implementation of the TinyMCE editor into your applications.}
     gem.email = 'kieran@katipo.co.nz'
     gem.homepage = 'http://github.com/kete/tiny_mce'
     gem.authors = ['Blake Watters', 'Kieran Pilkington', 'Alexander Semyonov']

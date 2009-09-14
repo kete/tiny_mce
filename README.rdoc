@@ -18,17 +18,14 @@ Open a console, and in the root of you Rails application, install the plugin by 
 * git submodule add git://github.com/kete/tiny_mce.git vendor/plugins/tiny_mce
 * Download the latest files ( http://github.com/kete/tiny_mce/tarball/master ) and extract to vendor/plugins/tiny_mce
 
+Alternatively, you can use the gem version:
+
+* sudo gem install kete-tiny_mce -s http://gems.github.com
+* Add this to config/environment.rb of your Rails application:
+
+  config.gem 'kete-tiny_mce', :lib => 'tiny_mce', :source => 'http://gems.github.com'
+
 === Step 2
-
-Then install the necessary files into your public directory by running
-
-  rake tiny_mce:install
-
-or, if you are updating a previously installed version
-
-  rake tiny_mce:update
-
-=== Step 3
 
 Add the following to the controller of the page you want to add TinyMCE to.
 
@@ -42,7 +39,8 @@ Lastly, add the following line(s) to the <head> element of your application view
 
   <%= include_tiny_mce_if_needed %>
 
-Now you're all set!
+
+Now you're all set! Start your server. The gem/plugin will automatically copy the sources to the public javascripts directory when the server is started.
 
 
 == Configuration
@@ -53,7 +51,7 @@ There are several ways to configure the plugin to get the desirable effect you'r
 
 You can change the theme, order/choice of buttons, selectors Id, plugins, and many more by passing an :options hash to the uses_tiny_mce declaration.
 
-The options hash can contain any number of settings available in tiny_mce_options.yml  (a copy of the settings available per version).
+The options hash can contain any number of settings available in lib/tiny_mce/valid_tinymce_options.yml  (a copy of the settings available per version).
 
 If an option is misspelled, invalid, or deprecated (no longer in TinyMCE), when you go to a page containing your editor, you will receive an Exception, which must be dealt with before continuing.
 
@@ -127,7 +125,7 @@ The plugin comes with a test suite that can be run once the plugin is installed 
 
 Change into the plugins directory and run 'rake' to start them.
 
-Note: The tests require Rails 2.2 or higher, and are currently tested on Rails 2.3 RC1 (so problems in older versions may arise - please see "Reporting an Issue" if they do)
+Note: The tests require Rails 2.2 or higher, and are currently tested on Rails 2.3 (so problems in older versions may arise - please see "Reporting an Issue" if they do)
 
 
 == Reporting an Issue
