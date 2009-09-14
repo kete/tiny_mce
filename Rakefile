@@ -8,8 +8,8 @@ begin
     gem.name = 'tiny_mce'
     gem.summary = %Q{TinyMCE editor for your rails applications}
     gem.description = %Q{gem that allows easy implementation of the TinyMCE editor into your applications.}
-    gem.email = "rotuka@rotuka.com"
-    gem.homepage = "http://github.com/krasivotokak/tiny_mce"
+    gem.email = 'kieran@katipo.co.nz'
+    gem.homepage = 'http://github.com/kete/tiny_mce'
     gem.authors = ['Blake Watters', 'Kieran Pilkington', "Alexander Semyonov"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
