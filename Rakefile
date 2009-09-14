@@ -12,6 +12,7 @@ begin
     gem.homepage = 'http://github.com/kete/tiny_mce'
     gem.authors = ['Blake Watters', 'Kieran Pilkington', 'Alexander Semyonov']
     gem.extra_rdoc_files = ['README.rdoc', 'SPELLCHECKING_PLUGIN.rdoc']
+    gem.rdoc_options << '--exclude=lib/tiny_mce/assets'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

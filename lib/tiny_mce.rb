@@ -7,7 +7,7 @@ require 'tiny_mce/helpers'
 module TinyMCE
   def self.install_or_update_tinymce
     require 'fileutils'
-    orig = File.join(File.dirname(__FILE__), '..', 'public', 'javascripts', 'tiny_mce')
+    orig = File.join(File.dirname(__FILE__), 'tiny_mce', 'assets', 'tiny_mce')
     dest = File.join(Rails.public_path, 'javascripts', 'tiny_mce')
     tiny_mce_js = File.join(dest, 'tiny_mce.js')
     unless File.exists?(tiny_mce_js) && FileUtils.identical?(File.join(orig, 'tiny_mce.js'), tiny_mce_js)
