@@ -11,7 +11,8 @@ module TinyMCE
     dest = File.join(Rails.public_path, 'javascripts', 'tiny_mce')
     tiny_mce_js = File.join(dest, 'tiny_mce.js')
     unless File.exists?(tiny_mce_js) && FileUtils.identical?(File.join(orig, 'tiny_mce.js'), tiny_mce_js)
-      if File.exists?(dest) &&      # upgrade
+      if File.exists?(dest)
+        # upgrade
         begin
           puts "Removing directory #{dest}..."
           FileUtils.rm_rf dest
