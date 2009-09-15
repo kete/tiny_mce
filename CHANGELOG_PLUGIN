@@ -1,20 +1,22 @@
 = Plugin Changelog
 
-== Unreleased
-* Upgraded TinyMCE frin 3.2.4 to 3.2.6 (Sergio Cambra)
+== Version 0.1.0
+* tiny_mce is now available as a gem on github under kete-tiny_mce. See README.rdoc (Alexander Semyonov)
+* The TinyMCE sources are now installed automatically by the plugin/gem, so no more rake tasks (Alexander Semyonov)
+(big thanks to Alexander Semyonov for helping to get this release ready)
 
-== Version 3.2.4.1 (2009-06-03)
-* Upgraded TinyMCE to 3.2.3 (see CHANGELOG_TINYMCE) (Maciej Litwiniuk)
-* Upgraded TinyMCE to 3.2.4.1 (see CHANGELOG_TINYMCE) (Sergio Cambra)
+== Version 0.0.6 (2009-06-03)
+* Upgraded TinyMCE from 3.2.2 to 3.2.6 (see CHANGELOG_TINYMCE) (Sergio Cambra & Maciej Litwiniuk)
 * Cleanup tiny_mce_options.yml (Sergio Cambra)
 * Maintaining backwards compatibility with Rails 2.1 or earlier (which do not have I18n)
 
-== Version 3.2.2 (2009-03-12)
+== Version 0.0.5 (2009-03-12)
 * Upgraded TinyMCE to 3.2.2 (see CHANGELOG_TINYMCE)
 * Fixed errors when uses_tiny_mce was used with no options (Joseph Wilk)
 * Further testing for uses_tiny_mce method without any options
 
-== Version 3.2.1.1-1 (2009-02-23)
+== Version 0.0.4 (2009-02-23)
+* Updated TinyMCE to 3.2.1.1 (see CHANGELOG_TINYMCE)
 * Rewrote test suite
 * Added comments throughout the plugin for future developer
   - to all users: feel free to fork this repo, make changes, and send a pull request
@@ -23,29 +25,24 @@
 * Better Regex check for the theme_advanced_container configuration option
 * Console notification on next installation steps when installing plugin via script/plugin
 
-== Version 3.2.1.1 (2009-02-17)
-* Updated TinyMCE to 3.2.1.1
-
-== Version 3.2.1 (2008-11-16)
-* Updated TinyMCE to 3.2.1
+== Version 0.0.3 (2008-11-16)
+* Updated TinyMCE to 3.2.1 (see CHANGELOG_TINYMCE)
 * New raw_tiny_mce_init, which produces raw javascript (without the <script> tags)
 * New ASpell spellchecking functionality (require aspell installed, see SPELLCHECKING_PLUGIN.rdoc for more details)
 * Added ability to pass in additional javascript for complex data needed in places such as the template plugin
 Now in Rails 2.2, thanks for your support: * Help get a patch to a bug, that prevents ampersands in link/image urls, submitted to Rails core
-
-== Version 3.2.0.2-1 (2008-10-10)
 * Updated documentation
-* Bug fixes to tiny_mce helper methods (thanks remvee)
-* Fixed tests to work with the latest changes (thanks remvee)
+* Bug fixes to tiny_mce helper methods (Remco van 't Veer)
+* Fixed tests to work with the latest changes (Remco van 't Veer)
 
-== Version 3.2.0.2 (2008-10-04)
-* Updated TinyMCE to 3.2.0.2
-* Formated README file with RDoc syntax for easier reading on Github
+== Version 0.0.2 (2008-10-04)
+* Updated TinyMCE to 3.2.0.2 (see CHANGELOG_TINYMCE)
+* Formatted README file with RDoc syntax for easier reading on Github
 * Added separate TinyMCE changelog (starting from 3.0 alphas through to now)
 * Rake task refactored (now uses cp_r instead of custom method), and new update task
 * Edited TinyMCE helper methods (single "include_tiny_mce_if_needed" method includes Javascript and initializes TinyMCE)
 * Updated TinyMCE configuration options file (tiny_mce_options.yml)
 
-== Version 3.1.0.1 (2008-07-02)
-* Updated TinyMCE
+== Version 0.0.1 (2008-07-02)
+* Updated TinyMCE based on Blake Watters original TinyMCE plugin (see CHANGELOG_TINYMCE)
 * Replaced old documentation with readme file containing link to online documentation
