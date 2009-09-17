@@ -8,19 +8,21 @@ Gem::Specification.new do |s|
   s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Blake Watters", "Kieran Pilkington", "Alexander Semyonov"]
+  s.authors = ["Blake Watters", "Kieran Pilkington", "Sergio Cambra", "Alexander Semyonov"]
   s.date = %q{2009-09-17}
   s.description = %q{Gem that allows easy implementation of the TinyMCE editor into your applications.}
   s.email = %q{kieran@katipo.co.nz}
   s.extra_rdoc_files = [
-    "README.rdoc",
+    "CHANGELOG_PLUGIN.rdoc",
+     "DEV_UPGRADE_NOTES.rdoc",
+     "README.rdoc",
      "SPELLCHECKING_PLUGIN.rdoc"
   ]
   s.files = [
     ".gitignore",
-     "CHANGELOG_PLUGIN",
+     "CHANGELOG_PLUGIN.rdoc",
      "CHANGELOG_TINYMCE",
-     "DEV_UPGRADE_NOTES",
+     "DEV_UPGRADE_NOTES.rdoc",
      "README.rdoc",
      "Rakefile",
      "SPELLCHECKING_PLUGIN.rdoc",
