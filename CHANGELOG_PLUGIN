@@ -1,5 +1,8 @@
 = Plugin Changelog
 
+== Unreleased
+* Upgraded TinyMCE from 3.2.6 to 3.2.7 (see CHANGELOG_TINYMCE) (Sergio Cambra)
+
 == Version 0.1.0
 * tiny_mce is now available as a gem on github under kete-tiny_mce. See README.rdoc (Alexander Semyonov)
 * The TinyMCE sources are now installed automatically by the plugin/gem, so no more rake tasks (Alexander Semyonov)

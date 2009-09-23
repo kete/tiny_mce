@@ -1,3 +1,24 @@
+Version 3.2.7 (2009-09-22)
+	Fixed bug where uppercase paragraphs could still produce an invalid DOM tree on IE.
+	Fixed bug where split command didn't work on WebKit since the node serializer needs a real document to work with.
+	Fixed bug where it was impossible in Gecko to place the caret before a table if it was the first one.
+	Fixed bug where linking to urls like ../../ would produce an extra traling slash ../..//.
+	Fixed bug where the template cdate functionality was using an old 2.x API call. Patch contributed by vectorjohn.
+	Fixed bug where urls to the same site but different protocol would be converted when relative_urls where set to false. Patch contributed by Ted Rust.
+	Fixed bug where the paste plugin would remove mceItem prefixed classes.
+	Fixed bug where the paste plugin would sometimes add items in a reverse order on WebKit.
+	Fixed bug where the paste buttons would present an error message on Gecko even if you changed user.js. Patch contributed by Todd (teeaykay).
+	Fixed bug where Opera would crash if you had tables incorrectly placed inside paragraphs.
+	Fixed bug where styles elements wasn't properly processed if you had bad input HTML.
+	Fixed bug where style attributes wasn't properly forced into a specific format.
+	Fixed bug and issues with boolean attributes like checked, nowrap etc.
+	Fixed bug where input elements could override attributes on form elements.
+	Fixed bug where script or style elements could get modified by the DOMUtils processHTML method.
+	Fixed bug where the selected attribute could get lost when force root blocks logic got executed on IE. Patch contributed by Attila Mezei-Horvati.
+	Fixed bug where getAttribs method didn't handle boolean attributes correctly on IE.
+	Fixed so the paste from word dialog is presented if you paste content on an IE with to restrictive security settings.
+	Fixed so the paste_strip_class_attributes option is set to none by default in the paste plugin.
+	Removed default border=0 on tables for the default value of valid_elements.
 Version 3.2.6 (2009-08-19)
 	Added new wordcount plugin, this will display the number of typed words as you write. Contributed by Andrew Ozz.
 	Added new getNext and getPrev methods to DOM utils. These will return the first matching sibling.
@@ -16,7 +37,7 @@ Version 3.2.6 (2009-08-19)
 	Fixed bug where the autoresize plugin would break the fullscreen functionality.
 	Fixed bug where tables would be chopped up running on IE using invalid contents and pasting paragraphs into a cell.
 	Fixed bug where the each method of jQuery build didn't iterate styleSheets. We now use the TinyMCE API one instead.
-	Fixed bug where auto switching to paragraphs after headers some times failed in Gecko.
+	Fixed bug where auto switching to paragraphs after headers some times failed in Gecko.	
 	Fixed so all editor options gets passed to the Serializer class. Patch contributed by Jasper Mattsson.
 	Fixed so script/style blocks isn't wrapped in paragraphs as other inline elements.
 	Fixed so the XHR requests sends the X-Requested-With HTTP header.
@@ -813,7 +834,7 @@ Version 3.0b1 (2007-11-21)
 	Fixed bug where the fullscreen mode of the HTML view source box threw an error.
 	Fixed bug where the mceFocus command didn't work correctly.
 	Fixed bug where the selection could get lost in IE using inlinepopups.
-	Fixed so the body of the editor area has the mceContentBody class just like the 2.x branch.
+	Fixed so the body of the editor area has the mceContentBody class just like the 2.x branch. 
 	Fixed so the media icon gets active when a media element is selected.
 Version 3.0a3 (2007-11-13)
 	Added new experimental jQuery and Prototype framework adapters to the development package.
