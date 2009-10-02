@@ -1,0 +1,10 @@
+= Updating the bundled TinyMCE
+
+1. Download the new TinyMCE tarball and extract it to your Desktop (or other easily accessible location)
+2. Delete the copy of TinyMCE in the plugin at lib/tiny_mce/assets/tiny_mce (this ensures old/removed files are deleted)
+3. Copy the source files of TinyMCE (not the documentation) to lib/tiny_mce/assets/tiny_mce (so in that folder you should have a tiny_mce.js file)
+4. Update the CHANGELOG_PLUGIN.rdoc to say what you upgraded from, what you upgraded to, and your name
+5. Update CHANGELOG_TINYMCE (simply download and overwrite the contents with that of http://tinymce.moxiecode.com/js/tinymce/changelog.txt)
+6. Update the 'Bundled TinyMCE version' value at the bottom of README.rdoc
+7. Update lib/tiny_mce/valid_tinymce_options.yml with any new options, or remove old ones, as described in the tinymce changelog
+8. Commit, push, and send pull request to http://github.com/kete/tiny_mce

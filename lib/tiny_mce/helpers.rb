@@ -25,7 +25,7 @@ module TinyMCE
 
       unless options['plugins'].nil?
         raise TinyMCEInvalidOptionType.new("Invalid value of type #{options['plugins'].class} passed for TinyMCE option plugins") unless options['plugins'].kind_of?(Array)
-        
+
         # Append the plugins we have enabled for this field to the OptionsValidator
         TinyMCE::OptionValidator.plugins += options['plugins']
       end
@@ -71,7 +71,7 @@ module TinyMCE
 
     # Form a JS include tag for the TinyMCE JS src for inclusion in the <head>
     def include_tiny_mce_js
-      javascript_include_tag (Rails.env.development? ? "tiny_mce/tiny_mce_src" : "tiny_mce/tiny_mce")
+      javascript_include_tag (Rails.env == 'development' ? "tiny_mce/tiny_mce_src" : "tiny_mce/tiny_mce")
     end
     # Form a JS include tag for the TinyMCE JS src for inclusion in the <head>
     # (only if tiny mce is actually being used)
