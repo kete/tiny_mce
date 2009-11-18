@@ -11,7 +11,10 @@ module TinyMCE
       # Takes options hash, raw_options string, and any normal params you
       # can send to a before_filter (only, except etc)
       def uses_tiny_mce(options = {})
-        tiny_mce_options = options.delete(:options) || {}
+        filepath = File.join(RAILS_ROOT, 'config', 'tiny_mce.yml')
+        config = begin YAML::load(IO.read(filepath)) rescue {} end
+        
+        tiny_mce_options = (options.delete(:options) || {}).reverse_merge config
         raw_tiny_mce_options = options.delete(:raw_options) || ''
 
         # If the tiny_mce plugins includes the spellchecker, then form a spellchecking path,
