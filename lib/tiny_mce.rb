@@ -1,6 +1,7 @@
 # Require all the necessary files to run TinyMCE
 require 'tiny_mce/base'
-require 'tiny_mce/option_validator'
+require 'tiny_mce/exceptions'
+require 'tiny_mce/configuration'
 require 'tiny_mce/spell_checker'
 require 'tiny_mce/helpers'
 
@@ -47,14 +48,15 @@ module TinyMCE
   end
 
   module Base
-    include TinyMCE::OptionValidator
+    # include TinyMCE::OptionValidator
     include TinyMCE::SpellChecker
   end
 end
 
 # Load up the available configuration options (we do it here because
 # the result doesn't, so we don't want to load it per request)
-TinyMCE::OptionValidator.load
+# TinyMCE::OptionValidator.load
+TinyMCE::Configuration.load_valid_options
 
 # Include the TinyMCE methods and TinyMCE Helpers into ActionController::Base
 
