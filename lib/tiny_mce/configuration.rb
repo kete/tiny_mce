@@ -50,7 +50,6 @@ module TinyMCE
       "{\n" + json_options*",\n" + "\n}"
     end
     
-    protected
     def self.valid_options_path
       File.join(File.dirname(__FILE__),'valid_tinymce_options.yml')
     end
@@ -63,7 +62,7 @@ module TinyMCE
     end
 
     # If we need to get the array of valid options, we can call this method
-    def valid_options
+    def self.valid_options
       @@valid_options
     end
 

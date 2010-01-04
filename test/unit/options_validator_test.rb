@@ -1,51 +1,56 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class OptionsValidatorTest < ActiveSupport::TestCase
+class ConfigurationTest < ActiveSupport::TestCase
 
   test "tiny mce should load the valid options on init" do
-    assert_not_nil TinyMCE::OptionValidator.options
+    assert_not_nil TinyMCE::Configuration.valid_options
   end
 
   test "tiny mce should allow a certain number of options" do
-    assert_equal 141, TinyMCE::OptionValidator.options.size
+    assert_equal 141, TinyMCE::Configuration.valid_options.size
   end
 
   test "the valid method accepts valid options as strings or symbols" do
-    assert TinyMCE::OptionValidator.valid?('mode')
-    assert TinyMCE::OptionValidator.valid?('plugins')
-    assert TinyMCE::OptionValidator.valid?('theme')
-    assert TinyMCE::OptionValidator.valid?(:mode)
-    assert TinyMCE::OptionValidator.valid?(:plugins)
-    assert TinyMCE::OptionValidator.valid?(:theme)
+    configuration = TinyMCE::Configuration.new
+    assert configuration.valid?('mode')
+    assert configuration.valid?('plugins')
+    assert configuration.valid?('theme')
+    assert configuration.valid?(:mode)
+    assert configuration.valid?(:plugins)
+    assert configuration.valid?(:theme)
   end
 
   test "the valid method detects invalid options as strings or symbols" do
-    assert !TinyMCE::OptionValidator.valid?('a_fake_option')
-    assert !TinyMCE::OptionValidator.valid?(:wrong_again)
+    configuration = TinyMCE::Configuration.new
+    assert !configuration.valid?('a_fake_option')
+    assert !configuration.valid?(:wrong_again)
   end
 
   test "plugins can be set in the options validator and be valid" do
-    TinyMCE::OptionValidator.plugins = Array.new
-    assert !TinyMCE::OptionValidator.valid?('paste_auto_cleanup_on_paste')
-    TinyMCE::OptionValidator.plugins = %w{paste}
-    assert TinyMCE::OptionValidator.valid?('paste_auto_cleanup_on_paste')
+    configuration = TinyMCE::Configuration.new
+    configuration.plugins = Array.new
+    assert !configuration.valid?('paste_auto_cleanup_on_paste')
+    configuration.plugins = %w{paste}
+    assert configuration.valid?('paste_auto_cleanup_on_paste')
   end
 
   test "plugins can be added at a later stage in the script" do
-    TinyMCE::OptionValidator.plugins = %w{paste}
-    assert TinyMCE::OptionValidator.valid?('paste_auto_cleanup_on_paste')
-    TinyMCE::OptionValidator.plugins += %w{fullscreen}
-    assert ['paste', 'fullscreen'], TinyMCE::OptionValidator.plugins
-    assert TinyMCE::OptionValidator.valid?('fullscreen_overflow')
+    configuration = TinyMCE::Configuration.new
+    configuration.plugins = %w{paste}
+    assert configuration.valid?('paste_auto_cleanup_on_paste')
+    configuration.plugins += %w{fullscreen}
+    assert ['paste', 'fullscreen'], configuration.plugins
+    assert configuration.valid?('fullscreen_overflow')
   end
 
   test "advanced theme container options get through based on regex" do
-    assert TinyMCE::OptionValidator.valid?('theme_advanced_container_content1')
-    assert TinyMCE::OptionValidator.valid?('theme_advanced_container_content1_align')
-    assert TinyMCE::OptionValidator.valid?('theme_advanced_container_content1_class')
-    assert !TinyMCE::OptionValidator.valid?('theme_advanced_container_[content]')
-    assert !TinyMCE::OptionValidator.valid?('theme_advanced_container_[content]_align')
-    assert !TinyMCE::OptionValidator.valid?('theme_advanced_container_[content]_class')
+    configuration = TinyMCE::Configuration.new
+    assert configuration.valid?('theme_advanced_container_content1')
+    assert configuration.valid?('theme_advanced_container_content1_align')
+    assert configuration.valid?('theme_advanced_container_content1_class')
+    assert !configuration.valid?('theme_advanced_container_[content]')
+    assert !configuration.valid?('theme_advanced_container_[content]_align')
+    assert !configuration.valid?('theme_advanced_container_[content]_class')
   end
 
 end
