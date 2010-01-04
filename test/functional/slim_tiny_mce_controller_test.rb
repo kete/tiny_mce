@@ -36,10 +36,13 @@ class SlimTinyMCEControllerTest <  ActionController::TestCase
     assert_response :success
     assert (assigns(:uses_tiny_mce) &&
             assigns(:uses_tiny_mce) == true)
-    assert (assigns(:tiny_mce_options) &&
-            assigns(:tiny_mce_options).is_a?(Hash))
-    assert (assigns(:raw_tiny_mce_options) &&
-            assigns(:raw_tiny_mce_options) == '')
+    assert (assigns(:tiny_mce_configurations) &&
+           assigns(:tiny_mce_configurations).is_a?(Array))
+
+    # assert (assigns(:tiny_mce_options) &&
+    #         assigns(:tiny_mce_options).is_a?(Hash))
+    # assert (assigns(:raw_tiny_mce_options) &&
+    #         assigns(:raw_tiny_mce_options) == '')
   end
 
 end

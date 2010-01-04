@@ -11,13 +11,22 @@ module TinyMCE
       # Takes options hash, raw_options string, and any normal params you
       # can send to a before_filter (only, except etc)
       def uses_tiny_mce(options = {})
-        tiny_mce_options = options.delete(:options) || {}
-        raw_tiny_mce_options = options.delete(:raw_options) || ''
 
+        configuration = if options.is_a? TinyMCE::Configuration
+          options
+        elsif options.respond_to?(:options) && options.respond_to?(:raw_options)
+          TinyMCE::Configuration.new :options=>options.options,:raw_options=>options.raw_options
+        elsif options.is_a? Hash
+          tiny_mce_options = options.delete(:options) || {}
+          raw_tiny_mce_options = options.delete(:raw_options) || ''
+          TinyMCE::Configuration.new :options=>tiny_mce_options,:raw_options=>raw_tiny_mce_options
+        else
+          raise "Invalid option type #{options.class}"
+        end
         # If the tiny_mce plugins includes the spellchecker, then form a spellchecking path,
         # add it to the tiny_mce_options, and include the SpellChecking module
-        if !tiny_mce_options[:plugins].blank? && tiny_mce_options[:plugins].include?('spellchecker')
-          tiny_mce_options.reverse_merge!(:spellchecker_rpc_url => "/" + self.controller_name + "/spellchecker")
+        if configuration.has_plugins? && configuration.plugins_include?('spellchecker')
+          configuration.options.reverse_merge!("spellchecker_rpc_url" => "/" + self.controller_name + "/spellchecker")
           self.class_eval do
             include TinyMCE::SpellChecker
           end
@@ -25,8 +34,10 @@ module TinyMCE
 
         # Set instance vars in the current class
         proc = Proc.new do |c|
-          c.instance_variable_set(:@tiny_mce_options, tiny_mce_options)
-          c.instance_variable_set(:@raw_tiny_mce_options, raw_tiny_mce_options)
+          configurations = c.instance_variable_get :@tiny_mce_configurations
+          configurations ||= Array.new
+          configurations << configuration
+          c.instance_variable_set :@tiny_mce_configurations,configurations
           c.instance_variable_set(:@uses_tiny_mce, true)
         end
 

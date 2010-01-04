@@ -34,8 +34,8 @@ class FullTinyMCEControllerTest <  ActionController::TestCase
     get :show_page
     assert_response :success
     assert_nil assigns(:uses_tiny_mce)
-    assert_nil assigns(:tiny_mce_options)
-    assert_nil assigns(:raw_tiny_mce_options)
+    assert_nil assigns(:tiny_mce_configurations)
+    # assert_nil assigns(:raw_tiny_mce_options)
   end
 
   #
@@ -53,8 +53,8 @@ class FullTinyMCEControllerTest <  ActionController::TestCase
 
   test "the spellchecker has a default path to use" do
     get :new_page
-    assert_not_nil assigns(:tiny_mce_options)
-    assert_equal assigns(:tiny_mce_options)[:spellchecker_rpc_url], "/full_tiny_mce/spellchecker"
+    assert_not_nil assigns(:tiny_mce_configurations).first
+    assert_equal assigns(:tiny_mce_configurations).first.options["spellchecker_rpc_url"], "/full_tiny_mce/spellchecker"
   end
 
   private
@@ -63,12 +63,11 @@ class FullTinyMCEControllerTest <  ActionController::TestCase
     assert_response :success
     assert (assigns(:uses_tiny_mce) &&
             assigns(:uses_tiny_mce) == true)
-    assert (assigns(:tiny_mce_options) &&
-            assigns(:tiny_mce_options).is_a?(Hash) &&
-            assigns(:tiny_mce_options) == { :spellchecker_rpc_url=> "/full_tiny_mce/spellchecker",
-                                            :plugins => ['spellchecker'] })
-    assert (assigns(:raw_tiny_mce_options) &&
-            assigns(:raw_tiny_mce_options) == '')
+    assert (assigns(:tiny_mce_configurations) &&
+           assigns(:tiny_mce_configurations).is_a?(Array) &&
+          assigns(:tiny_mce_configurations).first.options == { "spellchecker_rpc_url"=> "/full_tiny_mce/spellchecker",
+                                            "plugins" => ['spellchecker'] })
+
   end
 
 end

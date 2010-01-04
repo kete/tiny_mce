@@ -10,16 +10,29 @@ module TinyMCE
     # Parse @tiny_mce_options and @raw_tiny_mce_options to create a raw JS string
     # used by TinyMCE. Returns errors if the option or options type is invalid
     def raw_tiny_mce_init(options = {}, raw_options = '')
-      configuration = TinyMCE::Configuration.new :options=>options,:raw_options=>raw_options
       
-      # first we set some defaults, then we merge in the controller level options
-      # and finally merge in the view level options (to give presidence)
-      @tiny_mce_options ||= {}
-      @raw_tiny_mce_options ||= ''      
-
-      tinymce_js = "tinyMCE.init("
-      tinymce_js += configuration.to_json @tiny_mce_options,@raw_tiny_mce_options
-      tinymce_js += ");"
+      tinymce_js = ""
+      
+      @tiny_mce_configurations.each do |configuration|
+        configuration.add_options :options=>options,:raw_options=>raw_options
+        tinymce_js += "tinyMCE.init("
+        tinymce_js += configuration.to_json
+        tinymce_js += ");\n"
+      end
+            # 
+            # configuration = TinyMCE::Configuration.new :options=>options,:raw_options=>raw_options
+            # 
+            # # first we set some defaults, then we merge in the controller level options
+            # # and finally merge in the view level options (to give presidence)
+            # @tiny_mce_options ||= {}
+            # @raw_tiny_mce_options ||= ''   
+            # 
+            # configuration.add_options :options=>@tiny_mce_options,:raw_options=>@raw_tiny_mce_options   
+            # 
+            # tinymce_js = "tinyMCE.init("
+            # tinymce_js += configuration.to_json
+            # tinymce_js += ");"
+        tinymce_js
     end
 
     # Form the raw JS and wrap in in a <script> tag for inclusion in the <head>

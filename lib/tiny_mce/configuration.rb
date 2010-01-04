@@ -9,12 +9,29 @@ module TinyMCE
     
     def initialize combined_options={}
       @options = combined_options[:options] || {}
-      @raw_options = combined_options[:raw_options] || ''      
+      @options.stringify_keys!
+      @raw_options = combined_options[:raw_options] || ''
       @plugins = Array.new
     end
     
     def self.load_valid_options
       @@valid_options = File.open(valid_options_path) { |f| YAML.load(f.read) }
+    end
+    
+    def add_options combined_options={}      
+      options = combined_options[:options] || {}
+      raw_options = combined_options[:raw_options] || ''
+      
+      @options.merge!(options.stringify_keys)
+      @raw_options += raw_options
+    end
+    
+    def has_plugins?
+      !@options.stringify_keys["plugins"].blank?
+    end
+    
+    def plugins_include? plugin
+      @options.stringify_keys["plugins"].include? plugin
     end
     
     def to_json options={},raw_options=''
