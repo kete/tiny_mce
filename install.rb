@@ -1,8 +1,9 @@
 # Lets output something to the console when people use script/plugin to install tiny_mce
+require File.join(File.dirname(__FILE__), 'init')
+
 puts "-------"
-puts "tiny_mce plugin"
+TinyMCE.install_or_update_tinymce
 puts ""
-puts "Thanks for installing the tiny_mce plugin."
 puts "To complete the process, please view README.rdoc."
 puts "Read the section entitled 'Installation"
 puts "-------"
