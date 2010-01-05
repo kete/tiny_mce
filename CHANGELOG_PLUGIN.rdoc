@@ -3,6 +3,7 @@
 == Unreleased
 * Upgraded TinyMCE from 3.2.6 to 3.2.7 (see CHANGELOG_TINYMCE) (Sergio Cambra)
 * Further compatibility fixes for Rails versions prior to 2.3.x
+* Improving the installation instructions for plugin installs
 
 == Version 0.1.0
 * tiny_mce is now available as a gem on github under kete-tiny_mce. See README.rdoc (Alexander Semyonov)

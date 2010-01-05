@@ -1,8 +1,18 @@
 # Lets output something to the console when people use script/plugin to install tiny_mce
-puts "-------"
-puts "tiny_mce plugin"
-puts ""
-puts "Thanks for installing the tiny_mce plugin."
-puts "To complete the process, please view README.rdoc."
-puts "Read the section entitled 'Installation"
-puts "-------"
+puts <<-EOS
+-------
+
+tiny_mce plugin
+
+Thanks for installing the tiny_mce plugin.
+
+Complete the installation by running the following:
+
+rake tiny_mce:install
+
+Then to setup TinyMCE on your site, please view README.rdoc.
+
+Read the section entitled 'Installation'
+
+-------
+EOS
