@@ -67,7 +67,5 @@ class FullTinyMCEControllerTest <  ActionController::TestCase
            assigns(:tiny_mce_configurations).is_a?(Array) &&
           assigns(:tiny_mce_configurations).first.options == { "spellchecker_rpc_url"=> "/full_tiny_mce/spellchecker",
                                             "plugins" => ['spellchecker'] })
-
   end
-
 end

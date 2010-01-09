@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 class MultiConfigurationTinyMCEController < ApplicationController
   uses_tiny_mce :options => { :plugins => ['spellchecker'] },
                 :raw_options => '',
-                :only => ['new_page']
+                :only => ['new_page','edit_page']
   uses_tiny_mce :options => { :plugins => ['paste','fullscreen'] },
                 :raw_options => '',
                 :only => ['edit_page']
@@ -26,7 +26,7 @@ end
 # filters to ensure the tests work in most cases
 class MultiConfigurationTinyMCEControllerTest <  ActionController::TestCase
 
-  test "all instance variables are properly set on new and edit" do
+  test "all instance variables are properly set on new" do
     get :new_page
     assert_response :success
     assert (assigns(:uses_tiny_mce) &&
@@ -35,13 +35,17 @@ class MultiConfigurationTinyMCEControllerTest <  ActionController::TestCase
           assigns(:tiny_mce_configurations).is_a?(Array) &&
           assigns(:tiny_mce_configurations).first.options == { "spellchecker_rpc_url"=> "/multi_configuration_tiny_mce/spellchecker",
                                                               "plugins" => ['spellchecker'] })
+  end  
 
+  test "all instance variables are properly set on edit" do
     get :edit_page
     assert_response :success
     assert (assigns(:uses_tiny_mce) &&
           assigns(:uses_tiny_mce) == true)
     assert (assigns(:tiny_mce_configurations) &&
           assigns(:tiny_mce_configurations).is_a?(Array) &&
+          assigns(:tiny_mce_configurations).first.options == { "spellchecker_rpc_url"=> "/multi_configuration_tiny_mce/spellchecker",
+                                                              "plugins" => ['spellchecker'] } &&
           assigns(:tiny_mce_configurations).second.options == { "plugins" => ['paste','fullscreen'] })
   end
 
@@ -51,6 +55,4 @@ class MultiConfigurationTinyMCEControllerTest <  ActionController::TestCase
     assert_nil assigns(:uses_tiny_mce)
     assert_nil assigns(:tiny_mce_configurations)
   end
-
-
 end

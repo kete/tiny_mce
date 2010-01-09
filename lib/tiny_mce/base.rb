@@ -36,10 +36,9 @@ module TinyMCE
 
         # Set instance vars in the current class
         proc = Proc.new do |c|
-          configurations = c.instance_variable_get :@tiny_mce_configurations
-          configurations ||= Array.new
+          configurations = c.instance_variable_get(:@tiny_mce_configurations) || []
           configurations << configuration
-          c.instance_variable_set :@tiny_mce_configurations,configurations
+          c.instance_variable_set(:@tiny_mce_configurations,configurations)
           c.instance_variable_set(:@uses_tiny_mce, true)
         end
 

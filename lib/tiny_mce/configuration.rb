@@ -1,5 +1,10 @@
 module TinyMCE
   class Configuration
+    # We use this to combine options and raw_options into one class and validate 
+    # whether options passed in by the users are valid tiny mce configuration settings. 
+    # Also loads which options are valid, and provides an plugins attribute to allow 
+    # more configuration options dynamicly
+
     attr_accessor :options,:raw_options,:plugins
 
     DEFAULT_OPTIONS = { 'mode' => 'textareas',
@@ -14,20 +19,24 @@ module TinyMCE
       @plugins = Array.new
     end
 
+    # Parse the options file and load it into an array
+    # (this method is called when tiny_mce is initialized - see init.rb)
     def self.load_valid_options
       @@valid_options = File.open(valid_options_path) { |f| YAML.load(f.read) }
     end
 
+    # Merge additional options, but don't overwrite existing
     def reverse_merge_options options
       @options = options.merge(@options)
     end
 
+    # Merge additional options and raw_options
     def add_options combined_options={}      
       options = combined_options[:options] || {}
-      raw_options = combined_options[:raw_options] || ''
+      raw_options = combined_options[:raw_options]
 
       @options.merge!(options.stringify_keys)
-      @raw_options += raw_options
+      @raw_options += ",\n" + raw_options if raw_options
     end
 
     def has_plugins?
@@ -38,9 +47,11 @@ module TinyMCE
       @options.stringify_keys["plugins"].include? plugin
     end
 
+    # Validate and merge options and raw_options into a string
+    # to be used for tinyMCE.init() in the raw_tiny_mce_init helper
     def to_json options={},raw_options=''
       merged_options = DEFAULT_OPTIONS.merge(options.stringify_keys).merge(@options.stringify_keys)
-      merged_raw_options = raw_options + @raw_options unless raw_options.nil?
+      merged_raw_options = raw_options + ",\n" + @raw_options unless raw_options.nil?
 
       unless merged_options['plugins'].nil?
         raise TinyMCEInvalidOptionType.invalid_type_of merged_options['plugins'],:for=>:plugins unless merged_options['plugins'].is_a?(Array)
@@ -74,7 +85,10 @@ module TinyMCE
     def self.valid_options_path
       File.join(File.dirname(__FILE__),'valid_tinymce_options.yml')
     end
-
+    
+    # Does the check to see if the option is valid. It checks the valid_options
+    # array (see above), checks if the start of the option name is in the plugin list
+    # or checks if it's an theme_advanced_container setting
     def valid?(option)
       option = option.to_s
       @@valid_options.include?(option) ||
