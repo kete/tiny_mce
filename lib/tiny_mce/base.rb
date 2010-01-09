@@ -19,7 +19,7 @@ module TinyMCE
         tiny_mce_yaml_filepath = File.join(RAILS_ROOT, 'config', 'tiny_mce.yml')
         if File.exist?(tiny_mce_yaml_filepath)
           yaml_options = YAML::load(IO.read(tiny_mce_yaml_filepath)) rescue Hash.new
-          tiny_mce_options = yaml_options.merge(tiny_mce_options)
+          tiny_mce_options = yaml_options.merge(tiny_mce_options) if yaml_options
         end
 
         # If the tiny_mce plugins includes the spellchecker, then form a spellchecking path,
