@@ -67,7 +67,6 @@ end
 
 # Load up the available configuration options (we do it here because
 # the result doesn't, so we don't want to load it per request)
-# TinyMCE::OptionValidator.load
 TinyMCE::Configuration.load_valid_options
 
 # Include the TinyMCE methods and TinyMCE Helpers into ActionController::Base

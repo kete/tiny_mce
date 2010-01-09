@@ -63,7 +63,5 @@ module TinyMCE
       end
       return xml_response_values
     end
-
   end
-
 end

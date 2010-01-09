@@ -34,11 +34,12 @@ class MultiConfigurationTinyMCEControllerTest <  ActionController::TestCase
     assert (assigns(:tiny_mce_configurations) &&
           assigns(:tiny_mce_configurations).is_a?(Array) &&
           assigns(:tiny_mce_configurations).first.options == { "spellchecker_rpc_url"=> "/multi_configuration_tiny_mce/spellchecker",
-                                            "plugins" => ['spellchecker'] })
+                                                              "plugins" => ['spellchecker'] })
+
     get :edit_page
     assert_response :success
     assert (assigns(:uses_tiny_mce) &&
-            assigns(:uses_tiny_mce) == true)
+          assigns(:uses_tiny_mce) == true)
     assert (assigns(:tiny_mce_configurations) &&
           assigns(:tiny_mce_configurations).is_a?(Array) &&
           assigns(:tiny_mce_configurations).second.options == { "plugins" => ['paste','fullscreen'] })
@@ -49,7 +50,6 @@ class MultiConfigurationTinyMCEControllerTest <  ActionController::TestCase
     assert_response :success
     assert_nil assigns(:uses_tiny_mce)
     assert_nil assigns(:tiny_mce_configurations)
-    # assert_nil assigns(:raw_tiny_mce_options)
   end
 
 

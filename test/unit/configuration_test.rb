@@ -52,5 +52,5 @@ class ConfigurationTest < ActiveSupport::TestCase
     assert !configuration.valid?('theme_advanced_container_[content]_align')
     assert !configuration.valid?('theme_advanced_container_[content]_class')
   end
-
+  
 end

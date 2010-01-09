@@ -1,54 +1,54 @@
 module TinyMCE
   class Configuration
     attr_accessor :options,:raw_options,:plugins
-    
+
     DEFAULT_OPTIONS = { 'mode' => 'textareas',
                   'editor_selector' => 'mceEditor',
                   'theme' => 'simple',
                   'language' => (defined?(I18n) ? I18n.locale : :en) }
-    
+
     def initialize combined_options={}
       @options = combined_options[:options] || {}
       @options.stringify_keys!
       @raw_options = combined_options[:raw_options] || ''
       @plugins = Array.new
     end
-    
+
     def self.load_valid_options
       @@valid_options = File.open(valid_options_path) { |f| YAML.load(f.read) }
     end
-    
+
     def reverse_merge_options options
       @options = options.merge(@options)
     end
-    
+
     def add_options combined_options={}      
       options = combined_options[:options] || {}
       raw_options = combined_options[:raw_options] || ''
-      
+
       @options.merge!(options.stringify_keys)
       @raw_options += raw_options
     end
-    
+
     def has_plugins?
       !@options.stringify_keys["plugins"].blank?
     end
-    
+
     def plugins_include? plugin
       @options.stringify_keys["plugins"].include? plugin
     end
-    
+
     def to_json options={},raw_options=''
       merged_options = DEFAULT_OPTIONS.merge(options.stringify_keys).merge(@options.stringify_keys)
       merged_raw_options = raw_options + @raw_options unless raw_options.nil?
-      
+
       unless merged_options['plugins'].nil?
         raise TinyMCEInvalidOptionType.invalid_type_of merged_options['plugins'],:for=>:plugins unless merged_options['plugins'].is_a?(Array)
 
         # Append the plugins we have enabled for this field to the OptionsValidator
         @plugins += merged_options['plugins']
       end
-      
+
       json_options = []
       merged_options.each_pair do |key,value|
         raise TinyMCEInvalidOption.invalid_option key unless valid?(key)
@@ -65,16 +65,16 @@ module TinyMCE
           raise TinyMCEInvalidOptionType.invalid_type_of value,:for=>:plugins
         end
       end
-      
+
       json_options << raw_options unless raw_options.blank?
-      
+
       "{\n" + json_options*",\n" + "\n}"
     end
-    
+
     def self.valid_options_path
       File.join(File.dirname(__FILE__),'valid_tinymce_options.yml')
     end
-    
+
     def valid?(option)
       option = option.to_s
       @@valid_options.include?(option) ||
@@ -86,6 +86,5 @@ module TinyMCE
     def self.valid_options
       @@valid_options
     end
-
   end
 end
