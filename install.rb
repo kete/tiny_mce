@@ -16,8 +16,3 @@ Read the section entitled 'Installation'
 
 -------
 EOS
-
-filepath = File.join(RAILS_ROOT, 'config', 'tiny_mce.yml')
-unless File.exists?(filepath)
-  File.open(filepath, 'w') { |f| f.write '' }
-end
