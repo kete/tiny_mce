@@ -48,14 +48,12 @@ module TinyMCE
     tiny_mce_yaml_filepath = File.join(RAILS_ROOT, 'config', 'tiny_mce.yml')
     unless File.exists?(tiny_mce_yaml_filepath)
       File.open(tiny_mce_yaml_filepath, 'w') do |f|
-        f.write <<-EOS
-        # Here you can specify default options for TinyMCE across all controllers
-        #
-        # theme: advanced
-        # plugins:
-        #  - table
-        #  - fullscreen
-        EOS
+        f.write '# Here you can specify default options for TinyMCE across all controllers'
+        f.wrtie '#'
+        f.write '# theme: advanced'
+        f.write '# plugins:'
+        f.write '#  - table'
+        f.write '#  - fullscreen'
       end
       puts "Written configuration example to #{tiny_mce_yaml_filepath}"
     end
