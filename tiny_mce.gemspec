@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Blake Watters", "Kieran Pilkington", "Sergio Cambra", "Alexander Semyonov"]
-  s.date = %q{2009-09-17}
+  s.date = %q{2009-09-18}
   s.description = %q{Gem that allows easy implementation of the TinyMCE editor into your applications.}
   s.email = %q{kieran@katipo.co.nz}
   s.extra_rdoc_files = [
@@ -1314,12 +1314,12 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{TinyMCE editor for your rails applications}
   s.test_files = [
-    "test/functional/full_tiny_mce_controller_test.rb",
-     "test/functional/slim_tiny_mce_controller_test.rb",
+    "test/functional/slim_tiny_mce_controller_test.rb",
+     "test/functional/full_tiny_mce_controller_test.rb",
      "test/test_helper.rb",
      "test/unit/helpers/tiny_mce_helper_test.rb",
-     "test/unit/options_validator_test.rb",
-     "test/unit/tiny_mce_test.rb"
+     "test/unit/tiny_mce_test.rb",
+     "test/unit/options_validator_test.rb"
   ]
 
   if s.respond_to? :specification_version then
