@@ -18,6 +18,10 @@ module TinyMCE
       @@valid_options = File.open(valid_options_path) { |f| YAML.load(f.read) }
     end
     
+    def reverse_merge_options options
+      @options = options.merge(@options)
+    end
+    
     def add_options combined_options={}      
       options = combined_options[:options] || {}
       raw_options = combined_options[:raw_options] || ''

@@ -31,7 +31,6 @@ class MultiConfigurationTinyMCEControllerTest <  ActionController::TestCase
     assert_response :success
     assert (assigns(:uses_tiny_mce) &&
             assigns(:uses_tiny_mce) == true)
-            debugger
     assert (assigns(:tiny_mce_configurations) &&
           assigns(:tiny_mce_configurations).is_a?(Array) &&
           assigns(:tiny_mce_configurations).first.options == { "spellchecker_rpc_url"=> "/multi_configuration_tiny_mce/spellchecker",

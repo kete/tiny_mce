@@ -9,7 +9,7 @@ module TinyMCE
   def self.install_or_update_tinymce
     require 'fileutils'
     orig = File.join(File.dirname(__FILE__), 'tiny_mce', 'assets', 'tiny_mce')
-    dest = File.join(Rails.public_path, 'javascripts', 'tiny_mce')
+    dest = File.join(RAILS_ROOT, 'public', 'javascripts', 'tiny_mce')
     tiny_mce_js = File.join(dest, 'tiny_mce.js')
 
     unless File.exists?(tiny_mce_js) && FileUtils.identical?(File.join(orig, 'tiny_mce.js'), tiny_mce_js)
@@ -45,10 +45,22 @@ module TinyMCE
         end
       end
     end
+
+    tiny_mce_yaml_filepath = File.join(RAILS_ROOT, 'config', 'tiny_mce.yml')
+    unless File.exists?(tiny_mce_yaml_filepath)
+      File.open(tiny_mce_yaml_filepath, 'w') do |f|
+        f.puts '# Here you can specify default options for TinyMCE across all controllers'
+        f.puts '#'
+        f.puts '# theme: advanced'
+        f.puts '# plugins:'
+        f.puts '#  - table'
+        f.puts '#  - fullscreen'
+      end
+      puts "Written configuration example to #{tiny_mce_yaml_filepath}"
+    end
   end
 
   module Base
-    # include TinyMCE::OptionValidator
     include TinyMCE::SpellChecker
   end
 end

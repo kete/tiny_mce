@@ -12,17 +12,22 @@ module TinyMCE
       # can send to a before_filter (only, except etc)
       def uses_tiny_mce(options = {})
 
-        configuration = if options.is_a? TinyMCE::Configuration
-          options
-        elsif options.respond_to?(:options) && options.respond_to?(:raw_options)
-          TinyMCE::Configuration.new :options=>options.options,:raw_options=>options.raw_options
-        elsif options.is_a? Hash
+        if options.is_a? Hash
           tiny_mce_options = options.delete(:options) || {}
           raw_tiny_mce_options = options.delete(:raw_options) || ''
-          TinyMCE::Configuration.new :options=>tiny_mce_options,:raw_options=>raw_tiny_mce_options
+          configuration = TinyMCE::Configuration.new :options=>tiny_mce_options,:raw_options=>raw_tiny_mce_options
         else
           raise "Invalid option type #{options.class}"
         end
+
+        # Allow users to have default options in config/tiny_mce.yml so that
+        # they do not need to specify the same options over all controllers
+        tiny_mce_yaml_filepath = File.join(RAILS_ROOT, 'config', 'tiny_mce.yml')
+        if File.exist?(tiny_mce_yaml_filepath)
+          yaml_options = YAML::load(IO.read(tiny_mce_yaml_filepath)) rescue Hash.new
+          configuration.reverse_merge_options(yaml_options) if yaml_options
+        end
+
         # If the tiny_mce plugins includes the spellchecker, then form a spellchecking path,
         # add it to the tiny_mce_options, and include the SpellChecking module
         if configuration.has_plugins? && configuration.plugins_include?('spellchecker')
