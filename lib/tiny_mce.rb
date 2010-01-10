@@ -72,7 +72,7 @@ TinyMCE::Configuration.load_valid_options
 # Include the TinyMCE methods and TinyMCE Helpers into ActionController::Base
 
 if defined?(Rails) && defined?(ActionController)
-  ActionController::Base.send(:include, TinyMCE::Base)
-  ActionController::Base.send(:helper, TinyMCE::Helpers)
+  ApplicationController.send(:include, TinyMCE::Base)
+  ApplicationController.send(:helper, TinyMCE::Helpers)
   TinyMCE.install_or_update_tinymce
 end
