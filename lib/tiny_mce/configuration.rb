@@ -15,7 +15,7 @@ module TinyMCE
     def initialize combined_options={}
       @options = combined_options[:options] || {}
       @options.stringify_keys!
-      @raw_options = combined_options[:raw_options] || ''
+      @raw_options = [combined_options[:raw_options]]
       @plugins = Array.new
     end
 
@@ -34,9 +34,8 @@ module TinyMCE
     def add_options combined_options={}      
       options = combined_options[:options] || {}
       raw_options = combined_options[:raw_options]
-
       @options.merge!(options.stringify_keys)
-      @raw_options += ",\n" + raw_options if raw_options
+      @raw_options << raw_options unless raw_options.blank?
     end
 
     def has_plugins?
@@ -51,7 +50,6 @@ module TinyMCE
     # to be used for tinyMCE.init() in the raw_tiny_mce_init helper
     def to_json options={},raw_options=''
       merged_options = DEFAULT_OPTIONS.merge(options.stringify_keys).merge(@options.stringify_keys)
-      merged_raw_options = raw_options + ",\n" + @raw_options unless raw_options.nil?
 
       unless merged_options['plugins'].nil?
         raise TinyMCEInvalidOptionType.invalid_type_of merged_options['plugins'],:for=>:plugins unless merged_options['plugins'].is_a?(Array)
@@ -77,9 +75,13 @@ module TinyMCE
         end
       end
 
+      json_options.sort!
+
+      @raw_options.compact!
+      json_options += @raw_options unless @raw_options.blank?
       json_options << raw_options unless raw_options.blank?
 
-      "{\n" + json_options*",\n" + "\n}"
+      "{\n" + json_options*",\n" + "\n\n}"
     end
 
     def self.valid_options_path

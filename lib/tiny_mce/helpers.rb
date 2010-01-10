@@ -10,14 +10,16 @@ module TinyMCE
     # Parse @tiny_mce_options and @raw_tiny_mce_options to create a raw JS string
     # used by TinyMCE. Returns errors if the option or options type is invalid
     def raw_tiny_mce_init(options = {}, raw_options = '')
-      
+
       tinymce_js = ""
-      
+
+      @tiny_mce_configurations ||= [Configuration.new]
+
       @tiny_mce_configurations.each do |configuration|
         configuration.add_options :options=>options,:raw_options=>raw_options
         tinymce_js += "tinyMCE.init("
         tinymce_js += configuration.to_json
-        tinymce_js += ");\n"
+        tinymce_js += ");"
       end
 
       tinymce_js
