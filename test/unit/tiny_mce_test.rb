@@ -10,7 +10,6 @@ class TinyMCETest < ActiveSupport::TestCase
   end
 
   test "tiny mce plugin is included into action controller base and uses_tiny_mce method available" do
-    assert ActionController::Base::TinyMCE::Base
     assert ApplicationController.respond_to?(:uses_tiny_mce)
   end
 

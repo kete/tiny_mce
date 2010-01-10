@@ -17,3 +17,15 @@ end
 class TestController
   def self.helper(s) s; end
 end
+
+def set_constant(constant, value)
+  if respond_to?(:silence_warnings)
+    silence_warnings do
+      Object.send(:remove_const, constant) if Object.const_defined?(constant)
+      Object.const_set(constant, value)
+    end
+  else
+    Object.send(:remove_const, constant) if Object.const_defined?(constant)
+    Object.const_set(constant, value)
+  end
+end

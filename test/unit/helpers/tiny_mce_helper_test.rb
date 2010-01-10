@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'action_view/test_case' 
+require 'action_view/test_case'
 
 module TinyMCE
   class HelpersTest < ActionView::TestCase
@@ -19,13 +19,13 @@ module TinyMCE
 
     test "correct tiny mce is loaded depending on environment" do
       Rails.instance_variable_set('@_env', nil)
-      Object.const_set('RAILS_ENV', 'development')
+      set_constant('RAILS_ENV', 'development')
       assert_match /\/javascripts\/tiny_mce\/tiny_mce_src\.js/, include_tiny_mce_js
       Rails.instance_variable_set('@_env', nil)
-      Object.const_set('RAILS_ENV', 'production')
+      set_constant('RAILS_ENV', 'production')
       assert_match /\/javascripts\/tiny_mce\/tiny_mce\.js/, include_tiny_mce_js
       Rails.instance_variable_set('@_env', nil)
-      Object.const_set('RAILS_ENV', 'test') # set it back to test
+      set_constant('RAILS_ENV', 'test') # set it back to test
     end
 
     test "correct tiny mce is only loaded when using it" do
@@ -95,7 +95,7 @@ module TinyMCE
         raw_tiny_mce_init({ 'invalid_option' => true })
       end
     end
-  
+
     test "exception when plugins option is not an array" do
       assert_raise TinyMCEInvalidOptionType do
         raw_tiny_mce_init({'plugins' => 'invalid as a string'})
