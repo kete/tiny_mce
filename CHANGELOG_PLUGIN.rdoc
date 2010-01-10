@@ -1,5 +1,8 @@
 = Plugin Changelog
 
+== Unreleased
+* Multiple configurations supports and code cleanup (Marian Theisen)
+
 == Version 0.1.1
 * Upgraded TinyMCE from 3.2.6 to 3.2.7 (see CHANGELOG_TINYMCE) (Sergio Cambra)
 * Further compatibility fixes for Rails versions prior to 2.3.x
