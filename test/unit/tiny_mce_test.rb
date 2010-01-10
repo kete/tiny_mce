@@ -5,7 +5,7 @@ class TinyMCETest < ActiveSupport::TestCase
   test "including tiny mce module into a class should provide uses_tiny_mce method" do
     test_controller = TestController.new
     assert !test_controller.class.respond_to?(:uses_tiny_mce)
-    TestController.send(:include, TinyMCE)
+    TestController.send(:include, TinyMCE::Base)
     assert test_controller.class.respond_to?(:uses_tiny_mce)
   end
 
