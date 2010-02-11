@@ -81,7 +81,7 @@ module TinyMCE
       json_options += @raw_options unless @raw_options.blank?
       json_options << raw_options unless raw_options.blank?
 
-      "{\n" + json_options*",\n" + "\n\n}"
+      "{\n" + json_options.delete_if {|o| o.blank? }.join(",\n") + "\n\n}"
     end
 
     def self.valid_options_path
