@@ -9,14 +9,12 @@ module TinyMCE
 
     # Parse @tiny_mce_options and @raw_tiny_mce_options to create a raw JS string
     # used by TinyMCE. Returns errors if the option or options type is invalid
-    def raw_tiny_mce_init(options = {}, raw_options = '')
-
+    def raw_tiny_mce_init(options = {}, raw_options = nil)
       tinymce_js = ""
 
       @tiny_mce_configurations ||= [Configuration.new]
-
       @tiny_mce_configurations.each do |configuration|
-        configuration.add_options :options=>options,:raw_options=>raw_options
+        configuration.add_options(options, raw_options)
         tinymce_js += "tinyMCE.init("
         tinymce_js += configuration.to_json
         tinymce_js += ");"
@@ -26,12 +24,12 @@ module TinyMCE
     end
 
     # Form the raw JS and wrap in in a <script> tag for inclusion in the <head>
-    def tiny_mce_init(options = {}, raw_options = '')
+    def tiny_mce_init(options = {}, raw_options = nil)
       javascript_tag raw_tiny_mce_init(options, raw_options)
     end
     # Form the raw JS and wrap in in a <script> tag for inclusion in the <head>
     # (only if tiny mce is actually being used)
-    def tiny_mce_init_if_needed(options = {}, raw_options = '')
+    def tiny_mce_init_if_needed(options = {}, raw_options = nil)
       tiny_mce_init(options, raw_options) if using_tiny_mce?
     end
 
@@ -48,7 +46,7 @@ module TinyMCE
     # Form a JS include tag for the TinyMCE JS src, and form the raw JS and wrap
     # in in a <script> tag for inclusion in the <head> for inclusion in the <head>
     # (only if tiny mce is actually being used)
-    def include_tiny_mce_if_needed(options = {}, raw_options = '')
+    def include_tiny_mce_if_needed(options = {}, raw_options = nil)
       if using_tiny_mce?
         include_tiny_mce_js + tiny_mce_init(options, raw_options)
       end
