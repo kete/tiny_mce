@@ -32,7 +32,7 @@ module TinyMCE
     attr_accessor :options, :raw_options
 
     def initialize(options = {}, raw_options = nil)
-      options ||= {}
+      options ||= {} 
       @options = DEFAULT_OPTIONS.merge(self.class.config_file_options.stringify_keys || {}).
                                  merge(options.stringify_keys || {})
       @raw_options = [raw_options]
