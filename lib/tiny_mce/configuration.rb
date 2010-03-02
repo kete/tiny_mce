@@ -15,9 +15,10 @@ module TinyMCE
     def self.config_file_options
       @@config_file_options ||= begin
         tiny_mce_yaml_filepath = File.join(RAILS_ROOT, 'config', 'tiny_mce.yml')
-        YAML::load(IO.read(tiny_mce_yaml_filepath)) rescue nil
+        # The YAML file might not exist, might be blank, might be invalid, or
+        # might be valid. Catch all cases and make sure we always return a Hash
+        (YAML::load(IO.read(tiny_mce_yaml_filepath)) rescue nil) || Hash.new
       end
-      @@config_file_options ||= {}
     end
 
     # Parse the options file and load it into an array
@@ -32,9 +33,9 @@ module TinyMCE
     attr_accessor :options, :raw_options
 
     def initialize(options = {}, raw_options = nil)
-      options ||= {} 
-      @options = DEFAULT_OPTIONS.merge(self.class.config_file_options.stringify_keys || {}).
-                                 merge(options.stringify_keys || {})
+      options = Hash.new unless options.is_a?(Hash)
+      @options = DEFAULT_OPTIONS.merge(self.class.config_file_options.stringify_keys).
+                                 merge(options.stringify_keys)
       @raw_options = [raw_options]
     end
 
