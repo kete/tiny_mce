@@ -10,7 +10,7 @@ begin
     gem.description = %Q{Gem that allows easy implementation of the TinyMCE editor into your applications.}
     gem.email = 'kieran@katipo.co.nz'
     gem.homepage = 'http://github.com/kete/tiny_mce'
-    gem.authors = ['Blake Watters', 'Kieran Pilkington', 'Sergio Cambra', 'Alexander Semyonov']
+    gem.authors = ['Blake Watters', 'Kieran Pilkington', 'Sergio Cambra', 'Alexander Semyonov', 'Marian Theisen']
     gem.extra_rdoc_files = ['README.rdoc', 'SPELLCHECKING_PLUGIN.rdoc', 'CHANGELOG_PLUGIN.rdoc', 'DEV_UPGRADE_NOTES.rdoc']
     gem.rdoc_options << '--exclude=lib/tiny_mce/assets'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
@@ -19,8 +19,6 @@ begin
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
-
-
 
 desc 'Default: run unit tests.'
 task :default => :test
