@@ -47,7 +47,7 @@ Now you're all set! Start your server. The gem/plugin will automatically copy th
 
 There are several ways to configure the plugin to get the desirable effect you're looking for. The following ways can be combined to create complex tiny mce setups
 
-== Load Order
+=== Load Order
 
 A load order is present so that you have finer grained control over what shows up where. The load order currently looks like this. The later ones receive more power, that is, the overwrite similar settings in previous configurations.
 
@@ -60,7 +60,7 @@ Below, I'll cover how to use #2, and #3, which are the most likely ones you'll w
 
 === Global Options
 
-If you have a set of default options that is used throughout all editors in your application, you might want to make them global. You can do this by putting your settings into config/tiny_mce.yml. If the file exists, the tiny_mce plugin will parse the options in it first. The file looks something like (YAML format):
+If you have a set of default options that is used throughout all editors in your application, you might want to make them global. You can do this by putting your settings into config/tiny_mce.yml. If the file exists, the tiny_mce plugin will parse the options in it first.
 
 ==== Example
 
