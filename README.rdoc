@@ -2,7 +2,7 @@
 
 This plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications.
 
-TinyMCE is a WYSIWYG HTML editing component released under the GNU Public License 2.1 (GPL 2.1) by Moxiecode Systems (http://tinymce.moxiecode.com/).
+TinyMCE is a WYSIWYG HTML editing component released under the GNU Lesser General Public License 2.1 (LGPL 2.1) by Moxiecode Systems (http://tinymce.moxiecode.com/).
 
 
 == Installation
@@ -11,27 +11,28 @@ Installing TinyMCE for Rails takes no more than a few minutes to install.
 
 === Step 1
 
-Open a console, and in the root of you Rails application, install the plugin by running one of the following (depending on the method you use to import plugins):
+The recommended installation method for getting tiny_mce working in your application is to use the gem version. To do so, open the console and run:
+
+  [sudo] gem install tiny_mce
+
+Then add this to config/environment.rb of your Rails application:
+
+  config.gem 'tiny_mce'
+
+Alternatively, you can install it as a plugin. To do so, open a console, and in the root of you Rails application, install the plugin by running *one* of the following (depending on the method you use to import plugins):
 
 * script/plugin install git://github.com/kete/tiny_mce.git
 * piston import git://github.com/kete/tiny_mce.git vendor/plugins/tiny_mce
 * git submodule add git://github.com/kete/tiny_mce.git vendor/plugins/tiny_mce
 * Download the latest files ( http://github.com/kete/tiny_mce/tarball/master ) and extract to vendor/plugins/tiny_mce
 
-Alternatively, you can use the gem version:
-
-* sudo gem install kete-tiny_mce -s http://gems.github.com
-* Add this to config/environment.rb of your Rails application:
-
-  config.gem 'kete-tiny_mce', :lib => 'tiny_mce', :source => 'http://gems.github.com'
-
 === Step 2
 
-Add the following to the controller of the page you want to add TinyMCE to.
+Add the following to the top of the controller of the page you want to add TinyMCE to.
 
   uses_tiny_mce
 
-Then append the following to the text area you want to transform into a TinyMCE editor. You can change the name by editing the 'editor_selector' param in the controller code options.
+Then append the following to the text area you want to transform into a TinyMCE editor. You can change the name of the class you want to use by editing the 'editor_selector' param in the controller code options.
 
   :class => "mceEditor"
 
@@ -39,13 +40,34 @@ Lastly, add the following line(s) to the <head> element of your application view
 
   <%= include_tiny_mce_if_needed %>
 
-
 Now you're all set! Start your server. The gem/plugin will automatically copy the sources to the public javascripts directory when the server is started.
 
 
 == Configuration
 
 There are several ways to configure the plugin to get the desirable effect you're looking for. The following ways can be combined to create complex tiny mce setups
+
+== Load Order
+
+A load order is present so that you have finer grained control over what shows up where. The load order currently looks like this. The later ones receive more power, that is, the overwrite similar settings in previous configurations.
+
+1. The default tiny_mce plugin settings. Sets it to work on textareas with class of mceEditor, with the english advanced theme.
+2. config/tiny_mce.yml if present. You set your own options here, used across all editors on the site.
+3. uses_tiny_mce declaration. You set you own options here, used across all editors in the controller.
+4. include_tiny_mce_if_needed declaration. You set your own options here, used across all editors contained within that layout.
+
+Below, I'll cover how to use #2, and #3, which are the most likely ones you'll want to use.
+
+=== Global Options
+
+If you have a set of default options that is used throughout all editors in your application, you might want to make them global. You can do this by putting your settings into config/tiny_mce.yml. If the file exists, the tiny_mce plugin will parse the options in it first. The file looks something like (YAML format):
+
+==== Example
+
+  theme: advanced
+  plugins:
+  - table
+  - fullscreen
 
 === TinyMCE options
 
@@ -114,7 +136,7 @@ TinyMCE has a range of convenience methods for loading TinyMCE. Besides the uses
 
 == Spellchecking
 
-See SPELLCHECKING_PLUGIN.rdoc
+See SPELLCHECKING_PLUGIN.rdoc . Note: Spell checking is not tested o regularly maintained. Use with caution.
 
 http://github.com/kete/tiny_mce/tree/master/SPELLCHECKING_PLUGIN.rdoc
 
