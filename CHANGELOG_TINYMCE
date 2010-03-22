@@ -1,3 +1,74 @@
+Version 3.3.1 (2010-03-18)
+	Added new live resize feature, the editor contents is now visible while resizing.
+	Fixed bug where some valid_element patterns would produce an unknown property error.
+	Fixed bug where it wasn't possible to toggle off blockquotes.
+	Fixed bug where an undo level wasn't produced when applying formatting using the styles dropdown.
+	Fixed bug where IE 6/7 wouldn't perform caret formatting due to a focus/event bug in IE.
+	Fixed bug where undo/redo wasn't restoring the previous selection correctly.
+	Fixed bug where the caret would become invisible if you resized the editor in latest Gecko.
+	Fixed bug where the class attribute wasn't completely removed in IE 6/7 when the removeClass function was used.
+	Fixed so the matchNode method of the Formatter class returns the matched format rule.
+	Fixed so it's possible to apply formatting to both blocks and as inline elements.
+Version 3.3 (2010-03-10)
+	Fixed bug where backspace on a table on IE would produce an empty tbody and some JS exceptions.
+	Fixed bug where some redundant children wasn't removed properly when applying inline styles to them.
+	Fixed bug where Chrome would produce incorect dialog sizes if the inlinepopups plugin wasn't used.
+	Fixed bug where spans with different classes would get merged if they where siblings to each other.
+	Fixed bug where IE 8 would crash if you used the spellchecker.
+	Fixed bug where Input Method for non western languages didn't work correctly.
+	Fixed bug where the UI would render incorrectly in FF 3.6 on Mac due to a bug n their rendering engine.
+	Fixed bug where WebKit wouldn't scroll down correctly if Shift+Enter was used. Patch contributed by Thomas Andersen.
+Version 3.3rc1 (2010-02-23)
+	Fixed bug with new legacyoutput plugin not working correctly on it's own.
+	Fixed bug some performance issues with removing text formats.
+	Fixed bug where TinyMCE specific attributes wasn't removed properly by remove format.
+	Fixed bug where it wasn't possible to align images within inline elements.
+	Fixed bug where Ctrl+Delete/Backspace would produce an invalid argument exception on IE.
+	Fixed bug where the search/replace logic could produce an infinite loop on IE for reverse searches.
+	Fixed bug where cloning formats in cells didn't work properly on IE.
+	Fixed bug where IE6 would produce a horizontal scroll bar.
+	Fixed so remove jQuery method removes the TinyMCE instance as well as the specified textarea.
+	Fixed so selected rows and cells gets updated using the row/cell properties dialogs.
+Version 3.3b2 (2010-02-04)
+	Fixed bug where sometimes img elements would be removed by split method in DOMUtils.
+	Fixed bug where merging of span elements could occur on bookmark nodes.
+	Fixed bug where classes wasn't properly removed when removeformat was used on IE 6.
+	Fixed bug where multiple calls to an tinyMCE.init with mode set to exact could produce the same unique ID.
+	Fixed bug with the IE selection implementation when it was feeded an document range.
+	Fixed bug where block elements formatting wasn't properly removed by removeformat on all browsers.
+	Fixed bug where selection location was lost if you performed a manual cleanup.
+	Fixed bug where removeformat wouldn't remove span elements within styled block elements.
+	Fixed bug where an error would be thrown if you clicked on the separator lines in menus.
+	Fixed bug with the jQuery plugin adding always adding a querystring value to other resources.
+	Fixed bug where IE would produce an error message if you had an empty editor instance.
+	Fixed bug where Shift+Enter didn't produce br elements on WebKit browsers.
+	Fixed bug where a temporary marker element wasn't removed by the paste plugin.
+	Fixed bug where inserting a table would produce two undo levels instead of one.
+Version 3.3b1 (2010-01-25)
+	Added new text formatting engine. Fixes a lot of browser quirks and adds new possibilities.
+	Added new advlist plugin that enables you to set the formats of list elements.
+	Added new paste plugin logic that enables you to retain style information from Office.
+	Added new autosave plugin logic that automatically saves contents in local storage.
+	Added new valid_styles option. Adds the possibility to restrict styles and their order.
+	Added new theme_advanced_runtime_fontsize option to display the runtime font size in font size select box.
+	Added new jquery plugin version that handles the gzip compressor amongst other things. Contributed by Speednet.
+	Added new $ function to tinymce namespace and editor instances for the jQuery build.
+	Added the possibility to get editors by index as well as name in the tinyMCE.editors collection.
+	Fixed so the contents inside the editor renders in standards mode by default.
+	Fixed bug where it wasn't possible to move the caret on short documents running in standards mode on IE.
+	Fixed bug where the decode method of the DOMUtils class could end up in an endless loop.
+	Fixed bug where it was possible to bypass the paste cleanup on non IE browsers if you clicked while pasting.
+	Fixed bug where some attributes wasn't serialized correctly on IE if wildcard attribute patters where used.
+	Fixed bug where entity decoding was performed on strings that didn't have any valid entities in them.
+	Fixed bugs with the insertNode method of the IE DOMRange implementation. Patch contributed by Scott McNaught.
+	Rewrote the getBookmark/moveToBookmark selection logic to boost performance on larger documents.
+	Rewrote the table plugin to include new cell selection logic and fixed various bugs and issues.
+	Merged the tinyMCE, tinymce and tinymce.EditorManager into the same instance makes more sense.
+	Removed browser setting since the browser support for TinyMCE is not far better than it was when that setting was introduced.
+	Changed the mce_ attribute prefix to the more standard _mce_ prefix. This is similar to browser vendors prefixes.
+	Optimized performance with named entities on Gecko. Regexp replace was executing very slowly probably due to a Gecko bug.
+	Optimized performance of the IE specific selection/range implementation.
+	Removed the safari plugin since we now replaced all text formatting logic to custom code.
 Version 3.2.7 (2009-09-22)
 	Fixed bug where uppercase paragraphs could still produce an invalid DOM tree on IE.
 	Fixed bug where split command didn't work on WebKit since the node serializer needs a real document to work with.
@@ -37,7 +108,7 @@ Version 3.2.6 (2009-08-19)
 	Fixed bug where the autoresize plugin would break the fullscreen functionality.
 	Fixed bug where tables would be chopped up running on IE using invalid contents and pasting paragraphs into a cell.
 	Fixed bug where the each method of jQuery build didn't iterate styleSheets. We now use the TinyMCE API one instead.
-	Fixed bug where auto switching to paragraphs after headers some times failed in Gecko.	
+	Fixed bug where auto switching to paragraphs after headers some times failed in Gecko.
 	Fixed so all editor options gets passed to the Serializer class. Patch contributed by Jasper Mattsson.
 	Fixed so script/style blocks isn't wrapped in paragraphs as other inline elements.
 	Fixed so the XHR requests sends the X-Requested-With HTTP header.
@@ -122,7 +193,7 @@ Version 3.2.2.1 (2009-03-19)
 	Added support for tel: URL prefixes. Even though this doesn't match any official RFC.
 	Fixed so the select method of the Selection class selects the first best suitable contents.
 	Fixed bug where the regexps for www. prefixes for link and advlink dialogs would match wwwX.
-	Fixed bug where the preview dialog would fail to open if the content_css wasn't defined. Patch contributed by David Bildström (ChronoZ).
+	Fixed bug where the preview dialog would fail to open if the content_css wasn't defined. Patch contributed by David BildstrË†m (ChronoZ).
 	Fixed bug where editors wasn't converted in application/xhtml+xml mode due to an issue with Sizzle.
 	Fixed bug where alignment would fail if multiple lines where selected.
 	Updated Sizzle engine to the latest version, this version fixes a few bugs that was reported.
@@ -171,7 +242,7 @@ Version 3.2.2 (2009-03-05)
 	Removed logic for compatibility with Safari 2.x, this browser is no longer supported since no one is using it.
 	Removed the auto domain relaxing feature. If loading scripts cross sub domains it's better to specify the document.domain by hand.
 Version 3.2.1.1 (2008-11-27)
-	Added new theme_advanced_default_background_color/theme_advanced_default_foreground_color options. Patch contributed by David Bildström (ChronoZ).
+	Added new theme_advanced_default_background_color/theme_advanced_default_foreground_color options. Patch contributed by David BildstrË†m (ChronoZ).
 	Fixed font style formatting compatibility issue with Adobe Air.
 	Fixed so legacy font elements get converted into spans even if cleanup_on_startup isn't enabled.
 	Fixed bug where pre elements could be incorrectly modified by an IE bug workaround. Patch contributed by hu vime.
@@ -382,7 +453,7 @@ Version 3.0.7 (2008-04-14)
 	Fixed bug where it was possible to add style information to the body element using the style plugin.
 	Fixed bug where Gecko would add an extra undo level some times due to the blur event.
 	Fixed bug where the underline icon would get active if the caret was inside a link element.
-	Fixed bug where merging th cells not working correctly. Patch contributed by André R.
+	Fixed bug where merging th cells not working correctly. Patch contributed by AndrÃˆ R.
 	Fixed bug where forecolorpicker and backcolorpicker buttons where rendered incorrectly when the o2k7 skin was used.
 	Fixed bug where comment couldn't contain -- since it's invalid markup. It will now at least not break on those invalid comments.
 	Fixed bug where apos wasn't handled correctly in IE. It will now convert apos to &#39; on IE since that browser doesn't support that entity.
@@ -533,8 +604,8 @@ Version 3.0.3 (2008-03-03)
 Version 3.0.2.1 (2008-02-26)
 	Fixed alert/confirm dialogs so they display correctly.
 Version 3.0.2 (2008-02-26)
-	Added new body_id option that enables you to specify the id of the body inside the editor iframe based on ideas by David Bildström (ChronoZ).
-	Added new body_class option that enables you to set the class for the body of the editor iframe based on ideas by David Bildström (ChronoZ).
+	Added new body_id option that enables you to specify the id of the body inside the editor iframe based on ideas by David BildstrË†m (ChronoZ).
+	Added new body_class option that enables you to set the class for the body of the editor iframe based on ideas by David BildstrË†m (ChronoZ).
 	Added new CSS class to the default content.css files mceForceColors that forces white background and black text can be used with the body_class option.
 	Added new type parameter to the Editor.getParam function to reduce redundant logic for parsing hash tables.
 	Added new isDone method to the ScriptLoaded class, this enables you to check if a script has been loaded or not.
@@ -834,7 +905,7 @@ Version 3.0b1 (2007-11-21)
 	Fixed bug where the fullscreen mode of the HTML view source box threw an error.
 	Fixed bug where the mceFocus command didn't work correctly.
 	Fixed bug where the selection could get lost in IE using inlinepopups.
-	Fixed so the body of the editor area has the mceContentBody class just like the 2.x branch. 
+	Fixed so the body of the editor area has the mceContentBody class just like the 2.x branch.
 	Fixed so the media icon gets active when a media element is selected.
 Version 3.0a3 (2007-11-13)
 	Added new experimental jQuery and Prototype framework adapters to the development package.

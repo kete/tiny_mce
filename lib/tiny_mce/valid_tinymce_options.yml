@@ -4,7 +4,6 @@
 #
 
 # General
-- accessibility_focus
 - accessibility_warnings
 - auto_focus
 - browsers
@@ -26,7 +25,6 @@
 - skin
 - skin_variant
 - strict_loading_mode
-- tab_focus
 - table_inline_editing
 - theme
 
@@ -76,6 +74,7 @@
 - remove_linebreaks
 - remove_redundant_brs
 - preformatted
+- style_formats
 - valid_child_elements
 - valid_elements
 - verify_css_classes
@@ -112,10 +111,6 @@
 # File lists
 - external_link_list_url
 - external_image_list_url
-
-# Tab specific
-- display_tab_class
-- hidden_tab_class
 
 # Triggers/Patches
 - add_form_submit_trigger
