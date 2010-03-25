@@ -9,7 +9,7 @@ module TinyMCE
       'mode' => 'textareas',
       'editor_selector' => 'mceEditor',
       'theme' => 'simple',
-      'language' => (defined?(I18n) ? I18n.locale : :en)
+      'language' => (defined?(I18n) ? I18n.locale[0,2] : :en)
     }
 
     def self.config_file_options
