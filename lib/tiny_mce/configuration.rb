@@ -5,24 +5,33 @@ module TinyMCE
     # Also loads which options are valid, and provides an plugins attribute to allow
     # more configuration options dynamicly
 
-    DEFAULT_OPTIONS = {
-      'mode' => 'textareas',
-      'editor_selector' => 'mceEditor',
-      'theme' => 'simple',
-      'language' => (defined?(I18n) ? I18n.locale[0,2] : :en)
-    }
+    # The default tiny_mce options. Tries it's best to determine the locale
+    # If the current locale doesn't have a lang in TinyMCE, default to en
+    def self.default_options
+      locale = I18n.locale[0,2] if defined?(I18n)
+      locale = :en unless locale && valid_langs.include?(locale)
+      { 'mode' => 'textareas', 'editor_selector' => 'mceEditor',
+        'theme' => 'simple',   'language' => locale }
+    end
 
+    # The YAML file might not exist, might be blank, might be invalid, or
+    # might be valid. Catch all cases and make sure we always return a Hash
     def self.config_file_options
       @@config_file_options ||= begin
         tiny_mce_yaml_filepath = File.join(RAILS_ROOT, 'config', 'tiny_mce.yml')
-        # The YAML file might not exist, might be blank, might be invalid, or
-        # might be valid. Catch all cases and make sure we always return a Hash
         (YAML::load(IO.read(tiny_mce_yaml_filepath)) rescue nil) || Hash.new
       end
     end
 
-    # Parse the options file and load it into an array
-    # (this method is called when tiny_mce is initialized - see init.rb)
+    # Parse the valid langs file and load it into an array
+    def self.valid_langs
+      @@valid_langs ||= begin
+        valid_langs_path = File.join(File.dirname(__FILE__), 'valid_tinymce_langs.yml')
+        File.open(valid_langs_path) { |f| YAML.load(f.read) }
+      end
+    end
+
+    # Parse the valid options file and load it into an array
     def self.valid_options
       @@valid_options ||= begin
         valid_options_path = File.join(File.dirname(__FILE__), 'valid_tinymce_options.yml')
@@ -34,8 +43,9 @@ module TinyMCE
 
     def initialize(options = {}, raw_options = nil)
       options = Hash.new unless options.is_a?(Hash)
-      @options = DEFAULT_OPTIONS.merge(self.class.config_file_options.stringify_keys).
-                                 merge(options.stringify_keys)
+      @options = self.class.default_options.
+                            merge(self.class.config_file_options.stringify_keys).
+                            merge(options.stringify_keys)
       @raw_options = [raw_options]
     end
 
