@@ -8,7 +8,7 @@ module TinyMCE
     # The default tiny_mce options. Tries it's best to determine the locale
     # If the current locale doesn't have a lang in TinyMCE, default to en
     def self.default_options
-      locale = I18n.locale[0,2] if defined?(I18n)
+      locale = I18n.locale.to_s[0,2] if defined?(I18n)
       locale = :en unless locale && valid_langs.include?(locale)
       { 'mode' => 'textareas', 'editor_selector' => 'mceEditor',
         'theme' => 'simple',   'language' => locale }
