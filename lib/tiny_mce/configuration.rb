@@ -18,7 +18,7 @@ module TinyMCE
     # might be valid. Catch all cases and make sure we always return a Hash
     def self.config_file_options
       @@config_file_options ||= begin
-        tiny_mce_yaml_filepath = File.join(RAILS_ROOT, 'config', 'tiny_mce.yml')
+        tiny_mce_yaml_filepath = File.join(Rails.root, 'config', 'tiny_mce.yml')
         (YAML::load(IO.read(tiny_mce_yaml_filepath)) rescue nil) || Hash.new
       end
     end
