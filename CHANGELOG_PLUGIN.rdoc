@@ -4,7 +4,7 @@
 * Fixed issue when I18n.locale was a two part locale, e.g. en-US (Fred Blasdel)
 * Fixed issue when I18n.locale was a symbol (Fred Blasdel)
 * Fixed issue that caused that locale to always stay the same
-* Fixed deprecation warnings when used with Rails 3
+* Fixed deprecation warnings when used with Rails 3 (Akhil Bansal)
 
 **Important Note:** As of this release, we are no longer checking support for Rails
 versions prior to 2.3.5. Please feel free to submit a ticket if you notice an
