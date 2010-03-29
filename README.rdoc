@@ -1,6 +1,6 @@
 = TinyMCE for Rails
 
-This plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications.
+This plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications of version 2.3.5 and onward.
 
 TinyMCE is a WYSIWYG HTML editing component released under the GNU Lesser General Public License 2.1 (LGPL 2.1) by Moxiecode Systems (http://tinymce.moxiecode.com/).
 
