@@ -6,6 +6,15 @@ require 'tiny_mce/spell_checker'
 require 'tiny_mce/helpers'
 
 module TinyMCE
+  def self.initialize
+    return if @intialized
+    raise "ActionController is not available yet." unless defined?(ActionController)
+    ActionController::Base.send(:include, TinyMCE::Base)
+    ActionController::Base.send(:helper, TinyMCE::Helpers)
+    TinyMCE.install_or_update_tinymce
+    @intialized = true
+  end
+
   def self.install_or_update_tinymce
     require 'fileutils'
     orig = File.join(File.dirname(__FILE__), 'tiny_mce', 'assets', 'tiny_mce')
@@ -65,9 +74,10 @@ module TinyMCE
   end
 end
 
-# Include the TinyMCE methods and TinyMCE Helpers into ActionController::Base
-if defined?(Rails) && defined?(ActionController)
-  ActionController::Base.send(:include, TinyMCE::Base)
-  ActionController::Base.send(:helper, TinyMCE::Helpers)
-  TinyMCE.install_or_update_tinymce
+# Finally, lets include the TinyMCE base and helpers where
+# they need to go (support for Rails 2 and Rails 3)
+if defined?(Rails::Railtie)
+  require 'tiny_mce/railtie'
+else
+  TinyMCE.initialize
 end
