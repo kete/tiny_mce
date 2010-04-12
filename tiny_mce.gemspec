@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "tiny_mce"
-  s.version = "0.1.3.pre"
+  s.version = "0.1.3"
   s.authors = ["Blake Watters", "Kieran Pilkington", "Sergio Cambra", "Alexander Semyonov", "Marian Theisen"]
   s.email = "kieran@katipo.co.nz"
   s.homepage = "http://github.com/kete/tiny_mce"
