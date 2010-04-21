@@ -67,6 +67,7 @@
 - force_br_newlines
 - force_hex_style_colors
 - forced_root_block
+- formats
 - indentation
 - inline_styles
 - invalid_elements
