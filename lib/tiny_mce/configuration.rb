@@ -19,7 +19,12 @@ module TinyMCE
     def self.config_file_options
       @@config_file_options ||= begin
         tiny_mce_yaml_filepath = File.join(Rails.root.to_s, 'config', 'tiny_mce.yml')
-        (YAML::load(IO.read(tiny_mce_yaml_filepath)) rescue nil) || Hash.new
+        fixture_content = IO.read(tiny_mce_yaml_filepath) rescue nil
+        #Fixtures can be dynamic
+        if defined?(ERB)
+          fixture_content = ERB.new(fixture_content).result rescue nil
+        end
+        (YAML::load(fixture_content) rescue nil) || Hash.new
       end
     end
 
