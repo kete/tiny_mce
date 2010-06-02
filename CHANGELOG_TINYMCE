@@ -1,3 +1,52 @@
+Version 3.3.6 (2010-05-20)
+	Fixed bug where a editor.focus call could produce errors on IE in very specific scenarios.
+	Fixed bug where Gecko would produce an error if you unformatted text inside an empty element.
+	Fixed bug where IE would produce an error if the caret was placed before a table and you used the align buttons.
+	Fixed bug where the font size drop down didn't display the a preview correctly.
+	Fixed bug where the paste plugin wouldn't include all contents some times on WebKit browsers.
+	Fixed bug where the plain text mode toggle wouldn't work properly on WebKit.
+	Fixed bug where the editors statusbar would become invisible when you resized the window in fullscreen mode.
+Version 3.3.5.1 (2010-05-07)
+	Fixed a critical bug with the fullscreen plugin. Produced error messages when the state was toggled on/off.
+Version 3.3.5 (2010-05-06)
+	Added new merge_with_parents option to formats, enables the control of removal of elements with similar parents.
+	Fixed so the default behavior for applying classes isn't a toggle state but the old behavior from before the 3.3 release.
+	Fixed bug where selecting contents using double click on Gecko would produce errors when using removing format.
+	Fixed bug where the IE DOM could get messed up when non valid contents was pasted into the editor.
+	Fixed bug where merging selected table cells using the context menu didn't work as expected.
+	Fixed bug where some nestled formatting would be applied incorrectly.
+	Fixed bug with enter in list items when using the force_br_newlines mode on WebKit patch contributed by Ryan Koopmans.
+	Fixed bug where undo/redo could produce js errors on some specific operations.
+	Fixed bug where the theme_advanced_font_sizes didn't work as before 3.3 when complex settings where used.
+	Fixed bug where the table plugin would copy cell/row id attributes when making new rows/cells.
+Version 3.3.4 (2010-04-27)
+	Fixed bug where fullscreen plugin would add two editor instances to EditorManager collection.
+	Fixed bug where it was difficult to enter text on non western languages such as Japanese on IE.
+	Fixed bug where removing contents from nodes could result in an exception when using undo/redo.
+	Fixed bug with selection of images inside layers or other resizable containers on IE.
+	Fixed so editors isn't initialized on iPhone/iPad devices since they don't have caret support.
+Version 3.3.3 (2010-04-19)
+	Added new script_loaded callback function setting for the jQuery plugin.
+	Added various fixes and new rpc methods for the spellchecker plugin. Patch contributed by Michael Peters.
+	Removed some unnecessary inline style information from some of the dialogs.
+	Fixed some issues with the chaining for the TinyMCE jQuery plugin.
+	Fixed so any extra arguments passed to patched jQuery functions gets passed through. Patch contributed by Lee Henson.
+	Fixed so spellchecking/contextmenu can be toggled on/off if the browser has native spellchecker support.
+	Fixed bug where some texts in the new paste plugin wasn't placed in language pack.
+	Fixed bug where IE would produce an incorrect information message when cutting.
+	Fixed bug where removing items using the xhtmlxtras plugin wouldn't work correctly.
+	Fixed bug where setting table background images would add extra quotes on Gecko.
+	Fixed bug where shortcut for bold/italic/underline wouldn't work properly on WebKit.
+	Fixed bug where IE would produce an error message if only contents was an image tag and bold was used.
+	Fixed bug where the caret would move if alignment was applied to empty block elements.
+	Fixed bug where some shortcut key commands wouldn't apply formatting correctly.
+Version 3.3.2 (2010-03-25)
+	Fixed bug where it was possible to scale the editor iframe smaller than the editor UI.
+	Fixed bug where some of the resizing option didn't work with the new live resize.
+	Fixed bug where the format listbox didn't show nestled formats correctly.
+	Fixed bug where the native listboxes didn't work correctly.
+	Fixed bug where font size selection in using the legacyoutput plugin would produce errors.
+	Fixed so block and blockquote formats remove their matching element regardless of it's attributes.
 Version 3.3.1 (2010-03-18)
 	Added new live resize feature, the editor contents is now visible while resizing.
 	Fixed bug where some valid_element patterns would produce an unknown property error.
@@ -193,7 +242,7 @@ Version 3.2.2.1 (2009-03-19)
 	Added support for tel: URL prefixes. Even though this doesn't match any official RFC.
 	Fixed so the select method of the Selection class selects the first best suitable contents.
 	Fixed bug where the regexps for www. prefixes for link and advlink dialogs would match wwwX.
-	Fixed bug where the preview dialog would fail to open if the content_css wasn't defined. Patch contributed by David Bildstrˆm (ChronoZ).
+	Fixed bug where the preview dialog would fail to open if the content_css wasn't defined. Patch contributed by David Bildström (ChronoZ).
 	Fixed bug where editors wasn't converted in application/xhtml+xml mode due to an issue with Sizzle.
 	Fixed bug where alignment would fail if multiple lines where selected.
 	Updated Sizzle engine to the latest version, this version fixes a few bugs that was reported.
@@ -242,7 +291,7 @@ Version 3.2.2 (2009-03-05)
 	Removed logic for compatibility with Safari 2.x, this browser is no longer supported since no one is using it.
 	Removed the auto domain relaxing feature. If loading scripts cross sub domains it's better to specify the document.domain by hand.
 Version 3.2.1.1 (2008-11-27)
-	Added new theme_advanced_default_background_color/theme_advanced_default_foreground_color options. Patch contributed by David Bildstrˆm (ChronoZ).
+	Added new theme_advanced_default_background_color/theme_advanced_default_foreground_color options. Patch contributed by David Bildström (ChronoZ).
 	Fixed font style formatting compatibility issue with Adobe Air.
 	Fixed so legacy font elements get converted into spans even if cleanup_on_startup isn't enabled.
 	Fixed bug where pre elements could be incorrectly modified by an IE bug workaround. Patch contributed by hu vime.
@@ -453,7 +502,7 @@ Version 3.0.7 (2008-04-14)
 	Fixed bug where it was possible to add style information to the body element using the style plugin.
 	Fixed bug where Gecko would add an extra undo level some times due to the blur event.
 	Fixed bug where the underline icon would get active if the caret was inside a link element.
-	Fixed bug where merging th cells not working correctly. Patch contributed by AndrÈ R.
+	Fixed bug where merging th cells not working correctly. Patch contributed by André R.
 	Fixed bug where forecolorpicker and backcolorpicker buttons where rendered incorrectly when the o2k7 skin was used.
 	Fixed bug where comment couldn't contain -- since it's invalid markup. It will now at least not break on those invalid comments.
 	Fixed bug where apos wasn't handled correctly in IE. It will now convert apos to &#39; on IE since that browser doesn't support that entity.
@@ -604,8 +653,8 @@ Version 3.0.3 (2008-03-03)
 Version 3.0.2.1 (2008-02-26)
 	Fixed alert/confirm dialogs so they display correctly.
 Version 3.0.2 (2008-02-26)
-	Added new body_id option that enables you to specify the id of the body inside the editor iframe based on ideas by David Bildstrˆm (ChronoZ).
-	Added new body_class option that enables you to set the class for the body of the editor iframe based on ideas by David Bildstrˆm (ChronoZ).
+	Added new body_id option that enables you to specify the id of the body inside the editor iframe based on ideas by David Bildström (ChronoZ).
+	Added new body_class option that enables you to set the class for the body of the editor iframe based on ideas by David Bildström (ChronoZ).
 	Added new CSS class to the default content.css files mceForceColors that forces white background and black text can be used with the body_class option.
 	Added new type parameter to the Editor.getParam function to reduce redundant logic for parsing hash tables.
 	Added new isDone method to the ScriptLoaded class, this enables you to check if a script has been loaded or not.

@@ -112,6 +112,8 @@
 # File lists
 - external_link_list_url
 - external_image_list_url
+- external_media_list_url
+- external_template_list_url
 
 # Triggers/Patches
 - add_form_submit_trigger
