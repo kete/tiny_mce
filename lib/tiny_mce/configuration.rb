@@ -16,15 +16,15 @@ module TinyMCE
 
     # The YAML file might not exist, might be blank, might be invalid, or
     # might be valid. Catch all cases and make sure we always return a Hash
+    # Run it through an ERB parser so that environment specific code can be
+    # put in the file
     def self.config_file_options
       @@config_file_options ||= begin
         tiny_mce_yaml_filepath = File.join(Rails.root.to_s, 'config', 'tiny_mce.yml')
-        fixture_content = IO.read(tiny_mce_yaml_filepath) rescue nil
-        #Fixtures can be dynamic
-        if defined?(ERB)
-          fixture_content = ERB.new(fixture_content).result rescue nil
-        end
-        (YAML::load(fixture_content) rescue nil) || Hash.new
+        return Hash.new unless File.exist?(tiny_mce_yaml_filepath)
+        tiny_mce_config = IO.read(tiny_mce_yaml_filepath)
+        tiny_mce_config = ERB.new(tiny_mce_config).result if defined?(ERB)
+        (YAML::load(tiny_mce_config) rescue nil) || Hash.new
       end
     end
 
