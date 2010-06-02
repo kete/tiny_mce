@@ -1,6 +1,6 @@
 = Plugin Changelog
 
-== Version 0.1.4 (unreleased)
+== Version 0.1.4
 * Upgraded TinyMCE from 3.3.1 to 3.3.6 (see CHANGELOG_TINYMCE)
 * Added missing 'formats' tinymce option (Roelof Reitsma)
 

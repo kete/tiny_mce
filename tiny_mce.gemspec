@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "tiny_mce"
-  s.version = "0.1.3"
+  s.version = "0.1.4"
   s.authors = ["Blake Watters", "Kieran Pilkington", "Sergio Cambra", "Alexander Semyonov", "Marian Theisen"]
   s.email = "kieran@katipo.co.nz"
   s.homepage = "http://github.com/kete/tiny_mce"
@@ -13,6 +13,4 @@ Gem::Specification.new do |s|
 
   s.extra_rdoc_files = Dir["*.rdoc"]
   s.rdoc_options = ["--charset=UTF-8", "--exclude=lib/tiny_mce/assets"]
-
-  s.required_rubygems_version = ">= 1.3.4"
 end
