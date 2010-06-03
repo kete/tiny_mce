@@ -155,13 +155,13 @@ TinyMCE::Plugin provides a default self.install method, which copies files from 
 
 You can overwrite the install method to something more complex, like remove plugins, or swap plugins. Example:
 
-    class SwapPasteForPastePlus < TinyMCE::Plugin
-      def self.install
-        require 'fileutils'
-        FileUtils.rm(Rails.public.join('javascripts/tiny_mce/plugins/paste'))
-        FileUtils.cp_r(self.assets_path, Rails.public.join('javascripts/tiny_mce'))
-      end
+  class SwapPasteForPastePlus < TinyMCE::Plugin
+    def self.install
+      require 'fileutils'
+      FileUtils.rm(Rails.public.join('javascripts/tiny_mce/plugins/paste'))
+      FileUtils.cp_r(self.assets_path, Rails.public.join('javascripts/tiny_mce'))
     end
+  end
 
 
 == Testing
