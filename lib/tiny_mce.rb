@@ -72,6 +72,17 @@ module TinyMCE
   module Base
     include TinyMCE::SpellChecker
   end
+
+  # Plugin Support
+  class Plugin
+    cattr_accessor :assets_path
+    def self.install
+      return unless File.directory?(self.assets_path)
+      require 'fileutils'
+      puts "Installing #{self.name} plugin assets from #{self.assets_path}"
+      FileUtils.cp_r "#{self.assets_path}/.", File.join(Rails.root.to_s, 'public', 'javascripts', 'tiny_mce')
+    end
+  end
 end
 
 # Finally, lets include the TinyMCE base and helpers where
