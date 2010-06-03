@@ -1,6 +1,6 @@
 = TinyMCE for Rails
 
-This plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications of version 2.3.5 and onward.
+This gem/plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications of version 2.3.5 and onward.
 
 TinyMCE is a WYSIWYG HTML editing component released under the GNU Lesser General Public License 2.1 (LGPL 2.1) by Moxiecode Systems (http://tinymce.moxiecode.com/).
 
@@ -139,6 +139,29 @@ TinyMCE has a range of convenience methods for loading TinyMCE. Besides the uses
 See SPELLCHECKING_PLUGIN.rdoc . Note: Spell checking is not tested o regularly maintained. Use with caution.
 
 http://github.com/kete/tiny_mce/tree/master/SPELLCHECKING_PLUGIN.rdoc
+
+
+== Plugins
+
+Plugins allow you to insert or change files of the TinyMCE editor, such as installing TinyMCE Editor plugins.
+
+There is an example plugin at http://github.com/kete/tiny_mce_plugin_example
+
+A tiny_mce plugin is very simple. http://github.com/kete/tiny_mce_plugin_example/blob/master/lib/tiny_mce-paste.rb
+
+It requires tiny_mce, installs the TinyMCE sources if they aren't already, creates a subclass of TinyMCE::Plugin, and calls install on it.
+
+TinyMCE::Plugin provides a default self.install method, which copies files from self.assets_path to the tiny_mce directory under public/javascripts
+
+You can overwrite the install method to something more complex, like remove plugins, or swap plugins. Example:
+
+    class SwapPasteForPastePlus < TinyMCE::Plugin
+      def self.install
+        require 'fileutils'
+        FileUtils.rm(Rails.public.join('javascripts/tiny_mce/plugins/paste'))
+        FileUtils.cp_r(self.assets_path, Rails.public.join('javascripts/tiny_mce'))
+      end
+    end
 
 
 == Testing
