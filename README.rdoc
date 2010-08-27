@@ -150,7 +150,9 @@ Will generate 4 copy "en" files:
 - tiny_mce/lib/tiny_mce/assets/tiny_mce/themes/advanced/langs/lang_dlg.js
 - tiny_mce/lib/tiny_mce/assets/tiny_mce/themes/simple/langs/lang_dlg.js
 
-Now you can make your won translation to the basic tinyMCE. Remember that if you use some tinyMCE plugin you have to make it manual.
+Now you can make your own translation to the basic tinyMCE by editing these files (don't forget this should be done in a fork of the source code and you may want to rebuild it if you are using TinyMCE as a gem). Remember that if you use some tinyMCE plugins you will have to make translation files for those plugins manually.  This commit gives a good example of the other files involved:
+
+http://github.com/kete/tiny_mce/commit/a55d148588517e37d1b81627817d0fb3341dd4ce
 
 
 == Plugins
