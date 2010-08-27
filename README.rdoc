@@ -154,6 +154,15 @@ Now you can make your own translation to the basic tinyMCE by editing these file
 
 http://github.com/kete/tiny_mce/commit/a55d148588517e37d1b81627817d0fb3341dd4ce
 
+If you want to choose a language globally, update config/tiny_mce.yml with a language entry:
+
+language: pt-BR
+
+You may also change this in the init process for TinyMCE (good for multilanguage sites) use the :options hash accordingly in your code.
+
+You may wish to contribute your language translation back to the TinyMCE project. Details can be found here:
+
+http://wiki.moxiecode.com/index.php/TinyMCE:Creating_Language
 
 == Plugins
 
