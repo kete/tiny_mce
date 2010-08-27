@@ -140,6 +140,17 @@ See SPELLCHECKING_PLUGIN.rdoc . Note: Spell checking is not tested o regularly m
 
 http://github.com/kete/tiny_mce/tree/master/SPELLCHECKING_PLUGIN.rdoc
 
+== Generating new lang
+If you have a new language to add to this plugin you can generate it:
+  rake tiny_mce:new:lang LANG=lang
+  
+Will generate 4 copy "en" files:
+- tiny_mce/lib/tiny_mce/assets/tiny_mce/langs/lang.js
+- tiny_mce/lib/tiny_mce/assets/tiny_mce/themes/advanced/langs/lang.js
+- tiny_mce/lib/tiny_mce/assets/tiny_mce/themes/advanced/langs/lang_dlg.js
+- tiny_mce/lib/tiny_mce/assets/tiny_mce/themes/simple/langs/lang-BL_dlg.js
+
+Now you can translate the basic tinyMCE. Remember that if you use some plugin you have to make it manual.
 
 == Plugins
 
