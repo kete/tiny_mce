@@ -4,6 +4,7 @@
 # Should only include a list of completed translations (not incomplete ones which most are :-( )
 #
 
+--- 
 - ar
 - ca
 - ch
@@ -26,6 +27,7 @@
 - nl
 - pl
 - pt
+- pt-BR
 - ru
 - sk
 - sv
