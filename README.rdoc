@@ -148,7 +148,7 @@ Will generate 4 copy "en" files:
 - tiny_mce/lib/tiny_mce/assets/tiny_mce/langs/lang.js
 - tiny_mce/lib/tiny_mce/assets/tiny_mce/themes/advanced/langs/lang.js
 - tiny_mce/lib/tiny_mce/assets/tiny_mce/themes/advanced/langs/lang_dlg.js
-- tiny_mce/lib/tiny_mce/assets/tiny_mce/themes/simple/langs/lang-BL_dlg.js
+- tiny_mce/lib/tiny_mce/assets/tiny_mce/themes/simple/langs/lang_dlg.js
 
 Now you can make your won translation to the basic tinyMCE. Remember that if you use some tinyMCE plugin you have to make it manual.
 
