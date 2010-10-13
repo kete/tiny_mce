@@ -19,6 +19,10 @@ Then add this to config/environment.rb of your Rails application:
 
   config.gem 'tiny_mce'
 
+For Rails 3, you will need to add the following line to file Gemfile:
+
+  gem 'tiny_mce'
+
 Alternatively, you can install it as a plugin. To do so, open a console, and in the root of you Rails application, install the plugin by running *one* of the following (depending on the method you use to import plugins):
 
 * script/plugin install git://github.com/kete/tiny_mce.git
@@ -28,7 +32,7 @@ Alternatively, you can install it as a plugin. To do so, open a console, and in 
 
 === Step 2
 
-Add the following to the top of the controller of the page you want to add TinyMCE to.
+For the page you want to add TinyMCE, go to the view's controller and add:
 
   uses_tiny_mce
 
@@ -36,7 +40,7 @@ Then append the following to the text area you want to transform into a TinyMCE 
 
   :class => "mceEditor"
 
-Lastly, add the following line(s) to the <head> element of your application view:
+Lastly, add the following line(s) under the <head> element of your application view. Note you may need to add this to the view's layout.
 
   <%= include_tiny_mce_if_needed %>
 
