@@ -15,9 +15,19 @@ module TinyMCE
       @tiny_mce_configurations ||= [Configuration.new]
       @tiny_mce_configurations.each do |configuration|
         configuration.add_options(options, raw_options)
-        tinymce_js += "tinyMCE.init("
-        tinymce_js += configuration.to_json
-        tinymce_js += ");"
+        
+        if ActionView::Helpers::AssetTagHelper.javascript_expansions[:defaults].detect{|x| x == "jquery"}
+          #TODO: Use dynamic editor_selector from configuration
+          tinymce_js += "$(function(){ $('textarea.mceEditor').tinymce("
+          tinymce_js += configuration.to_json
+          tinymce_js += ");"
+          tinymce_js += "});"
+        else
+          tinymce_js += "tinyMCE.init("
+          tinymce_js += configuration.to_json
+          tinymce_js += ");"
+        end
+        
       end
 
       tinymce_js
@@ -34,8 +44,13 @@ module TinyMCE
     end
 
     # Form a JS include tag for the TinyMCE JS src for inclusion in the <head>
+    # Attempt to use the jQuery plugin if the application appears to be using jquery
     def include_tiny_mce_js
-      javascript_include_tag (Rails.env.to_s == 'development' ? "tiny_mce/tiny_mce_src" : "tiny_mce/tiny_mce")
+      if ActionView::Helpers::AssetTagHelper.javascript_expansions[:defaults].detect{|x| x == "jquery"}
+        javascript_include_tag "tiny_mce/jquery.tinymce"
+      else
+        javascript_include_tag (Rails.env.to_s == 'development' ? "tiny_mce/tiny_mce_src" : "tiny_mce/tiny_mce")
+      end
     end
     # Form a JS include tag for the TinyMCE JS src for inclusion in the <head>
     # (only if tiny mce is actually being used)

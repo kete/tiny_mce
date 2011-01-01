@@ -1,5 +1,10 @@
 = Plugin Changelog
 
+== Version 0.1.6
+* Upgraded TinyMCE from 3.3.6 to 3.3.9.3 (Josh Proehl)
+* Added jQuery Plugin (Josh Proehl)
+* Removed languages with incomplete translations. (Josh Proehl)
+
 == Version 0.1.5 (unreleased)
 * Added plugin support (see README and TinyMCE::Plugin class) (Kieran Pilkington)
 * Added ERB support to fixtures (Daniel Tsadok)

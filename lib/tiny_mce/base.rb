@@ -12,7 +12,15 @@ module TinyMCE
       # can send to a before_filter (only, except etc)
       def uses_tiny_mce(options = {})
         configuration = TinyMCE::Configuration.new(options.delete(:options), options.delete(:raw_options))
-
+        
+        
+        # Include an option to load the main tiny_mce.js file if the app appears
+        # to be using jquery. (And use uncompressed script in development)
+        if ActionView::Helpers::AssetTagHelper.javascript_expansions[:defaults].detect{|x| x == "jquery"}
+          configuration.reverse_add_options( {:script_url => (Rails.env.to_s == 'development' ? "/javascripts/tiny_mce/tiny_mce_src.js" : "/javascripts/tiny_mce/tiny_mce.js")} )
+        end
+        
+        
         # If the tiny_mce plugins includes the spellchecker, then form a spellchecking path,
         # add it to the tiny_mce_options, and include the SpellChecking module
         if configuration.plugins.include?('spellchecker')

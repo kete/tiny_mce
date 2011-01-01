@@ -27,6 +27,7 @@
 - strict_loading_mode
 - table_inline_editing
 - theme
+- script_url
 
 # Callbacks
 - cleanup_callback

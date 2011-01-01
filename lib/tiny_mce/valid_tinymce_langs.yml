@@ -1,37 +1,11 @@
 #
 # For more information about available languages, see
-# http://tinymce.moxiecode.com/download_i18n.php
+# http://tinymce.moxiecode.com/i18n/index.php?ctrl=lang&
 # Should only include a list of completed translations (not incomplete ones which most are :-( )
 #
 
 --- 
-- ar
-- ca
-- ch
-- cs
-- cy
-- de
 - en
-- es
-- fr
-- he
-- hi
-- hr
-- hu
-- it
-- ja
 - ka
-- kl
-- ko
-- lb
-- nl
-- pl
-- pt
-- pt-BR
 - ru
-- sk
 - sv
-- ta
-- uk
-- vi
-- zh
