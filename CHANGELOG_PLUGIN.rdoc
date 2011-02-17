@@ -3,6 +3,7 @@
 == Version 0.1.5 (unreleased)
 * Added plugin support (see README and TinyMCE::Plugin class) (Kieran Pilkington)
 * Added ERB support to fixtures (Daniel Tsadok)
+* Upgraded TinyMCE from 3.3.6 to 3.3.9.3 (Roelof Reitsma - see CHANGELOG_TINYMCE)
 
 == Version 0.1.4 (2010-06-03)
 * Upgraded TinyMCE from 3.3.1 to 3.3.6 (Kieran Pilkington - see CHANGELOG_TINYMCE)
