@@ -49,7 +49,7 @@ module TinyMCE
       if ActionView::Helpers::AssetTagHelper.javascript_expansions[:defaults].detect{|x| x == "jquery"}
         javascript_include_tag "tiny_mce/jquery.tinymce"
       else
-        javascript_include_tag (Rails.env.to_s == 'development' ? "tiny_mce/tiny_mce_src" : "tiny_mce/tiny_mce")
+        javascript_include_tag(Rails.env.to_s == 'development' ? "tiny_mce/tiny_mce_src" : "tiny_mce/tiny_mce")
       end
     end
     # Form a JS include tag for the TinyMCE JS src for inclusion in the <head>
