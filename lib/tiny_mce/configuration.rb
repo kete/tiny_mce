@@ -109,5 +109,10 @@ module TinyMCE
         plugins.include?(option.split('_').first) ||
         option =~ /^theme_advanced_container_\w+$/
     end
+    
+    def uses_jquery?
+      Rails.version.to_i >= 3 && ActionView::Helpers::AssetTagHelper.javascript_expansions[:defaults].detect{|x| x == "jquery"}
+    end
+
   end
 end
