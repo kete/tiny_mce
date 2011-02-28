@@ -1,0 +1,24 @@
+/* Blue */
+.judbSkinBlue .mceToolbar { background:url(img/background_blue.png); }
+.judbSkinBlue .mceToolbar .mceToolbarStart span,
+.judbSkinBlue .mceToolbar .mceToolbarEnd span,
+.judbSkinBlue .mceButton, 
+.judbSkinBlue .mceSplitButton, 
+.judbSkinBlue .mceSeparator, 
+.judbSkinBlue .mceSplitButton a.mceOpen, 
+.judbSkinBlue .mceListBox a.mceOpen { background-image:url(img/button_bg_blue.png); }
+.judbSkinBlue .mceStatusbar { background:url(img/statsbar_bg_blue.png); }
+
+.judbSkinBlue .mceMenuItemTitle a,
+.judbSkinBlue .mceMenuItemTitle span.mceText { background:#ccc; }
+
+.judbSkinBlue table { background:#eee; }
+.judbSkinBlue .mceListBox .mceText { background:#ddd; }
+.judbSkinBlue .mceExternalToolbar, 
+.judbSkinBlue .mceListBox .mceText, 
+.judbSkinBlue div.mceMenu, 
+.judbSkinBlue table.mceLayout,
+.judbSkinBlue .mceMenuItemTitle a, 
+.judbSkinBlue table.mceLayout tr.mceFirst td,
+.judbSkinBlue table.mceLayout tr.mceLast td, 
+.judbSkinBlue .mceIframeContainer { border-color: #555; }

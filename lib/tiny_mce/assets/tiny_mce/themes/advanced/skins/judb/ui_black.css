@@ -1,0 +1,29 @@
+/* Black */
+.judbSkinBlack .mceToolbar { background:url(img/background_black.png);  }
+.judbSkinBlack .mceToolbar .mceToolbarStart span,
+.judbSkinBlack .mceToolbar .mceToolbarEnd span,
+.judbSkinBlack .mceButton, 
+.judbSkinBlack .mceSplitButton, 
+.judbSkinBlack .mceSeparator, 
+.judbSkinBlack .mceSplitButton a.mceOpen, 
+.judbSkinBlack .mceListBox a.mceOpen { background-image:url(img/button_bg_black.png); }
+.judbSkinBlack .mceStatusbar { background:url(img/statsbar_bg_black.png);}
+
+.judbSkinBlack .mceMenuItemTitle a,
+.judbSkinBlack .mceMenuItemTitle span.mceText { background:#ccc; }
+
+.judbSkinBlack table,
+.judbSkinBlack .mceStatusbar div,
+.judbSkinBlack .mceStatusbar span,
+.judbSkinBlack .mceStatusbar a { color:#fff; }
+
+.judbSkinBlack table { background:#eee; }
+.judbSkinBlack .mceListBox .mceText { background:#ddd; }
+.judbSkinBlack .mceExternalToolbar, 
+.judbSkinBlack .mceListBox .mceText, 
+.judbSkinBlack div.mceMenu, 
+.judbSkinBlack table.mceLayout,
+.judbSkinBlack .mceMenuItemTitle a, 
+.judbSkinBlack table.mceLayout tr.mceFirst td,
+.judbSkinBlack table.mceLayout tr.mceLast td, 
+.judbSkinBlack .mceIframeContainer { border-color: #555; }

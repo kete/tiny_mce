@@ -1,0 +1,35 @@
+/* Reset */
+.judbSimpleSkin table, .judbSimpleSkin tbody, .judbSimpleSkin a, .judbSimpleSkin img, .judbSimpleSkin tr, .judbSimpleSkin div, .judbSimpleSkin td, .judbSimpleSkin iframe, .judbSimpleSkin span, .judbSimpleSkin * {border:0; margin:0; padding:0; background:transparent; white-space:nowrap; text-decoration:none; font-weight:normal; cursor:default; color:#000}
+
+/* Containers */
+.judbSimpleSkin {position:relative}
+.judbSimpleSkin table.mceLayout {background:#E5EFFD; border:1px solid #777;}
+.judbSimpleSkin iframe {display:block; background:#FFF; border-bottom:1px solid #777;}
+.judbSimpleSkin .mceToolbar {height:26px;background:url(img/background_silver.png);}
+
+/* Layout */
+.judbSimpleSkin .mceToolbar .mceToolbarStart span {display:block; background:url(img/button_bg.png) -22px 0; width:1px; height:22px; }
+.judbSimpleSkin .mceToolbar .mceToolbarEnd span {display:block; background:url(img/button_bg.png) -22px 0; width:1px; height:22px}
+.judbSimpleSkin span.mceIcon, .judbSimpleSkin img.mceIcon {display:block; width:20px; height:20px}
+.judbSimpleSkin .mceIcon {background:url(../../img/icons.gif) no-repeat 20px 20px}
+
+/* Button */
+.judbSimpleSkin .mceButton {display:block; background:url(img/button_bg.png); width:22px; height:22px}
+.judbSimpleSkin a.mceButton span, .judbSimpleSkin a.mceButton img {margin:1px 0 0 1px}
+.judbSimpleSkin a.mceButtonEnabled:hover {background-position:0 -22px}
+.judbSimpleSkin a.mceButtonActive {background-position:0 -44px}
+.judbSimpleSkin .mceButtonDisabled span {opacity:0.1; -ms-filter:'alpha(opacity=10)'; filter:alpha(opacity=10)}
+
+/* Separator */
+.judbSimpleSkin .mceSeparator {display:block; background:url(img/button_bg.png) -22px 0; width:5px; height:22px}
+
+/* Theme */
+.judbSimpleSkin span.mce_bold {background-position:0 0}
+.judbSimpleSkin span.mce_italic {background-position:-60px 0}
+.judbSimpleSkin span.mce_underline {background-position:-140px 0}
+.judbSimpleSkin span.mce_strikethrough {background-position:-120px 0}
+.judbSimpleSkin span.mce_undo {background-position:-160px 0}
+.judbSimpleSkin span.mce_redo {background-position:-100px 0}
+.judbSimpleSkin span.mce_cleanup {background-position:-40px 0}
+.judbSimpleSkin span.mce_insertunorderedlist {background-position:-20px 0}
+.judbSimpleSkin span.mce_insertorderedlist {background-position:-80px 0}

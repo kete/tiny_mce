@@ -1,0 +1,35 @@
+/* Reset */
+.judb_blueSimpleSkin table, .judb_blueSimpleSkin tbody, .judb_blueSimpleSkin a, .judb_blueSimpleSkin img, .judb_blueSimpleSkin tr, .judb_blueSimpleSkin div, .judb_blueSimpleSkin td, .judb_blueSimpleSkin iframe, .judb_blueSimpleSkin span, .judb_blueSimpleSkin * {border:0; margin:0; padding:0; background:transparent; white-space:nowrap; text-decoration:none; font-weight:normal; cursor:default; color:#000}
+
+/* Containers */
+.judb_blueSimpleSkin {position:relative}
+.judb_blueSimpleSkin table.mceLayout {background:#E5EFFD; border:1px solid #777;}
+.judb_blueSimpleSkin iframe {display:block; background:#FFF; border-bottom:1px solid #777;}
+.judb_blueSimpleSkin .mceToolbar {height:26px;background:url(img/background_blue.png);}
+
+/* Layout */
+.judb_blueSimpleSkin .mceToolbar .mceToolbarStart span {display:block; background:url(img/button_bg.png) -22px 0; width:1px; height:22px; }
+.judb_blueSimpleSkin .mceToolbar .mceToolbarEnd span {display:block; background:url(img/button_bg.png) -22px 0; width:1px; height:22px}
+.judb_blueSimpleSkin span.mceIcon, .judb_blueSimpleSkin img.mceIcon {display:block; width:20px; height:20px}
+.judb_blueSimpleSkin .mceIcon {background:url(../../img/icons.gif) no-repeat 20px 20px}
+
+/* Button */
+.judb_blueSimpleSkin .mceButton {display:block; background:url(img/button_bg.png); width:22px; height:22px}
+.judb_blueSimpleSkin a.mceButton span, .judb_blueSimpleSkin a.mceButton img {margin:1px 0 0 1px}
+.judb_blueSimpleSkin a.mceButtonEnabled:hover {background-position:0 -22px}
+.judb_blueSimpleSkin a.mceButtonActive {background-position:0 -44px}
+.judb_blueSimpleSkin .mceButtonDisabled span {opacity:0.1; -ms-filter:'alpha(opacity=10)'; filter:alpha(opacity=10)}
+
+/* Separator */
+.judb_blueSimpleSkin .mceSeparator {display:block; background:url(img/button_bg.png) -22px 0; width:5px; height:22px}
+
+/* Theme */
+.judb_blueSimpleSkin span.mce_bold {background-position:0 0}
+.judb_blueSimpleSkin span.mce_italic {background-position:-60px 0}
+.judb_blueSimpleSkin span.mce_underline {background-position:-140px 0}
+.judb_blueSimpleSkin span.mce_strikethrough {background-position:-120px 0}
+.judb_blueSimpleSkin span.mce_undo {background-position:-160px 0}
+.judb_blueSimpleSkin span.mce_redo {background-position:-100px 0}
+.judb_blueSimpleSkin span.mce_cleanup {background-position:-40px 0}
+.judb_blueSimpleSkin span.mce_insertunorderedlist {background-position:-20px 0}
+.judb_blueSimpleSkin span.mce_insertorderedlist {background-position:-80px 0}
