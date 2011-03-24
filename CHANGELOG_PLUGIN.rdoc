@@ -1,5 +1,9 @@
 = Plugin Changelog
 
+== Version 0.1.7
+* Upgraded TinyMCE from 3.3.9.3 to 3.4 (Sasha Gerrand)
+* Added additional languages and associated themes and plugins
+
 == Version 0.1.6
 * Upgraded TinyMCE from 3.3.6 to 3.3.9.3 (Josh Proehl)
 * Added jQuery Plugin (Josh Proehl)

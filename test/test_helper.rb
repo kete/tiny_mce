@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + "/../../../../test/test_helper")
+require File.expand_path(File.dirname(__FILE__) + "/../test/test_helper")
 
 # Use non-default action names to get around possible authentication
 # filters to ensure the tests work in most cases
