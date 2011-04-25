@@ -45,7 +45,7 @@
 								<td>
 									<table role="presentation" border="0" cellspacing="0" cellpadding="0">
 									<tr>
-										<td><input id="src" name="src" type="text" value="" class="mceFocus" onchange="switchType(this.value);Media.formToData();" /></td>
+										<td><input id="src" name="src" type="text" value="" class="mceFocus" onchange="Media.formToData();" /></td>
 										<td id="filebrowsercontainer">&nbsp;</td>
 									</tr>
 									</table>
@@ -60,8 +60,8 @@
 								<td>
 									<table role="presentation" border="0" cellpadding="0" cellspacing="0">
 										<tr>
-											<td><input type="text" id="width" name="width" value="" class="size" onchange="Media.formToData('width');" /> x <input type="text" id="height" name="height" value="" class="size"  onchange="Media.formToData('height');" /></td>
-											<td>&nbsp;&nbsp;<input id="constrain" type="checkbox" name="constrain" class="checkbox" /></td>
+											<td><input type="text" id="width" name="width" value="" class="size" onchange="Media.formToData('width');" onfocus="Media.beforeResize();" /> x <input type="text" id="height" name="height" value="" class="size" onfocus="Media.beforeResize();" onchange="Media.formToData('height');" /></td>
+											<td>&nbsp;&nbsp;<input id="constrain" type="checkbox" name="constrain" class="checkbox" checked="checked" /></td>
 											<td><label id="constrainlabel" for="constrain">{#media_dlg.constrain_proportions}</label></td>
 										</tr>
 									</table>
@@ -92,7 +92,7 @@
 							<td><label for="align">{#media_dlg.align}</label></td>
 							<td>
 								<select id="align" name="align" onchange="Media.formToData();">
-									<option value="">{#not_set}</option> 
+									<option value="">{#not_set}</option>
 									<option value="top">{#media_dlg.align_top}</option>
 									<option value="right">{#media_dlg.align_right}</option>
 									<option value="bottom">{#media_dlg.align_bottom}</option>
@@ -210,7 +210,7 @@
 							<td><label for="flash_quality">{#media_dlg.quality}</label></td>
 							<td>
 								<select id="flash_quality" name="flash_quality" onchange="Media.formToData();">
-									<option value="">{#not_set}</option> 
+									<option value="">{#not_set}</option>
 									<option value="high">high</option>
 									<option value="low">low</option>
 									<option value="autolow">autolow</option>
@@ -222,7 +222,7 @@
 							<td><label for="flash_scale">{#media_dlg.scale}</label></td>
 							<td>
 								<select id="flash_scale" name="flash_scale" onchange="Media.formToData();">
-									<option value="">{#not_set}</option> 
+									<option value="">{#not_set}</option>
 									<option value="showall">showall</option>
 									<option value="noborder">noborder</option>
 									<option value="exactfit">exactfit</option>
@@ -235,7 +235,7 @@
 							<td><label for="flash_wmode">{#media_dlg.wmode}</label></td>
 							<td>
 								<select id="flash_wmode" name="flash_wmode" onchange="Media.formToData();">
-									<option value="">{#not_set}</option> 
+									<option value="">{#not_set}</option>
 									<option value="window">window</option>
 									<option value="opaque">opaque</option>
 									<option value="transparent">transparent</option>
@@ -245,7 +245,7 @@
 							<td><label for="flash_salign">{#media_dlg.salign}</label></td>
 							<td>
 								<select id="flash_salign" name="flash_salign" onchange="Media.formToData();">
-									<option value="">{#not_set}</option> 
+									<option value="">{#not_set}</option>
 									<option value="l">{#media_dlg.align_left}</option>
 									<option value="t">{#media_dlg.align_top}</option>
 									<option value="r">{#media_dlg.align_right}</option>
@@ -419,7 +419,7 @@
 						<tr>
 							<td><label for="quicktime_scale">{#media_dlg.scale}</label></td>
 							<td><select id="quicktime_scale" name="quicktime_scale" class="mceEditableSelect" onchange="Media.formToData();">
-									<option value="">{#not_set}</option> 
+									<option value="">{#not_set}</option>
 									<option value="tofit">tofit</option>
 									<option value="aspect">aspect</option>
 								</select>
