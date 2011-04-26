@@ -1,3 +1,78 @@
+Version 3.4.2 (2011-04-07)
+	Added new 'paste_text_sticky_default' option to paste plugin, enables you to set the default state for paste as plain text.
+	Added new autoresize_bottom_margin option to autoresize plugin that enables you to add an extra margin at the bottom. Patch contributed by Andrew Ozz.
+	Rewritten the fullpage plugin to handle style contents better and have a more normalized behavior across browsers.
+	Fixed bug where contents inserted with mceInsertContent wasn't parsed using the default dom parser.
+	Fixed bug where blocks containing a single anchor element would be treated as empty.
+	Fixed bug where merging of table cells on IE 6, 7 wouldn't look correctly until the contents was refreshed.
+	Fixed bug where context menu wouldn't work properly on Safari since it was passing out the ctrl key as pressed.
+	Fixed bug where image border color/style values were overwritten by advimage plugin.
+	Fixed bug where setting border in advimage plugin would throw error in IE.
+	Fixed bug where empty anchors list in link settings wasn't hidden.
+	Fixed bug where xhtmlextras popups were missing localized popup-size parameters.
+	Fixed bug where the context menu wouldn't select images on WebKit browsers.
+	Fixed bug where paste plugin wouldn't properly extract the contents on WebKit due to recent changes in browser behavior.
+	Fixed bug where focus of the editor would get on control contents on IE lost due to a bug in the ColorSplitButton control.
+	Fixed bug where contextmenu wasn't disabled on noneditable elements.
+	Fixed bug where getStyle function would trigger error when called on element without style property.
+	Fixed bug where editor fail to load if Javascript Compressor was used.
+	Fixed bug where list-style-type=lower-greek would produce errors in IE<8.
+	Fixed bug where spellchecker plugin would produce errors on IE6-7.
+	Fixed bug where theme_advanced_containers configuration option causes error.
+	Fixed bug where the mceReplaceContent command would produce an error since it didn't correctly handle a return value.
+	Fixed bug where you couldn't enter float point values for em in dialog input fields since it wouldn't be considered a valid size.
+	Fixed bug in xhtmlxtras plugin where it wasn't possible to remove some attributes in the attributes dialog.
+Version 3.4.1 (2011-03-24)
+	Added significantly improved list handling via the new 'lists' plugin.
+	Added 'autolink' plugin to enable automatically linking URLs. Similar to the behavior IE has by default.
+	Added 'theme_advanced_show_current_color' setting to enable the forecolor and backcolor buttons to continuously show the current text color.
+	Added 'contextmenu_never_use_native' setting to disable the ctrl-right-click showing the native browser context menu behaviour.
+	Added 'paste_enable_default_filters' setting to enable the default paste filters to be disabled.
+	Fixed bug where selection locations on undo/redo didn't work correctly on specific contents.
+	Fixed bug where an exception would be trown on IE when loading TinyMCE inside an iframe.
+	Fixed bug where some ascii numeric entities wasn't properly decoded.
+	Fixed bug where some non western language codes wasn't properly decoded/encoded.
+	Fixed bug where undo levels wasn't created when deleting contents on IE.
+	Fixed bug where the initial undo levels bookmark wasn't updated correctly.
+	Fixed bug where search/replace wouldn't be scoped to editor instances on IE8.
+	Fixed bug where IE9 would produce two br elements after block elements when pasting.
+	Fixed bug where IE would place the caret at an incorrect position after a paste operation.
+	Fixed bug where a paste operation using the keyboard would add an extra undo level.
+	Fixed bug where some attributes/elements wasn't correctly filtered when invalid contents was inserted.
+	Fixed bug where the table plugin couldn't correctly handle invalid table structures.
+	Fixed bug where charset and title of the page were handled incorrectly by the fullpage plugin.
+	Fixed bug where toggle states on some of the list boxes didn't update correctly.
+	Fixed bug where sub/sub wouldn't work correctly when done as a caret action in Chrome 10.
+	Fixed bug where the constrain proportions checkbox wouldn't work in the media plugin.
+	Fixed bug where block elements containing trailing br elements wouldn't treated properly if they where invalid.
+	Fixed bug where the color picker dialog wouldn't be rendered correctly when using the o2k7 theme.
+	Fixed bug where setting border=0 using advimage plugin invalid style attribute content was created in Chrome.
+	Fixed bug with references to non-existing images in css of fullpage plugin.
+	Fixed bug where item could be unselected in spellchecker's language selector.
+	Fixed bug where some mispelled words could be not highlighted using spellchecker plugin.
+	Fixed bug where spellchecking would merge some words on IE.
+	Fixed bug where spellchecker context menu was not always positioned correctly.
+	Fixed bug with empty anchors list in advlink popup when Invisible Elements feature was disabled.
+	Fixed bug where older IE versions wouldn't properly handle some elements if they where placed at the top of editor contents.
+	Fixed bug where selecting the whole table would enable table tools for cells and rows.
+	Fixed bug where it wasn't possible to replace selected contents on IE when pasting using the paste plugin.
+	Fixed bug where setting text color in fullpage plugin doesn't work.
+	Fixed bug where the state of checkboxes in media plugin wouldn't be set correctly.
+	Fixed bug where black spade suit character was not included in special character selector.
+	Fixed bug where setting invalid values for table cell size would throw an error in IE.
+	Fixed bug where spellchecking would remove whitespace characters from PRE block in IE.
+	Fixed bug where HR was inserted inside P elements instead of splitting them.
+	Fixed bug where extra, empty span tags were added when using a format with both selector and inline modes.
+	Fixed bug where bullet lists weren't always detected correctly.
+	Fixed bug where deleting some paragraphs on IE would cause an exception.
+	Fixed bug where the json encoder logic wouldn't properly encode \ characters.
+	Fixed bug where the onChange event would be fired when the editor was first initialized.
+	Fixed bug where mceSelected wouldn't be removed properly from output even if it's an internal class.
+	Fixed issue with table background colors not being transparent. This improves compliance with users browser color preferences.
+	Fixed issue where styles were not included when using the full page plugin.
+	Fixed issue where drag/drop operations wasn't properly added to the undo levels.
+	Fixed issue where colors wasn't correctly applied to elements with underline decoration.
+	Fixed issue where deleting some paragraphs on IE would cause an exception.
 Version 3.4 (2011-03-10)
 	Added accessibility example with various accessibility options contributed by Ephox.
 	Fixed bug where attributes wasn't properly handled in the xhtmlxtras plugin.
@@ -141,6 +216,8 @@ Version 3.3.9 (2010-09-08)
 	Fixed so attributes from legacy elements such as font gets retained when they get converted to spans.
 	Fixed minor issue where the select boxes wouldn't be set the not set by default in the table dialog.
 Version 3.3.8 (2010-06-30)
+	On IE8+ and FireFox 3.5+, dragging an image now correctly adds an undo
+	event.
 	Fixed bug where WebKit would not move the caret to a correct position after a paste operation.
 	Fixed bug where WebKit would produce a div wrapper element when pasting some contents.
 	Fixed bug where the visual chars and nonbreaking plugin wouldn't show nbsp elements correctly.
