@@ -1,5 +1,7 @@
 = TinyMCE for Rails
 
+Note: in light of the improvements for JavaScript libraries in Rails 3.1's asset pipeline, this gem/plugin is NOT recommended for Rails 3.1 or above. I encourage someone to create a new gem, say tinymce-rails (ala jquery-rails gem at https://github.com/rails/jquery-rails), that works with the improvements in Rails 3.1!
+
 This gem/plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications of version 2.3.5 and onward.
 
 TinyMCE is a WYSIWYG HTML editing component released under the GNU Lesser General Public License 2.1 (LGPL 2.1) by Moxiecode Systems (http://tinymce.moxiecode.com/).
