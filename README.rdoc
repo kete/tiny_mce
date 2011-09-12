@@ -1,6 +1,14 @@
 = TinyMCE for Rails
 
-Note: in light of the improvements for JavaScript libraries in Rails 3.1's asset pipeline, this gem/plugin is NOT recommended for Rails 3.1 or above. Use https://github.com/spohlenz/tinymce-rails!
+This gem is being depreciated because I don't have time to maintain it and the code base is in an inconsistent state! Seem following notes.
+
+Note for Rails 3.1 users: in light of the improvements for JavaScript libraries in Rails 3.1's asset pipeline, this gem/plugin is NOT recommended for Rails 3.1 or above. Use https://github.com/spohlenz/tinymce-rails!
+
+Note for Rails 3.0 users: consider if https://github.com/mikehoward/use_tinymce will suit your needs.
+
+Note for Rails 2.3x users: I recommend checking the commit messags on forks of this gem at https://github.com/kete/tiny_mce/network. You'll probably have to do a bit of trial and error to get one that works for you. Learn how to build and install a gem from local source.
+
+Final note: I may come back to fixing this gem's codebase, but I can't guarantee it, thus I recommend you explore alternatives.
 
 This gem/plugin provides for the installation and utilization of TinyMCE in Ruby on Rails applications of version 2.3.5 and onward.
 
