@@ -82,7 +82,7 @@ module TinyMCE
         when String, Symbol, Fixnum
           "'#{value.to_s}'"
         when Array
-          '"' + value.join(',') + '"'
+          "'" + value.join(',') + "'"
         when TrueClass
           'true'
         when FalseClass
