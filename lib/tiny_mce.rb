@@ -137,8 +137,25 @@ module TinyMCE
     def self.install
       return unless File.directory?(self.assets_path)
       require 'fileutils'
-      puts "Installing #{self.name} plugin assets from #{self.assets_path}"
-      FileUtils.cp_r "#{self.assets_path}/.", File.join(Rails.root.to_s, 'public', 'javascripts', 'tiny_mce')
+
+      # public/javascripts/tiny_mce/plugins/imageselector/editor_plugin.js 
+      assests_plugins_path = File.join(self.assets_path, 'plugins')
+
+      # check if plugin subdirectory is the same as already under tiny_mce/plugins
+      plugin_source_path = Dir[File.join(self.assets_path, 'plugins', '*')][0]
+      plugin_directory_name = File.basename(plugin_source_path)
+      destination_source_path = File.join(Rails.root.to_s,
+                                          'public',
+                                          'javascripts',
+                                          'tiny_mce',
+                                          'plugins',
+                                          plugin_directory_name)
+
+      # diff will return differences if there are any or empty string if not
+      if !File.exist?(destination_source_path) || `diff -r #{plugin_source_path} #{destination_source_path}`.present?
+        puts "Installing #{self.name} plugin assets from #{self.assets_path}"
+        FileUtils.cp_r "#{self.assets_path}/.", File.join(Rails.root.to_s, 'public', 'javascripts', 'tiny_mce')
+      end
     end
   end
 end
