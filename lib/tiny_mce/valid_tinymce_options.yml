@@ -28,6 +28,7 @@
 - table_inline_editing
 - theme
 - script_url
+- contextmenu_never_use_native
 
 # Callbacks
 - cleanup_callback
@@ -99,6 +100,7 @@
 - editor_css
 - width
 - height
+- autoresize_bottom_margin
 
 # Visual aids
 - visual
@@ -120,6 +122,10 @@
 - add_form_submit_trigger
 - add_unload_trigger
 - submit_patch
+
+# Paste
+- paste_enable_default_filters
+- paste_text_sticky_default
 
 # Advanced theme
 - theme_advanced_layout_manager
@@ -164,3 +170,4 @@
 - theme_advanced_default_foreground_color
 - theme_advanced_default_background_color
 - theme_advanced_more_colors
+- theme_advanced_show_current_color
