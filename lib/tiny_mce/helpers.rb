@@ -33,7 +33,7 @@ module TinyMCE
         
       end
 
-      tinymce_js
+      tinymce_js.html_safe
     end
 
     # Form the raw JS and wrap in in a <script> tag for inclusion in the <head>
